@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <>
@@ -13,9 +15,11 @@ export default function Home() {
           <button className="circle-button">
             <img src="/категории.svg" width="30" height="45" alt="категории" />
           </button>
-          <button className="circle-button">
-            <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-          </button>
+          <Link to="/profile">
+            <button className="circle-button">
+              <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
+            </button>
+          </Link>
         </div>
       </header>
 

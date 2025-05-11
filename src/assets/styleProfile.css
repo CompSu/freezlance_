@@ -1,0 +1,310 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #00929D;
+    font-family: "Press Start 2P", system-ui;
+    overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 85px;
+    background-color: #E4F5FF;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Защита от наложения */
+    font-family: "Dmitrieva SP";
+    font-size: 45px;
+    color: #296986;
+}
+.logo {
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 94px; /* Высота логотипа */
+    width: 94px;
+    margin-right: 0px; /* Отступ между логотипом и текстом */
+}
+
+.buttons {
+    display: flex;
+}
+
+.circle-button {
+    width: 50px;
+    height: 50px;
+    background-color: #E4F5FF;
+    border-radius: 50%;
+    border: 3px solid #294548;
+    margin-right: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.circle-button:hover {
+    background-color: #00929D;
+    transform: scale(1.1);
+}
+
+.square {
+    margin-left: 10%;
+    width: 80%;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("заливка.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+.element {
+    background-color: rgba(110, 236, 255, 0.64); /* Цвет фона прямоугольника */
+    border-radius: 20px; /* Радиус закругления углов */
+    width: 90%;
+    height: 125px;
+    padding: 20px; /* Отступ внутри прямоугольника */
+    position: relative; /* Абсолютное позиционирование */
+    top: 125px; /* Отступ сверху */
+    left: 50%; /* Позиция по центру по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем на половину ширины для центрирования */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Легкая тень для эффекта объема */
+    font-size: 31px;
+}
+
+.square img {
+    height: 100%;
+    width: 100%;
+    z-index: 10; /* Устанавливаем уровень слоя, если необходимо */
+    margin-top: 150px; /* Отступ сверху для удаления соприкосновения с шапкой */
+    object-position: -225px 0px;
+    background-attachment: scroll;
+    position: absolute;
+}
+
+.square .content {
+    width: 40%;
+    position: relative;
+    top: 250px;
+    left: 300px;
+    font-size: 25px;
+    flex-grow: 1; /* Позволяет текстовому блоку занимать оставшееся пространство */
+}
+
+.square_photo {
+    position: absolute; /* Позиционируем элемент относительно родителя */
+    top: 120px; /* Отступ сверху */
+    left: 60px; /* Отступ слева */
+    width: 15%; /* Ширина элемента */
+    height: 20%; /* Высота элемента */
+    border-radius: 5%;
+    border: 7px solid #49767B;
+    background-color: #00929D; /* Цвет фона */
+    background-size: cover; /* Обеспечиваем, чтобы картинка покрывала весь элемент */
+}
+
+.square_photo_content{
+    position: absolute;
+    top: 305px;
+    left: 80px;
+    font-family: "Press Start 2P", system-ui;
+    color: #000C76;
+    font-size: 15px;
+}
+
+.square_photo_buttons {
+    position: absolute;
+    top: 120px;
+    left: 12px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 12px;
+    font-family: "Manrope", sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.square_photo_buttons:hover {
+    transform: scale(1.1);
+    color: #000C76;
+}
+
+.square_inform {
+    position: absolute; /* Позиционируем элемент относительно родителя */
+    top: 120px; /* Отступ сверху */
+    margin-left: 20%; /* Отступ слева */
+    width: 70%; /* Ширина элемента */
+    height: 20%; /* Высота элемента */
+    border-radius: 1%/5%;
+    background-color: #00929D96; /* Цвет фона */
+    background-size: cover;
+
+}
+
+.square_inform_content {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-size: 14px;
+    font-family: "Manrope", sans-serif;
+}
+.square_inform_buttons {
+    position: absolute;
+    top: 135px;
+    left: 40%;
+    width: 180px;
+    height: 27px;
+    background: linear-gradient(to right, #296986, #000C76);
+    border-radius: 5%/30%;
+    margin-right: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 9px;
+    font-family: "Press Start 2P", system-ui;
+    color: #cccccc;
+}
+
+.square_inform_buttons:hover {
+    transform: scale(1.1);
+}
+
+.square_portfolio {
+    position: absolute; /* Позиционируем элемент относительно родителя */
+    top: 37%; /* Отступ сверху */
+    margin-left: 5px; /* Отступ слева */
+    width: 90%; /* Ширина элемента */
+    height: 30%; /* Высота элемента */
+    border-radius: 1%/5%;
+    background-color: #00929D96; /* Цвет фона */
+    background-size: cover;
+}
+
+.square_portfolio_content {
+    position: absolute;
+    top: 15px;
+    left: 39%;
+    color: #FFFFFF;
+}
+.square_portfolio_buttons1 {
+    position: absolute;
+    top: 45%;
+    left: 2%;
+    width: 25px;
+    height: 25px;
+    background-color: #00929D96;
+    border-radius: 50%;
+    margin-right: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.square_portfolio_buttons1:hover {
+    transform: scale(1.1);
+}
+
+.square_portfolio_buttons2 {
+    position: absolute;
+    top: 48%;
+    right: -3%;
+    width: 25px;
+    height: 25px;
+    background-color: #00929D96;
+    border-radius: 50%;
+    margin-right: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.square_portfolio_buttons2:hover {
+    transform: scale(1.1);
+}
+
+.square_portfolio_buttons3 {
+    position: absolute;
+    top: 225px;
+    left: 45%;
+    width: 180px;
+    height: 27px;
+    background: linear-gradient(to right, #296986, #000C76);
+    border-radius: 5%/30%;
+    margin-right: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 7px;
+    font-family: "Press Start 2P", system-ui;
+    color: #cccccc;
+}
+
+.square_portfolio_buttons3:hover {
+    transform: scale(1.1);
+}
+
+.square_reiting {
+    position: absolute; /* Позиционируем элемент относительно родителя */
+    top: 70%; /* Отступ сверху */
+    margin-left: 5px; /* Отступ слева */
+    width: 90%; /* Ширина элемента */
+    height: 25%; /* Высота элемента */
+    border-radius: 1%/5%;
+    background-color: #00929D96; /* Цвет фона */
+    background-size: cover;
+}
+
+.div-horizontal-scroll {
+    position: absolute;
+    top: 15px;
+    left: 39%;
+    color: #FFFFFF;
+}
+
+.plus {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    color: #000C76;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 18px;
+    font-family: "Manrope", sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.plus:hover {
+    transform: scale(1.1);
+    color: #000C76;
+}
+.minus{
+    position: absolute;
+    top: 40px;
+    margin-left: 200px;
+    color: #000C76;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 18px;
+    font-family: "Manrope", sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.minus:hover {
+    transform: scale(1.1);
+    color: #000C76;
+}
+.social-bar-wrap {
+    text-align: right;
+}
+
+.social-bar-wrap a {
+    padding: 0 7px;
+    font-size: 18px;
+}
+
