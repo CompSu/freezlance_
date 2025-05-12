@@ -6,7 +6,7 @@ body {
     margin: 0;
     background-color: #00929D;
     font-family: "Press Start 2P", system-ui;
-    overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+    overflow-x: hidden;
 }
 
 header {
@@ -20,7 +20,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Защита от наложения */
+    z-index: 1000; 
     font-family: "Dmitrieva SP";
     font-size: 45px;
     color: #296986;
@@ -32,9 +32,9 @@ header {
 }
 
 .logo img {
-    height: 94px; /* Высота логотипа */
+    height: 94px;
     width: 94px;
-    margin-right: 0px; /* Отступ между логотипом и текстом */
+    margin-right: 0px; 
 }
 
 .buttons {
@@ -59,35 +59,36 @@ header {
 .square {
     margin-left: 10%;
     width: 80%;
-    height: 900px;
+    min-height: 931px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("заливка.jpg");
+    background-color: rgba(228, 245, 255, 0.92);
     background-size: cover;
     position: relative;
+    transform: translate(0px, 0px);
 }
 
 .element {
-    background-color: rgba(110, 236, 255, 0.64); /* Цвет фона прямоугольника */
-    border-radius: 20px; /* Радиус закругления углов */
+    background-color: rgba(110, 236, 255, 0.64); 
+    border-radius: 20px; 
     width: 90%;
     height: 125px;
-    padding: 20px; /* Отступ внутри прямоугольника */
-    position: relative; /* Абсолютное позиционирование */
-    top: 125px; /* Отступ сверху */
-    left: 50%; /* Позиция по центру по горизонтали */
-    transform: translateX(-50%); /* Сдвигаем на половину ширины для центрирования */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Легкая тень для эффекта объема */
+    padding: 20px; 
+    position: relative; 
+    top: 125px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
     font-size: 31px;
 }
 
 .square img {
     height: 100%;
     width: 100%;
-    z-index: 10; /* Устанавливаем уровень слоя, если необходимо */
-    margin-top: 150px; /* Отступ сверху для удаления соприкосновения с шапкой */
+    z-index: 10; 
+    margin-top: 150px; 
     object-position: -225px 0px;
     background-attachment: scroll;
     position: absolute;
@@ -99,19 +100,26 @@ header {
     top: 250px;
     left: 300px;
     font-size: 25px;
-    flex-grow: 1; /* Позволяет текстовому блоку занимать оставшееся пространство */
+    flex-grow: 1; 
 }
 
 .square_photo {
-    position: absolute; /* Позиционируем элемент относительно родителя */
-    top: 120px; /* Отступ сверху */
-    left: 60px; /* Отступ слева */
-    width: 15%; /* Ширина элемента */
-    height: 20%; /* Высота элемента */
+    position: absolute; 
+    top: 120px;
+    left: 60px;
+    width: 15%; 
+    height: 20%; 
     border-radius: 5%;
     border: 7px solid #49767B;
-    background-color: #00929D; /* Цвет фона */
-    background-size: cover; /* Обеспечиваем, чтобы картинка покрывала весь элемент */
+    background-color: #00929D;
+    background-size: cover; 
+}
+
+.square_photo img {
+    margin-top: 0px;
+    transform: translate(-68px, -7px);
+    width: 108%;
+    min-height: 185px;
 }
 
 .square_photo_content{
@@ -123,7 +131,17 @@ header {
     font-size: 15px;
 }
 
+.square_photo_content span {
+    padding-bottom: 3px;
+    padding-top: 12px;
+    width: 102%;
+    height: 40px;
+    display: inline-block;
+    transform: translate(-15px, -10px);
+}
+
 .square_photo_buttons {
+    color: rgb(255, 255, 255);
     position: absolute;
     top: 120px;
     left: 12px;
@@ -136,19 +154,19 @@ header {
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.square_photo_buttons:hover {
+.square_photo_buttons:hover span{
     transform: scale(1.1);
-    color: #000C76;
+    color: #ffffff75;
 }
 
 .square_inform {
-    position: absolute; /* Позиционируем элемент относительно родителя */
-    top: 120px; /* Отступ сверху */
-    margin-left: 20%; /* Отступ слева */
-    width: 70%; /* Ширина элемента */
-    height: 20%; /* Высота элемента */
+    position: absolute; 
+    top: 120px; 
+    margin-left: 20%;
+    width: 70%; 
+    height: 20%; 
     border-radius: 1%/5%;
-    background-color: #00929D96; /* Цвет фона */
+    background-color: #00929D96; 
     background-size: cover;
 
 }
@@ -174,19 +192,22 @@ header {
     font-family: "Press Start 2P", system-ui;
     color: #cccccc;
 }
+.square_inform_buttons span {
+    color: #f5f4f4;
+}
 
 .square_inform_buttons:hover {
     transform: scale(1.1);
 }
 
 .square_portfolio {
-    position: absolute; /* Позиционируем элемент относительно родителя */
-    top: 37%; /* Отступ сверху */
-    margin-left: 5px; /* Отступ слева */
-    width: 90%; /* Ширина элемента */
-    height: 30%; /* Высота элемента */
+    position: absolute; 
+    top: 37%; 
+    margin-left: 5px; 
+    width: 90%;
+    height: 30%;
     border-radius: 1%/5%;
-    background-color: #00929D96; /* Цвет фона */
+    background-color: #00929D96; 
     background-size: cover;
 }
 
@@ -196,6 +217,14 @@ header {
     left: 39%;
     color: #FFFFFF;
 }
+.square_portfolio_content span {
+    height: 53px;
+    padding-top: 18px;
+    display: inline-block;
+    transform: translate(-29px, -25px);
+} 
+
+
 .square_portfolio_buttons1 {
     position: absolute;
     top: 45%;
@@ -243,18 +272,20 @@ header {
     color: #cccccc;
 }
 
+
+
 .square_portfolio_buttons3:hover {
     transform: scale(1.1);
 }
 
 .square_reiting {
-    position: absolute; /* Позиционируем элемент относительно родителя */
-    top: 70%; /* Отступ сверху */
-    margin-left: 5px; /* Отступ слева */
-    width: 90%; /* Ширина элемента */
-    height: 25%; /* Высота элемента */
+    position: absolute; 
+    top: 70%; 
+    margin-left: 5px; 
+    width: 90%; 
+    height: 25%;
     border-radius: 1%/5%;
-    background-color: #00929D96; /* Цвет фона */
+    background-color: #00929D96;
     background-size: cover;
 }
 
@@ -263,6 +294,13 @@ header {
     top: 15px;
     left: 39%;
     color: #FFFFFF;
+}
+
+.div-horizontal-scroll span {
+    height: 41px;
+    padding-top: 12px;
+    display: inline-block;
+    transform: translate(-21px, -16px);
 }
 
 .plus {

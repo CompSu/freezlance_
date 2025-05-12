@@ -6,10 +6,10 @@ function Profile() {
   return (
     <>
       <header>
-        <div className="logo">
+        <Link to="/" className="logo">
           <img src="/logo.png" alt="Логотип" />
           <span>FREEZLANCE</span>
-        </div>
+        </Link>
         <div className="buttons">
           <button className="circle-button">
             <img src="/поиск.svg" width="30" height="40" alt="поиск" />

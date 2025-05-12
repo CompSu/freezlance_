@@ -5,8 +5,10 @@ export default function Home() {
     <>
       <header>
         <div className="logo">
+        <Link to="/" className="logo">
           <img src="/logo.png" alt="Логотип" />
           <span>FREEZLANCE</span>
+        </Link>
         </div>
         <div className="buttons">
           <button className="circle-button">
