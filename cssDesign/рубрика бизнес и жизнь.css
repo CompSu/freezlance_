@@ -1,0 +1,733 @@
+/* бизнес и жизнь */
+
+position: relative;
+width: 1920px;
+height: 1095px;
+
+background: #00929D;
+
+
+/* шапка */
+
+position: absolute;
+width: 1920px;
+height: 72px;
+left: 0px;
+top: 2px;
+
+background: #E4F5FF;
+
+
+/* лого+текст */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 290px;
+height: 27px;
+left: 200px;
+top: 23px;
+
+
+
+/* Монтажная область 1 1 */
+
+width: 54px;
+height: 54px;
+
+background: url(Монтажная область 1);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Freezlance */
+
+width: 228px;
+height: 36px;
+
+font-family: 'Dmitrieva SP';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #296986;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* поиск */
+
+position: absolute;
+left: 61.77%;
+right: 36.98%;
+top: 34.72%;
+bottom: 31.94%;
+
+background: #294548;
+opacity: 0.97;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* Vector */
+
+position: absolute;
+left: 66.77%;
+right: 32.05%;
+top: 33.33%;
+bottom: 32.64%;
+
+background: #294548;
+
+
+/* категории */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+
+
+/* кнопочка 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* категории */
+
+position: absolute;
+left: 71.67%;
+right: 27.14%;
+top: 41.67%;
+bottom: 38.89%;
+
+background: #294548;
+
+
+/* вход/регистрация */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+
+
+/* кнопка 4 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* фейс */
+
+position: absolute;
+left: 77.92%;
+right: 20.62%;
+top: 31.94%;
+bottom: 23.61%;
+
+background: #294548;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* боди */
+
+position: absolute;
+width: 1120px;
+height: 1021px;
+left: 400px;
+top: 74px;
+
+background: #95EDFF;
+
+
+/* фон */
+
+position: absolute;
+width: 1529.63px;
+height: 1021px;
+left: -207px;
+top: 0px;
+
+background: url(vivid-blurred-colorful-wallpaper-background.jpg);
+
+
+/* портфолио */
+
+position: absolute;
+width: 967px;
+height: 835px;
+left: 75px;
+top: 132px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 396px;
+top: 54px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Обзвоны и продажи */
+
+position: absolute;
+width: 169px;
+height: 25px;
+left: 3px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 76px;
+top: 54px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Бухгалтерия и налоги */
+
+position: absolute;
+width: 187px;
+height: 25px;
+left: -6px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 716px;
+top: 54px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Юридическая помощь */
+
+position: absolute;
+width: 189px;
+height: 25px;
+left: -7px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 398px;
+top: 324px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Подбор персонала */
+
+position: absolute;
+width: 163px;
+height: 25px;
+left: 6px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 76px;
+top: 324px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Продажа сайтов */
+
+position: absolute;
+width: 140px;
+height: 25px;
+left: 17px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 711px;
+top: 324px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Презентация */
+
+position: absolute;
+width: 114px;
+height: 25px;
+left: 30px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 400px;
+top: 594px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* restaurant-statistic-dashboard-design-h81 1 */
+
+position: absolute;
+width: 193.91px;
+height: 170px;
+left: -12px;
+top: 0px;
+
+background: url(restaurant-statistic-dashboard-design-h81.jpg);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 170px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Стройка и ремонт */
+
+position: absolute;
+width: 154px;
+height: 25px;
+left: 10px;
+top: 177px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* Выберите подрубрику */
+
+position: absolute;
+width: 262px;
+height: 39px;
+left: 420px;
+top: 83px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* Бизнес и жизнь */
+
+position: absolute;
+width: 560px;
+height: 40px;
+left: 278px;
+top: 33px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+/* identical to box height */
+
+color: #FFFFFF;
+
