@@ -1,13 +1,31 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Freezlance</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Главная - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Последние вакансии</h2>
+    
+    {% if 'user_id' in session %}
+        <div class="actions">
+            <a href="{{ url_for('add_vacancy') }}" class="button">Добавить вакансию</a>
+        </div>
+    {% endif %}
+    
+    <div class="vacancies">
+        {% for vacancy in vacancies %}
+            <div class="vacancy">
+                <h3><a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}">{{ vacancy.title }}</a></h3>
+                <p class="author">Автор: {{ vacancy.author.username }}</p>
+                <p class="date">Опубликовано: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                {% if vacancy.salary %}
+                    <p class="salary">Зарплата: {{ vacancy.salary }}</p>
+                {% endif %}
+                <div class="description">
+                    {{ vacancy.description }}
+                </div>
+            </div>
+        {% else %}
+            <p>Пока нет вакансий.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
