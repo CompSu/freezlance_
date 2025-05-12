@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Панель модератора - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Панель модератора</h2>
+    <p>Вакансии на модерации:</p>
+    
+    {% if vacancies %}
+        <div class="moderation-list">
+            {% for vacancy in vacancies %}
+                <div class="moderation-item">
+                    <h3>{{ vacancy.title }}</h3>
+                    <p>Автор: {{ vacancy.author.username }}</p>
+                    <p>Дата: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <div class="actions">
+                        <a href="{{ url_for('moderator_vacancy', vacancy_id=vacancy.id) }}" class="button">Просмотреть</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Нет вакансий на модерации.</p>
+    {% endif %}
+{% endblock %}

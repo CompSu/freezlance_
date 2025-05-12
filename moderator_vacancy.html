@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Модерация вакансии - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Модерация вакансии</h2>
+    
+    <div class="vacancy-details">
+        <h3>{{ vacancy.title }}</h3>
+        <p>Автор: {{ vacancy.author.username }}</p>
+        <p>Дата: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+        {% if vacancy.salary %}
+            <p>Зарплата: {{ vacancy.salary }}</p>
+        {% endif %}
+        <div class="description">
+            {{ vacancy.description }}
+        </div>
+    </div>
+    
+    <form method="POST" class="moderation-form">
+        <div class="form-group">
+            <label for="rejection_reason">Причина отклонения (если отклоняете):</label>
+            <textarea id="rejection_reason" name="rejection_reason" rows="3">{{ vacancy.rejection_reason or '' }}</textarea>
+        </div>
+        
+        <div class="moderation-actions">
+            <button type="submit" name="action" value="approve" class="button approve">Одобрить</button>
+            <button type="submit" name="action" value="reject" class="button reject">Отклонить</button>
+            <a href="{{ url_for('moderator_panel') }}" class="button">Назад</a>
+        </div>
+    </form>
+{% endblock %}

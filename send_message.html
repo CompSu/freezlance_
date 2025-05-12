@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Отправить сообщение - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Отправить сообщение по вакансии "{{ vacancy.title }}"</h2>
+    
+    <form method="POST" class="message-form">
+        <div class="form-group">
+            <label for="content">Ваше сообщение:</label>
+            <textarea id="content" name="content" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="button">Отправить</button>
+        <a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}" class="button cancel">Отмена</a>
+    </form>
+{% endblock %}
