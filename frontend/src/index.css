@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-color: #00929D;
+  background-color: #309cce;
   font-family: "Press Start 2P", system-ui;
   overflow-x: hidden; 
 }
@@ -15,7 +15,7 @@ header {
   align-items: center;
   width: 100%;
   height: 85px;
-  background-color: #E4F5FF;
+  background-color: #ffffff;
   padding: 0 20px;
   position: fixed;
   top: 0;
@@ -46,13 +46,13 @@ header {
   height: 50px;
   background-color: #E4F5FF;
   border-radius: 50%;
-  border: 3px solid #294548;
+  border: 3px solid #074b61;
   margin-right: 50px;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .circle-button:hover {
-  background-color: #00929D;
+  background-color: #00739d;
   transform: scale(1.1);
 }
 
@@ -62,15 +62,19 @@ header {
   height: 900px;
   display: flex;
   flex-direction: column;
+  color:#458396;
   align-items: center;
   justify-content: center;
-  background-image: url("заливка.jpg");
+  background-color:rgba(255,255,255,0.95);
+  transform:translatex(0px) translatey(0px);
   background-size: cover;
   position: relative;
 }
 
 .element {
-  background-color: rgba(110, 236, 255, 0.64); 
+  z-index:14;
+  color:#ffffff;
+  background-color: rgba(2,167,232,0.64); 
   border-radius: 20px; 
   width: 90%;
   height: 125px;
@@ -94,6 +98,7 @@ header {
 }
 
 .square .content {
+  color:#028bb4;
   width: 40%;
   position: relative;
   top: 250px;
@@ -104,20 +109,11 @@ header {
 
 
 
-footer {
-  width: 100%;
-  height: 160px;
-  background-color: #E4F5FF;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Open Sans", sans-serif;
-  color: #296986;
-  margin-top: auto; 
-  overflow: hidden; 
-  z-index: 1000; 
-  padding: 40px; 
-}
-footer span {
-  margin-right: 20px; 
-}
+.logo span:hover{
+  color:#0856a9;
+  transform:translatex(0px) translatey(0px);
+ }
+ 
+.logo span{
+  color:#199ae5;
+ }

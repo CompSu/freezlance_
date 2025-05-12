@@ -4,18 +4,18 @@
 
 body {
     margin: 0;
-    background-color: #00929D;
+    background-color: #309cce;
     font-family: "Press Start 2P", system-ui;
-    overflow-x: hidden;
-}
+    overflow-x: hidden; 
+  }
 
-header {
+  header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 85px;
-    background-color: #E4F5FF;
+    background-color: #ffffff;
     padding: 0 20px;
     position: fixed;
     top: 0;
@@ -24,7 +24,7 @@ header {
     font-family: "Dmitrieva SP";
     font-size: 45px;
     color: #296986;
-}
+  }
 .logo {
     padding: 40px;
     display: flex;
@@ -46,32 +46,35 @@ header {
     height: 50px;
     background-color: #E4F5FF;
     border-radius: 50%;
-    border: 3px solid #294548;
+    border: 3px solid #074b61;
     margin-right: 50px;
     transition: background-color 0.3s, transform 0.3s;
-}
-
-.circle-button:hover {
-    background-color: #00929D;
+  }
+  
+  .circle-button:hover {
+    background-color: #00739d;
     transform: scale(1.1);
-}
+  }
 
-.square {
+  .square {
     margin-left: 10%;
     width: 80%;
-    min-height: 931px;
+    height: 900px;
     display: flex;
     flex-direction: column;
+    color:#458396;
     align-items: center;
     justify-content: center;
-    background-color: rgba(228, 245, 255, 0.92);
+    background-color:rgba(255,255,255,0.95);
+    transform:translatex(0px) translatey(0px);
     background-size: cover;
     position: relative;
-    transform: translate(0px, 0px);
-}
+  }
 
-.element {
-    background-color: rgba(110, 236, 255, 0.64); 
+  .element {
+    z-index:14;
+    color:#ffffff;
+    background-color: rgba(2,167,232,0.64); 
     border-radius: 20px; 
     width: 90%;
     height: 125px;
@@ -82,7 +85,8 @@ header {
     transform: translateX(-50%); 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
     font-size: 31px;
-}
+  }
+  
 
 .square img {
     height: 100%;
@@ -95,13 +99,14 @@ header {
 }
 
 .square .content {
+    color:#028bb4;
     width: 40%;
     position: relative;
     top: 250px;
     left: 300px;
     font-size: 25px;
     flex-grow: 1; 
-}
+  }
 
 .square_photo {
     position: absolute; 
