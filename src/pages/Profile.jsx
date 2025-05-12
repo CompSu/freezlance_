@@ -72,7 +72,6 @@ function Profile() {
         </div>
       </div>
 
-      <footer></footer>
     </>
   );
 }
