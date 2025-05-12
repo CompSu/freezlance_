@@ -1,0 +1,82 @@
+/* кнопка зарегистрироваться при наведении */
+
+position: relative;
+width: 390px;
+height: 101px;
+
+background: #FFFFFF;
+
+
+/* Frame 8 */
+
+position: absolute;
+width: 262px;
+height: 27px;
+left: 64px;
+top: 16px;
+
+background: #000C76;
+border-radius: 10px;
+
+
+/* ЗАРЕГИСТРИРОВАТЬСЯ */
+
+position: absolute;
+width: 252px;
+height: 14px;
+left: 5px;
+top: 8px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 8 */
+
+position: absolute;
+width: 262px;
+height: 27px;
+left: 64px;
+top: 58px;
+
+background: #1829C3;
+border-radius: 10px;
+
+
+/* ЗАРЕГИСТРИРОВАТЬСЯ */
+
+position: absolute;
+width: 252px;
+height: 14px;
+left: 5px;
+top: 8px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 83.59%;
+right: 11.07%;
+top: 14.81%;
+bottom: 3.7%;
+
+background: #000000;

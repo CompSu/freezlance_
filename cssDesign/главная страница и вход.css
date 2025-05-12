@@ -1,0 +1,675 @@
+/* главная страница и вход */
+
+position: relative;
+width: 1920px;
+height: 1024px;
+
+background: #00929D;
+
+
+/* шапка */
+
+position: absolute;
+width: 1920px;
+height: 72px;
+left: 0px;
+top: 2px;
+
+background: #E4F5FF;
+
+
+/* лого+текст */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 290px;
+height: 27px;
+left: 201px;
+top: 29px;
+
+
+
+/* Монтажная область 1 1 */
+
+width: 54px;
+height: 54px;
+
+background: url(Монтажная область 1);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Freezlance */
+
+width: 228px;
+height: 36px;
+
+font-family: 'Dmitrieva SP';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #296986;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* вход/регистрация */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1464px;
+top: 16px;
+
+
+
+/* кнопка 4 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1464px;
+top: 16px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* фейс */
+
+position: absolute;
+left: 77.97%;
+right: 20.57%;
+top: 29.17%;
+bottom: 26.39%;
+
+background: #294548;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* категории */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 17px;
+
+
+
+/* кнопочка 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 17px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* категории */
+
+position: absolute;
+left: 71.67%;
+right: 27.14%;
+top: 40.28%;
+bottom: 40.28%;
+
+background: #294548;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1272px;
+top: 17px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1272px;
+top: 17px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* поиск */
+
+position: absolute;
+left: 66.61%;
+right: 32.14%;
+top: 33.33%;
+bottom: 33.33%;
+
+background: #294548;
+opacity: 0.97;
+
+
+/* боди */
+
+position: absolute;
+width: 1120px;
+height: 950px;
+left: 400px;
+top: 74px;
+
+background: #95EDFF;
+
+
+/* vivid-blurred-colorful-wallpaper-background 2 */
+
+position: absolute;
+width: 1429px;
+height: 954px;
+left: -145px;
+top: -4px;
+
+background: url(vivid-blurred-colorful-wallpaper-background.jpg);
+
+
+/* Холодильник пуст? У нас найдется свеженькое молоко идей от лучших фрилансеров страны! */
+
+position: absolute;
+width: 603px;
+height: 150px;
+left: 517px;
+top: 299px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #294548;
+
+
+
+/* Свежий взгляд на каждый проект и ледяной профессионализм в работе. */
+
+position: absolute;
+width: 603px;
+height: 150px;
+left: 515px;
+top: 498px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 30px;
+
+color: #294548;
+
+
+
+/* свежее решение */
+
+position: absolute;
+width: 1038px;
+height: 136px;
+left: calc(50% - 1038px/2 + 1px);
+top: calc(50% - 136px/2 - 293px);
+
+background: rgba(110, 236, 255, 0.22);
+box-shadow: 0px 4px 9.8px rgba(72, 149, 191, 0.64);
+border-radius: 43px;
+
+
+/* СВЕЖЕЕ РЕШЕНИЕ ДЛЯ ВАШЕГО БИЗНЕСА */
+
+position: absolute;
+width: 1055px;
+height: 116px;
+left: 0px;
+top: 28px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+text-align: center;
+
+color: #294548;
+
+
+
+/* холодильник */
+
+position: absolute;
+width: 612px;
+height: 611px;
+left: -51px;
+top: 155px;
+
+
+
+/* фон холодильника */
+
+position: absolute;
+width: 422px;
+height: 553px;
+left: 95px;
+top: 41px;
+
+background: #296986;
+filter: blur(150px);
+
+
+/* холодильник */
+
+position: absolute;
+width: 364.55px;
+height: 409.91px;
+left: 123.73px;
+top: 100.54px;
+
+
+
+/* пустой холодос */
+
+position: absolute;
+width: 364.55px;
+height: 409.91px;
+left: 123.73px;
+top: 100.54px;
+
+
+
+/* холодильник */
+
+position: absolute;
+left: 20.22%;
+right: 20.22%;
+top: 16.46%;
+bottom: 16.46%;
+
+background: #6B6869;
+
+
+/* молочко */
+
+position: absolute;
+left: 54.87%;
+right: 41.69%;
+top: 44.85%;
+bottom: 48.18%;
+
+background: #CFEEED;
+
+
+/* тень */
+
+position: absolute;
+width: 1920px;
+height: 1024px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.4);
+backdrop-filter: blur(5px);
+/* Note: backdrop-filter has minimal browser support */
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 295px;
+height: 339px;
+left: 813px;
+top: 342px;
+
+background: #294548;
+border-radius: 10px;
+
+
+/* пароль пользователя */
+
+position: absolute;
+width: 267px;
+height: 41px;
+left: 14px;
+top: 177px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 267px;
+height: 23px;
+left: 14px;
+top: 195px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Придумайте пароль */
+
+position: absolute;
+left: 3%;
+right: 45.32%;
+top: 21.74%;
+bottom: 21.99%;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #7F7F7F;
+
+
+
+/* Пароль */
+
+position: absolute;
+width: 78px;
+height: 13px;
+left: 25px;
+top: 177px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* почта пользователя */
+
+position: absolute;
+width: 267px;
+height: 40px;
+left: 14px;
+top: 120px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 267px;
+height: 23px;
+left: 14px;
+top: 137px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Укажите свой email */
+
+position: absolute;
+left: 3.37%;
+right: 46.82%;
+top: 21.74%;
+bottom: 21.99%;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #7F7F7F;
+
+
+
+/* Email */
+
+position: absolute;
+width: 65px;
+height: 13px;
+left: 25px;
+top: 120px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* имя пользователя */
+
+position: absolute;
+width: 267px;
+height: 40px;
+left: 14px;
+top: 67px;
+
+
+
+/* Frame 6 */
+
+position: absolute;
+width: 267px;
+height: 23px;
+left: 14px;
+top: 84px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Укажите свое имя */
+
+position: absolute;
+left: 4.12%;
+right: 49.81%;
+top: 21.74%;
+bottom: 21.99%;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #7F7F7F;
+
+
+
+/* Имя */
+
+position: absolute;
+width: 39px;
+height: 13px;
+left: 25px;
+top: 67px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 13px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* выбор роли */
+
+position: absolute;
+width: 267px;
+height: 29px;
+left: 14px;
+top: 246px;
+
+
+
+/* заказчик */
+
+position: absolute;
+width: 121px;
+height: 29px;
+left: 14px;
+top: 246px;
+
+background: #296986;
+border-radius: 10px;
+
+
+/* Я заказчик */
+
+position: absolute;
+width: 74px;
+height: 19px;
+left: 24px;
+top: 5px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* фриланс */
+
+position: absolute;
+width: 121px;
+height: 29px;
+left: 160px;
+top: 246px;
+
+background: #FFFFFF;
+border-radius: 10px;
+
+
+/* Я фрилансер */
+
+position: absolute;
+width: 88px;
+height: 19px;
+left: 17px;
+top: 5px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #000000;
+
+
+
+/* Frame 7 */
+
+position: absolute;
+width: 151px;
+height: 27px;
+left: 72px;
+top: 303px;
+
+background: #000C76;
+border-radius: 10px;
+
+
+/* войти */
+
+position: absolute;
+width: 70px;
+height: 14px;
+left: 41px;
+top: 7px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* ВХОД */
+
+position: absolute;
+width: 192px;
+height: 16px;
+left: 52px;
+top: 34px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 16px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+

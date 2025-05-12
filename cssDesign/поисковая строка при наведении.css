@@ -1,0 +1,77 @@
+/* поисковая строка при наведении  */
+
+position: relative;
+width: 420px;
+height: 80px;
+
+background: #FFFFFF;
+
+
+/* поиск */
+
+position: absolute;
+width: 250px;
+height: 39px;
+left: 64px;
+top: 23px;
+
+
+
+/* выдвигающийся поиск */
+
+box-sizing: border-box;
+
+position: absolute;
+left: 15.24%;
+right: 25.24%;
+top: 28.75%;
+bottom: 22.5%;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+border-radius: 26px;
+
+
+/* поиск */
+
+position: absolute;
+left: 87.6%;
+right: 2.8%;
+top: 17.95%;
+bottom: 20.51%;
+
+background: #294548;
+opacity: 0.97;
+
+
+/* Найти услугу */
+
+position: absolute;
+left: 8.8%;
+right: 45.6%;
+top: 17.95%;
+bottom: 17.95%;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #7F7F7F;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 73.1%;
+right: 22.86%;
+top: 61.25%;
+bottom: 5%;
+
+background: #000000;
