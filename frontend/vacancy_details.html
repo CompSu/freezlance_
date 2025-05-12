@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ vacancy.title }} - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <div class="vacancy-details">
+        <h2>{{ vacancy.title }}</h2>
+        <p class="author">Автор: {{ vacancy.author.username }}</p>
+        <p class="date">Опубликовано: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+        {% if vacancy.salary %}
+            <p class="salary">Зарплата: {{ vacancy.salary }}</p>
+        {% endif %}
+        <div class="description">
+            {{ vacancy.description }}
+        </div>
+        
+        {% if can_send_message %}
+            <div class="vacancy-actions">
+                <a href="{{ url_for('send_message', vacancy_id=vacancy.id) }}" class="button">Написать автору</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

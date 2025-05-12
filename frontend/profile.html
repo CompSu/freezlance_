@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Ваш профиль</h2>
+    
+    <form method="POST" class="profile-form">
+        <div class="form-group">
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" value="{{ user.username }}" disabled>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="{{ user.email }}" disabled>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="first_name">Имя:</label>
+                <input type="text" id="first_name" name="first_name" value="{{ user.first_name or '' }}">
+            </div>
+            
+            <div class="form-group">
+                <label for="last_name">Фамилия:</label>
+                <input type="text" id="last_name" name="last_name" value="{{ user.last_name or '' }}">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" value="{{ user.phone or '' }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="birth_date">Дата рождения:</label>
+            <input type="date" id="birth_date" name="birth_date" 
+                   value="{{ user.birth_date.strftime('%Y-%m-%d') if user.birth_date else '' }}">
+        </div>
+        
+        <div class="form-group">
+            <label for="about">О себе:</label>
+            <textarea id="about" name="about" rows="5">{{ user.about or '' }}</textarea>
+        </div>
+        
+        <button type="submit" class="button">Сохранить</button>
+    </form>
+    
+    <h3>Ваши вакансии</h3>
+    
+    <div class="vacancy-tabs">
+        <button class="tab-button active" onclick="openTab(event, 'approved-vacancies')">Одобренные</button>
+        <button class="tab-button" onclick="openTab(event, 'pending-vacancies')">На модерации</button>
+        <button class="tab-button" onclick="openTab(event, 'rejected-vacancies')">Отклоненные</button>
+    </div>
+    
+    <div id="approved-vacancies" class="tab-content" style="display: block;">
+        {% for vacancy in approved_vacancies %}
+            <div class="vacancy">
+                <h4>{{ vacancy.title }}</h4>
+                <p class="status approved">Статус: Одобрена</p>
+                <p class="date">Опубликовано: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                <div class="description">{{ vacancy.description }}</div>
+            </div>
+        {% else %}
+            <p>У вас нет одобренных вакансий.</p>
+        {% endfor %}
+    </div>
+    
+    <div id="pending-vacancies" class="tab-content">
+        {% for vacancy in pending_vacancies %}
+            <div class="vacancy">
+                <h4>{{ vacancy.title }}</h4>
+                <p class="status pending">Статус: На модерации</p>
+                <p class="date">Создано: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                <div class="description">{{ vacancy.description }}</div>
+            </div>
+        {% else %}
+            <p>У вас нет вакансий на модерации.</p>
+        {% endfor %}
+    </div>
+    
+    <div id="rejected-vacancies" class="tab-content">
+        {% for vacancy in rejected_vacancies %}
+            <div class="vacancy">
+                <h4>{{ vacancy.title }}</h4>
+                <p class="status rejected">Статус: Отклонена</p>
+                <p class="date">Создано: {{ vacancy.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                {% if vacancy.rejection_reason %}
+                    <p class="rejection-reason">Причина отклонения: {{ vacancy.rejection_reason }}</p>
+                {% endif %}
+                <div class="description">{{ vacancy.description }}</div>
+            </div>
+        {% else %}
+            <p>У вас нет отклоненных вакансий.</p>
+        {% endfor %}
+    </div>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+{% endblock %}
