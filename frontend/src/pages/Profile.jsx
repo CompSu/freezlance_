@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/styleProfile.css";
 import { Link } from "react-router-dom";
 
 function Profile() {
+  const [user, setUser] = useState({
+    username: 'sontababy',
+    name: 'Ульяна',
+    skills: 'Веб-дизайн, фотошоп',
+    city: 'Ханты-Мансийск',
+    email: 'udikolenko@inbox.ru',
+  });
+
+  /*
+  useEffect(() => {
+    axios.get(...)
+      .then(res => res.json())
+      .then(data => setUser(data));
+  }, []);
+  */
+
   return (
     <>
       <header>
@@ -30,19 +46,19 @@ function Profile() {
 
       <div className="square">
         <div className="square_photo">
-          <img src="/камера.svg" width="35" height="50" alt="фото профиля" />
+          <img src="/cam.svg" width="35" height="50" alt="фото профиля" />
           <button className="square_photo_buttons">Загрузить фотографию</button>
         </div>
         <div className="square_photo_content">
-          <span>sontababy</span>
+          <span>{user.username}</span>
         </div>
 
         <div className="square_inform">
           <div className="square_inform_content">
-            <span>Имя пользователя: Ульяна<br /></span>
-            <span>Информация о навыках пользователя: Веб-дизайн, фотошоп<br /></span>
-            <span>Город: Ханты-Мансийск<br /></span>
-            <span>Почта: udikolenko@inbox.ru<br /></span>
+            <span>Имя пользователя: {user.name}<br /></span>
+            <span>Информация о навыках пользователя: {user.skills}<br /></span>
+            <span>Город: {user.city}<br /></span>
+            <span>Почта: {user.email}<br /></span>
           </div>
           <button className="square_inform_buttons">
             <img src="/material-symbols_settings.svg" width="15" height="15" alt="настройки" />
@@ -71,9 +87,9 @@ function Profile() {
           <button className="minus">Отрицательные</button>
         </div>
       </div>
-
     </>
   );
 }
 
 export default Profile;
+
