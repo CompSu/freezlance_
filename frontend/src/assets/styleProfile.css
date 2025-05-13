@@ -240,10 +240,10 @@
 }
 
 .project-card img {
-    width: 163px;
-    margin: 8px 0 0 4px;
-    transform: translate(-6px, 0);
+    width:100% !important;
+    height:100% !important;
     position: relative;
+    margin: 0%;
 }
 
 .project-title {

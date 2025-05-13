@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
         <form className="creation-form">
           <section className="form-section">
             <h2>
-              <img src="/Group.svg" alt="1" />Основное
+             Основное
             </h2>
             <textarea className="form-input" rows="5" placeholder="Название задачи" />
           </section>
@@ -139,7 +139,7 @@ const handleSubmit = async (e) => {
 
           <section className="form-section">
             <h2>
-              <img src="/Group%20(1).svg" alt="2" />Описание
+              Описание
             </h2>
             <textarea className="form-input" rows="5" placeholder="Подробное описание задачи" />
             <label className="file-upload-label">
@@ -150,7 +150,7 @@ const handleSubmit = async (e) => {
 
           <section className="form-section">
             <h2>
-              <img src="/Group%20(2).svg" alt="3" />Бюджет
+              Бюджет
             </h2>
             <div className="range-container">
               <label>Минимальный бюджет</label>
@@ -193,14 +193,14 @@ const handleSubmit = async (e) => {
 
           <section className="form-section">
             <h2>
-              <img src="/Group%20(3).svg" alt="4" />Срок
+              Срок
             </h2>
             <input type="date" className="form-input" />
           </section>
 
           <section className="form-section">
             <h2>
-              <img src="/Group%20(4).svg" alt="5" />Требования
+              Требования
             </h2>
             <textarea className="form-input" rows="4" placeholder="Требования к исполнителю" />
           </section>
