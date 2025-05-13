@@ -11,13 +11,59 @@ function Profile() {
     email: 'udikolenko@inbox.ru',
   });
 
-  /*
-  useEffect(() => {
-    axios.get(...)
-      .then(res => res.json())
-      .then(data => setUser(data));
-  }, []);
-  */
+  const [projects, setProjects] = useState([
+    { id: 1, title: "Лендинг для бренда", category: "design" },
+    { id: 2, title: "Telegram-бот", category: "code" },
+    { id: 3, title: "Редизайн логотипа", category: "branding" },
+    { id: 4, title: "Лендинг для бренда", category: "design" },
+    { id: 5, title: "Telegram-бот", category: "code" },
+    { id: 6, title: "Редизайн логотипа", category: "branding" }
+  ]);
+
+  const [reviewType, setReviewType] = useState("positive");
+
+  const reviews = {
+    positive: [
+      {
+        id: 1,
+        userId: 101,
+        userName: "Артём",
+        userAvatar: "",
+        text: "Отличная работа! Всё сделано в срок и очень качественно"
+      },
+      {
+        id: 2,
+        userId: 102,
+        userName: "Мария",
+        userAvatar: "",
+        text: "Приятно работать с профессионалом. Рекомендую!"
+      }
+    ],
+    negative: [
+      {
+        id: 3,
+        userId: 103,
+        userName: "Сергей",
+        userAvatar:"",
+        text: "Проект задержался и не все правки были учтены."
+      }
+    ]
+  };
+
+  const currentReviews = reviews[reviewType];
+
+  const getImageByCategory = (category) => {
+    switch (category) {
+      case "design":
+        return "/images/project-design.png";
+      case "code":
+        return "/images/project-code.png";
+      case "branding":
+        return "/images/project-branding.png";
+      default:
+        return "/images/project-default.png";
+    }
+  };
 
   return (
     <>
@@ -61,7 +107,6 @@ function Profile() {
             <span>Почта: <span className="server-text">{user.email}</span><br /></span>
           </div>
           <button className="square_inform_buttons">
-            <img src="/material-symbols_settings.svg" width="15" height="15" alt="настройки" />
             <span>Настройки профиля</span>
           </button>
         </div>
@@ -70,10 +115,38 @@ function Profile() {
           <div className="square_portfolio_content">
             <span>Предыдущие проекты</span>
           </div>
-          <button className="square_portfolio_buttons1">
-            <img src="/стрелка.svg" alt="стрелка" />
+
+          <button
+            className="square_portfolio_buttons1"
+            onClick={() =>
+              document.getElementById("portfolioScroll").scrollBy({ left: -300, behavior: 'smooth' })
+            }
+          >
+            <img src="" alt="стрелка влево" style={{ transform: "rotate(180deg)" }} />
           </button>
-          <button className="square_portfolio_buttons2"></button>
+
+          <div className="portfolio-scroll-container" id="portfolioScroll">
+            {projects.map((project) => (
+              <div className="project-card" key={project.id}>
+                <img
+                  src={getImageByCategory(project.category)}
+                  alt={project.title}
+                  className="project-image"
+                />
+                <div className="project-title">{project.title}</div>
+              </div>
+            ))}
+          </div>
+
+          <button
+            className="square_portfolio_buttons2"
+            onClick={() =>
+              document.getElementById("portfolioScroll").scrollBy({ left: 300, behavior: 'smooth' })
+            }
+          >
+            <img src="" alt="стрелка вправо" />
+          </button>
+
           <button className="square_portfolio_buttons3">
             <span>Добавить новую задачу</span>
           </button>
@@ -83,8 +156,31 @@ function Profile() {
           <div className="div-horizontal-scroll">
             <span>Рейтинг и отзывы</span>
           </div>
-          <button className="plus">Положительные</button>
-          <button className="minus">Отрицательные</button>
+
+          <div className="rating-buttons">
+            <button className="plus" onClick={() => setReviewType("positive")}>
+              Положительные
+            </button>
+            <button className="minus" onClick={() => setReviewType("negative")}>
+              Отрицательные
+            </button>
+          </div>
+
+          <div className="review-list">
+            {currentReviews.map((review) => (
+              <div key={review.id} className="review-card">
+                <img src={review.userAvatar} alt="аватар" className="review-avatar" />
+                <div className="review-content">
+                  <Link to={`/user/${review.userId}`} className="review-user-name">
+                    {review.userName}
+                  </Link>
+                  <p className="review-text">{review.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button className="square_review_buttons">Добавить отзыв</button>
         </div>
       </div>
     </>

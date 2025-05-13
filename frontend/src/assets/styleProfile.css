@@ -1,245 +1,211 @@
+.square_photo,
+.square_inform,
+.square_portfolio,
+.square_reiting {
+    position: absolute;
+    border-radius: 1%/5%;
+    background-color: #309ccebb;
+    background-size: cover;
+}
+
 .square_photo {
-    position: absolute; 
     top: 120px;
     left: 60px;
-    width: 15%; 
-    height: 20%; 
-    border-radius: 5%;
+    width: 15%;
+    height: 20%;
     border: 7px solid #1f6485;
+    border-radius: 5%;
     background-color: #309cce;
-    background-size: cover; 
 }
 
 .square_photo img {
-    margin-top: 0px;
-    width: 108%;
-    min-height: 185px;
+    margin-top:0px;
+    position:relative;
+    height:100%;
+    min-height:1px;
+    width:100%;
+    z-index:1;
 }
 
-.square_photo_content{
+.square_photo_content {
     position: absolute;
     top: 305px;
     left: 80px;
     font-family: "Press Start 2P", system-ui;
-    color: #1869e4;
     font-size: 15px;
+    color: #1869e4;
+}
+
+.square_photo_content span,
+.square_portfolio_content span,
+.div-horizontal-scroll span {
+    display: inline-block;
 }
 
 .square_photo_content span {
-    padding-bottom: 3px;
-    padding-top: 12px;
     width: 102%;
     height: 40px;
-    display: inline-block;
+    padding: 12px 0 3px;
     transform: translate(-15px, -10px);
 }
 
-.square_photo_buttons {
-    color: rgb(255, 255, 255);
+.square_photo_buttons,
+.plus,
+.minus {
+    z-index:2;
     position: absolute;
-    top: 75px;
-    left: 12px;
+    background: transparent;
     border: none;
-    background-color: rgba(255, 255, 255, 0);
-    font-size: 12px;
     font-family: "Manrope", sans-serif;
+    font-size: 12px;
+    color: #fff;
     cursor: pointer;
-    display: inline-block;
-    z-index: 10;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.square_photo_buttons:hover {
+.square_photo_buttons {
+    top: 75px;
+    left: 12px;
+}
+
+.square_photo_buttons:hover,
+.square_inform_buttons:hover,
+.square_portfolio_buttons1:hover,
+.square_portfolio_buttons2:hover,
+.square_portfolio_buttons3:hover,
+.square_review_buttons:hover,
+.plus:hover,
+.minus:hover {
     transform: scale(1.1);
+}
+
+.square_photo_buttons:hover {
     color: #13303f;
 }
 
 .square_inform {
-    position: absolute; 
-    top: 120px; 
+    top: 120px;
     margin-left: 20%;
-    width: 70%; 
-    height: 20%; 
-    border-radius: 1%/5%;
-    background-color: #309ccebb; 
-    background-size: cover;
-
+    width: 70%;
+    height: 20%;
 }
 
 .square_inform_content {
     position: absolute;
     top: 20px;
     left: 30px;
-    font-size: 14px;
     font-family: "Manrope", sans-serif;
+    font-size: 14px;
 }
-.square_inform_buttons {
+
+.square_inform_buttons,
+.square_portfolio_buttons3,
+.square_review_buttons {
     position: absolute;
-    top: 135px;
-    left: 40%;
     width: 180px;
     height: 27px;
-    background: linear-gradient(to right, #309cce, #104fae);
     border: 2px solid #dfdfdf;
     border-radius: 5%/30%;
-    margin-right: 50px;
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: 9px;
+    background: linear-gradient(to right, #309cce, #104fae);
     font-family: "Press Start 2P", system-ui;
+    font-size: 9px;
+    color: #efefef;
+    transition: background-color 0.3s, transform 0.3s;
+    left: 45%;
+}
+
+.square_inform_buttons {
+    top: 135px;
+    left: 40%;
     color: #cccccc;
 }
+
 .square_inform_buttons span {
     color: #f5f4f4;
 }
 
-.square_inform_buttons:hover {
-    transform: scale(1.1);
-}
-
 .square_portfolio {
-    position: absolute; 
-    top: 37%; 
-    margin-left: 5px; 
+    top: 37%;
+    margin-left: 5px;
     width: 90%;
     height: 30%;
-    border-radius: 1%/5%;
-    background-color: #309ccebb; 
-    background-size: cover;
 }
 
-.square_portfolio_content {
-    position: absolute;
-    top: 15px;
-    left: 39%;
-    color: #FFFFFF;
-}
-.square_portfolio_content span {
-    height: 53px;
-    padding-top: 18px;
-    display: inline-block;
-    transform: translate(-29px, -25px);
-} 
-
-.server-text {
-    font-weight: 600;
-    color: #ffffff; 
-    font-style: bold;
-  }
-  
-
-.square_portfolio_buttons1 {
-    position: absolute;
-    top: 45%;
-    left: 2%;
-    width: 25px;
-    height: 25px;
-    background-color: #309cce00;
-    border-radius: 50%;
-    margin-right: 50px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.square_portfolio_buttons1:hover {
-    transform: scale(1.1);
-}
-
-.square_portfolio_buttons2 {
-    position: absolute;
-    top: 48%;
-    right: -3%;
-    width: 25px;
-    height: 25px;
-    background-color: #309cce00;
-    border-radius: 50%;
-    margin-right: 50px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.square_portfolio_buttons2:hover {
-    transform: scale(1.1);
-}
-
-.square_portfolio_buttons3 {
-    position: absolute;
-    top: 225px;
-    left: 45%;
-    width: 180px;
-    height: 27px;
-    background: linear-gradient(to right, #309cce, #104fae);
-    border: 2px solid #dfdfdf;
-    border-radius: 5%/30%;
-    margin-right: 50px;
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: 9px;
-    font-family: "Press Start 2P", system-ui;
-    color: #efefef;
-}
-
-
-
-.square_portfolio_buttons3:hover {
-    transform: scale(1.1);
-}
-
-.square_reiting {
-    position: absolute; 
-    top: 70%; 
-    margin-left: 5px; 
-    width: 90%; 
-    height: 25%;
-    border-radius: 1%/5%;
-    background-color: #309ccebb;
-    background-size: cover;
-}
-
+.square_portfolio_content,
 .div-horizontal-scroll {
     position: absolute;
     top: 15px;
     left: 39%;
-    color: #FFFFFF;
+    color: #fff;
+}
+
+.square_portfolio_content span {
+    height: 53px;
+    padding-top: 18px;
+    transform: translate(-29px, -25px);
 }
 
 .div-horizontal-scroll span {
     height: 41px;
     padding-top: 12px;
-    display: inline-block;
     transform: translate(-21px, -16px);
 }
 
+.square_portfolio_buttons1,
+.square_portfolio_buttons2 {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.square_portfolio_buttons1 img,
+.square_portfolio_buttons2 img{
+    margin-top:0px;
+    position:relative;
+    height:100%;
+    width:100%;
+    z-index:1;
+}
+
+.square_portfolio_buttons1 {
+    top: 45%;
+    left: 2%;
+}
+
+.square_portfolio_buttons2 {
+    top: 48%;
+    right: 2%;
+}
+
+.square_portfolio_buttons3 {
+    top: 225px;
+}
+
+.square_reiting {
+    top: 70%;
+    margin-left: 5px;
+    width: 90%;
+    height: 28%;
+}
+
 .plus {
-    position: absolute;
-    top: 40px;
     left: 20px;
-    color: #ffffff;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
     font-size: 18px;
-    font-family: "Manrope", sans-serif;
-    cursor: pointer;
-    display: inline-block;
-    transition: background-color 0.3s, transform 0.3s;
 }
-.plus:hover {
-    transform: scale(1.1);
-    color: #0080bb;
-}
-.minus{
-    position: absolute;
-    top: 40px;
+
+.minus {
     margin-left: 200px;
-    color: #ffffff;
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
     font-size: 18px;
-    font-family: "Manrope", sans-serif;
-    cursor: pointer;
-    display: inline-block;
-    transition: background-color 0.3s, transform 0.3s;
 }
+
+.plus:hover,
 .minus:hover {
-    transform: scale(1.1);
     color: #0080bb;
 }
+
 .social-bar-wrap {
     text-align: right;
 }
@@ -249,3 +215,157 @@
     font-size: 18px;
 }
 
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0 3px;
+    width: 90%;
+    min-height: 161px;
+    transform: translate(60px, 36px);
+}
+
+.project-card {
+    flex: 0 0 auto;
+    width: 160px;
+    height: 138px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Arial, sans-serif;
+}
+
+.project-card img {
+    width: 163px;
+    margin: 8px 0 0 4px;
+    transform: translate(-6px, 0);
+    position: relative;
+}
+
+.project-title {
+    position: relative;
+    top: -35px;
+    margin-top: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#portfolioScroll {
+    position: relative;
+    top: 39px;
+}
+
+.portfolio-scroll-wrapper,
+.portfolio-scroll-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.portfolio-scroll-wrapper {
+    margin: 0 20px;
+}
+
+.portfolio-scroll-container {
+    display: flex;
+    gap: 20px;
+    margin: 0 60px;
+}
+
+.portfolio-scroll-wrapper::-webkit-scrollbar,
+.portfolio-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.server-text {
+    font-weight: 600;
+    color: #fff;
+}
+
+.rating-buttons {
+    position: relative;
+    top: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 43px;
+    gap: 16px;
+    max-height: 300px;
+    height: 148px;
+    overflow-y: auto;
+}
+
+.review-card {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background-color: white;
+    padding: 12px;
+    border-radius: 12px;
+    width: 1049px;
+    margin-left: 18px;
+    margin-top: -5px;
+    position: relative;
+    top: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.review-avatar,
+.review-list .review-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 6px;
+}
+
+.review-content {
+    flex: 1;
+    margin-left: 70px;
+}
+
+.review-user-name {
+    font-weight: bold;
+    color: #2b65d9;
+    text-decoration: none;
+}
+
+.review-user-name:hover {
+    text-decoration: underline;
+}
+
+.review-text {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #333;
+}
+
+.square_review_buttons {
+    top: 220px;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  
+
+    scrollbar-width: none;        
+    -ms-overflow-style: none;      
+  }
+  
+  .review-list::-webkit-scrollbar {
+    display: none;                 
+  }
