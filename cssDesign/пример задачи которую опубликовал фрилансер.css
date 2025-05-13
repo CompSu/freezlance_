@@ -1,0 +1,643 @@
+/* пример задачи которую опубликовал фрилансер */
+
+position: relative;
+width: 1920px;
+height: 1536px;
+
+background: #00929D;
+
+
+/* шапка */
+
+position: absolute;
+width: 1920px;
+height: 72px;
+left: 0px;
+top: 2px;
+
+background: #E4F5FF;
+
+
+/* лого+текст */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 290px;
+height: 27px;
+left: 200px;
+top: 23px;
+
+
+
+/* Монтажная область 1 1 */
+
+width: 54px;
+height: 54px;
+
+background: url(Монтажная область 1.png);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Freezlance */
+
+width: 228px;
+height: 36px;
+
+font-family: 'Dmitrieva SP';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #296986;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* поиск */
+
+position: absolute;
+left: 61.77%;
+right: 36.98%;
+top: 34.72%;
+bottom: 31.94%;
+
+background: #294548;
+opacity: 0.97;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* Vector */
+
+position: absolute;
+left: 66.77%;
+right: 32.05%;
+top: 33.33%;
+bottom: 32.64%;
+
+background: #294548;
+
+
+/* категории */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+
+
+/* кнопочка 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* категории */
+
+position: absolute;
+left: 71.67%;
+right: 27.14%;
+top: 41.67%;
+bottom: 38.89%;
+
+background: #294548;
+
+
+/* вход/регистрация */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+
+
+/* кнопка 4 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* фейс */
+
+position: absolute;
+left: 77.92%;
+right: 20.62%;
+top: 31.94%;
+bottom: 23.61%;
+
+background: #294548;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* боди */
+
+position: absolute;
+width: 1120px;
+height: 1598px;
+left: 400px;
+top: 74px;
+
+background: #95EDFF;
+
+
+/* фон */
+
+position: absolute;
+width: 2394px;
+height: 1598px;
+left: -207px;
+top: 0px;
+
+background: url(vivid-blurred-colorful-wallpaper-background.jpg);
+
+
+/* портфолио */
+
+position: absolute;
+width: 967px;
+height: 1291px;
+left: 75px;
+top: 132px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* Frame 25 */
+
+position: absolute;
+width: 500px;
+height: 320px;
+left: 54px;
+top: 44px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 262px;
+height: 237px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 411px;
+height: 237px;
+left: 17px;
+top: 18px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 409.6px;
+height: 240px;
+left: 0px;
+top: -2px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 411px;
+height: 237px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* листать */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 13px;
+top: 147px;
+
+
+
+/* Ellipse 3 */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 146, 157, 0.59);
+
+
+/* ep:arrow-up */
+
+position: absolute;
+width: 16px;
+height: 16px;
+left: 3.02px;
+top: 21.02px;
+
+transform: rotate(-90.08deg);
+
+
+/* Vector */
+
+position: absolute;
+left: 32.77%;
+right: -5.4%;
+top: 86.4%;
+bottom: -27.45%;
+
+background: #294548;
+transform: rotate(-90.08deg);
+
+
+/* листать */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 467px;
+top: 147px;
+
+
+
+/* Ellipse 3 */
+
+position: absolute;
+width: 25px;
+height: 25px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 146, 157, 0.59);
+
+
+/* ep:arrow-up */
+
+position: absolute;
+width: 16px;
+height: 16px;
+left: 21px;
+top: 4px;
+
+transform: rotate(90.02deg);
+
+
+/* Vector */
+
+position: absolute;
+left: 67.37%;
+right: -40%;
+top: 13.71%;
+bottom: 45.25%;
+
+background: #294548;
+transform: rotate(90.02deg);
+
+
+/* Портфолио */
+
+position: absolute;
+width: 135px;
+height: 33px;
+left: 182px;
+top: 280px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Frame 26 */
+
+position: absolute;
+width: 309px;
+height: 183px;
+left: 604px;
+top: 44px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* профиль */
+
+position: absolute;
+width: 170px;
+height: 40px;
+left: 22px;
+top: 23px;
+
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 51px;
+top: 7px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 151px;
+top: 13px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 9 */
+
+position: absolute;
+width: 300px;
+height: 27px;
+left: 5px;
+top: 133px;
+
+background: #000C76;
+border-radius: 10px;
+
+
+/* Заказать за 5000 руб */
+
+position: absolute;
+width: 280px;
+height: 14px;
+left: 10px;
+top: 7px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* 3 дня на выполнение */
+
+position: absolute;
+width: 246px;
+height: 33px;
+left: 22px;
+top: 78px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Описание: Разработаю дизайн логотипа, который разорвёт Ваших конкурентов! Хочешь привлечь внимание и создать запоминающийся образ бренда? Тогда тебе необходим уникальный логотип, ведь это – инвестиции в успех проекта! Без качественной «упаковки» вашего бизнеса Вы не сможете выделиться среди конкурентов и завоевать лояльность вашей аудитории Гарантии: • Разработка логотипа до полного утверждения • Бесплатные правки и корректировки • Всегда на связи 24/7 • Только уникальный и креативный логотип • 100% результат, реально! Что Вы получаете в итоге: После утверждения логотипа, Вы получаете исходники в векторном и растровом формате: (EPS, AI, PDF, PNG, SVG, JPG) Разработаю дизайн логотипа твоей мечты! Напиши мне, "хочу дизайн логотипа" и я с радостью возьмусь за Ваш заказ Нужно для заказа: • Название ( Какое текстовое содержание должно быть в логотипе ) • Слоган ( Подпись под логотипом описывающая род деятельности Вашей компании ) • Основные услуги компании ( Перечислите основные услуги, которые предоставляет Ваша компания ) • Стилистика логотипа ( Строгий, шуточный, детский, агрессивный, спортивный ) • Графические элементы ( Д ом, машина, животное, человек ) • Примеры логотипов ( Примеры логотипов, которые нравятся. Можно не из тематической области ) • Цветовая гамма Файлы: Доп. опции к логотипу.pdf Вид: Новый логотип Стиль: Плоский Создание логотипа: С нуля */
+
+position: absolute;
+width: 945px;
+height: 850px;
+left: 22px;
+top: 430px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #000C76;
+
+
+
+/* О задаче: */
+
+position: absolute;
+width: 113px;
+height: 33px;
+left: 54px;
+top: 388px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Новый логотип. Уникальный логотип.Разработка лого. */
+
+position: absolute;
+width: 744px;
+height: 48px;
+left: 188px;
+top: 46px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 24px;
+text-align: center;
+
+color: #296986;
+

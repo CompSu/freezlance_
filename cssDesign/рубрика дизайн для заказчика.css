@@ -1,0 +1,2387 @@
+/* рубрика дизайн фильтры для заказчика */
+
+position: relative;
+width: 1920px;
+height: 1095px;
+
+background: #00929D;
+
+
+/* шапка */
+
+position: absolute;
+width: 1920px;
+height: 72px;
+left: 0px;
+top: 2px;
+
+background: #E4F5FF;
+
+
+/* лого+текст */
+
+/* Auto layout */
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 290px;
+height: 27px;
+left: 200px;
+top: 23px;
+
+
+
+/* Монтажная область 1 1 */
+
+width: 54px;
+height: 54px;
+
+background: url(Монтажная область 1);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Freezlance */
+
+width: 228px;
+height: 36px;
+
+font-family: 'Dmitrieva SP';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 31px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #296986;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1179px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* поиск */
+
+position: absolute;
+left: 61.77%;
+right: 36.98%;
+top: 34.72%;
+bottom: 31.94%;
+
+background: #294548;
+opacity: 0.97;
+
+
+/* поиск */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+
+
+/* кнопочка 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1274px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* Vector */
+
+position: absolute;
+left: 66.77%;
+right: 32.05%;
+top: 33.33%;
+bottom: 32.64%;
+
+background: #294548;
+
+
+/* категории */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+
+
+/* кнопочка 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1368px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* категории */
+
+position: absolute;
+left: 71.67%;
+right: 27.14%;
+top: 41.67%;
+bottom: 38.89%;
+
+background: #294548;
+
+
+/* вход/регистрация */
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+
+
+/* кнопка 4 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 39px;
+height: 39px;
+left: 1463px;
+top: 18px;
+
+background: #E4F5FF;
+border: 3px solid #294548;
+
+
+/* фейс */
+
+position: absolute;
+left: 77.92%;
+right: 20.62%;
+top: 31.94%;
+bottom: 23.61%;
+
+background: #294548;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* боди */
+
+position: absolute;
+width: 1520px;
+height: 1021px;
+left: 400px;
+top: 74px;
+
+background: #95EDFF;
+
+
+/* фон */
+
+position: absolute;
+width: 1727px;
+height: 1153px;
+left: -207px;
+top: 0px;
+
+background: url(vivid-blurred-colorful-wallpaper-background.jpg);
+
+
+/* портфолио */
+
+position: absolute;
+width: 1369px;
+height: 835px;
+left: 75px;
+top: 132px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* Frame 19 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 43px;
+top: 73px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 19 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 385px;
+top: 73px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 19 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 727px;
+top: 73px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 19 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 1069px;
+top: 73px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 21 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 43px;
+top: 443px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 22 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 385px;
+top: 443px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 23 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 727px;
+top: 443px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Frame 24 */
+
+position: absolute;
+width: 261px;
+height: 320px;
+left: 1069px;
+top: 443px;
+
+background: rgba(0, 146, 157, 0.59);
+border-radius: 7px;
+
+
+/* логотипы и брендинг */
+
+position: absolute;
+width: 174px;
+height: 202px;
+left: 26px;
+top: 18px;
+
+
+
+/* пример 1 */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 2px;
+top: 0px;
+
+background: #FFFFFF;
+border-radius: 7px;
+
+
+/* image 50 */
+
+position: absolute;
+width: 291.84px;
+height: 171px;
+left: -44px;
+top: -1px;
+
+background: url(image.png);
+
+
+/* тень при наведении */
+
+position: absolute;
+width: 205px;
+height: 170px;
+left: 0px;
+top: 0px;
+
+background: rgba(0, 0, 0, 0.48);
+border-radius: 7px;
+
+
+/* Новый логотип. Уникальный логотип. Разработка лого. */
+
+position: absolute;
+width: 242px;
+height: 50px;
+left: -17px;
+top: 175px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+
+color: #E4F5FF;
+
+
+
+/* от 4 000 руб. */
+
+position: absolute;
+width: 109px;
+height: 25px;
+left: 152px;
+top: 247px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Line 6 */
+
+position: absolute;
+width: 261px;
+height: 0px;
+left: 0px;
+top: 272px;
+
+border: 1px solid #7F7F7F;
+
+
+/* Frame 20 */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 20px;
+top: 276px;
+
+background: #FFFFFF;
+border-radius: 1000px;
+
+
+/* DSC06819 1 */
+
+position: absolute;
+width: 108px;
+height: 81px;
+left: -25px;
+top: -26px;
+
+background: url(DSC06819.jpg);
+
+
+/* sontababy */
+
+position: absolute;
+width: 89px;
+height: 25px;
+left: 71px;
+top: 283px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+
+color: #000C76;
+
+
+
+/* 5 звезд */
+
+position: absolute;
+width: 19px;
+height: 14px;
+left: 171px;
+top: 289px;
+
+
+
+/* 5 */
+
+position: absolute;
+width: 8px;
+height: 14px;
+left: 11px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* icons8-звезда-30 1 */
+
+position: absolute;
+width: 12px;
+height: 12px;
+left: 0px;
+top: 1px;
+
+
+
+/* Group */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Vector */
+
+position: absolute;
+left: 6.67%;
+right: 6.67%;
+top: 90%;
+bottom: -73.33%;
+
+background: #000000;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Дизайн */
+
+position: absolute;
+width: 240px;
+height: 40px;
+left: 616px;
+top: 64px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 40px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* цена */
+
+position: absolute;
+width: 313px;
+height: 89px;
+left: 44px;
+top: 361px;
+
+
+
+/* от руб */
+
+position: absolute;
+width: 100px;
+height: 43px;
+left: 0px;
+top: 46px;
+
+
+
+/* Rectangle 5 */
+
+position: absolute;
+width: 100px;
+height: 43px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* От руб. */
+
+position: absolute;
+width: 67px;
+height: 27px;
+left: 17px;
+top: 8px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #294548;
+
+
+
+/* до руб */
+
+position: absolute;
+width: 100px;
+height: 43px;
+left: 213px;
+top: 46px;
+
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 100px;
+height: 43px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* До руб. */
+
+position: absolute;
+width: 69px;
+height: 27px;
+left: 17px;
+top: 8px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #294548;
+
+
+
+/* Цена */
+
+position: absolute;
+width: 262px;
+height: 33px;
+left: 10px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* цена */
+
+position: absolute;
+width: 313px;
+height: 144px;
+left: 44px;
+top: 483px;
+
+
+
+/* Положительных отзывов */
+
+position: absolute;
+width: 289px;
+height: 33px;
+left: 10px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* От 1 */
+
+position: absolute;
+width: 37px;
+height: 27px;
+left: 0px;
+top: 36px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* От 5 */
+
+position: absolute;
+width: 41px;
+height: 27px;
+left: 0px;
+top: 63px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* От 10 */
+
+position: absolute;
+width: 49px;
+height: 27px;
+left: 0px;
+top: 90px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* От 20 */
+
+position: absolute;
+width: 53px;
+height: 27px;
+left: 0px;
+top: 117px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* Frame 8 */
+
+position: absolute;
+width: 151px;
+height: 27px;
+left: 123px;
+top: 840px;
+
+background: #000C76;
+border-radius: 10px;
+
+
+/* Применить */
+
+position: absolute;
+width: 126px;
+height: 14px;
+left: 13px;
+top: 7px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* цена */
+
+position: absolute;
+width: 313px;
+height: 144px;
+left: 44px;
+top: 660px;
+
+
+
+/* Срок выполнения */
+
+position: absolute;
+width: 289px;
+height: 33px;
+left: 10px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* За 24 часа */
+
+position: absolute;
+width: 98px;
+height: 27px;
+left: 0px;
+top: 36px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* До 3 дней */
+
+position: absolute;
+width: 93px;
+height: 27px;
+left: 0px;
+top: 63px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* До 5 дней */
+
+position: absolute;
+width: 94px;
+height: 27px;
+left: 0px;
+top: 90px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* До 10 дней */
+
+position: absolute;
+width: 102px;
+height: 27px;
+left: 0px;
+top: 117px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* выберите подрубрику */
+
+position: absolute;
+width: 313px;
+height: 86px;
+left: 44px;
+top: 242px;
+
+
+
+/* выбор подрубрики */
+
+position: absolute;
+width: 313px;
+height: 43px;
+left: 0px;
+top: 43px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 313px;
+height: 43px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* Vector */
+
+position: absolute;
+left: 96.84%;
+right: -0.55%;
+top: 58.37%;
+bottom: 26.36%;
+
+background: #294548;
+transform: rotate(-179.99deg);
+
+
+/* Выберите подрубрику */
+
+position: absolute;
+width: 262px;
+height: 33px;
+left: 10px;
+top: 0px;
+
+font-family: 'Manrope';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #000000;
+
+
+
+/* Фильтры */
+
+position: absolute;
+width: 182px;
+height: 26px;
+left: 102px;
+top: 206px;
+
+font-family: 'Press Start 2P';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 26px;
+/* identical to box height */
+
+color: #FFFFFF;
+
