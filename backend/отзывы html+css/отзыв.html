@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оставить отзыв</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="feedback-container">
+        <div class="feedback-frame">
+            <div class="feedback-title">Оставьте свой отзыв</div>
+            <div class="feedback-type">Выберите тип отзыва</div>
+            
+            <div class="role-selection">
+                <div class="role-btn client-btn">
+                    <span>Положительный</span>
+                </div>
+                <div class="role-btn freelancer-btn">
+                    <span>Отрицательный</span>
+                </div>
+            </div>
+            
+            <div class="feedback-textarea-container">
+                <textarea class="feedback-textarea" placeholder=""></textarea>
+                <div class="feedback-placeholder">Опишите свои впечатления о работе</div>
+                <div class="char-limit">Максимум 1000 символов</div>
+            </div>
+            
+            <div class="submit-btn">
+                <div class="submit-text">Отправить</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Здесь можно добавить JavaScript для обработки выбора типа отзыва и отправки формы
+        document.querySelector('.client-btn').addEventListener('click', function() {
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.freelancer-btn').style.background = '#FFFFFF';
+            document.querySelector('.freelancer-btn').style.color = '#000000';
+        });
+        
+        document.querySelector('.freelancer-btn').addEventListener('click', function() {
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.client-btn').style.background = '#FFFFFF';
+            document.querySelector('.client-btn').style.color = '#000000';
+        });
+        
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            alert('Отзыв отправлен!');
+        });
+        
+        // Обработка placeholder для textarea
+        const textarea = document.querySelector('.feedback-textarea');
+        const placeholder = document.querySelector('.feedback-placeholder');
+        
+        textarea.addEventListener('focus', function() {
+            placeholder.style.display = 'none';
+        });
+        
+        textarea.addEventListener('blur', function() {
+            if (this.value === '') {
+                placeholder.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
