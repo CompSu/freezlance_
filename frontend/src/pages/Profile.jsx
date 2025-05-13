@@ -147,9 +147,11 @@ function Profile() {
             <img src="" alt="стрелка вправо" />
           </button>
 
-          <button className="square_portfolio_buttons3">
-            <span>Добавить новую задачу</span>
-          </button>
+          <Link to="/create-task">
+            <button className="square_portfolio_buttons3">
+              <span>Добавить новую задачу</span>
+            </button>
+          </Link>
         </div>
 
         <div className="square_reiting">
