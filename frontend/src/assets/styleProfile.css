@@ -61,7 +61,7 @@
     width: 70%; 
     height: 20%; 
     border-radius: 1%/5%;
-    background-color: #00929D96; 
+    background-color: #309ccebb; 
     background-size: cover;
 
 }
@@ -79,7 +79,8 @@
     left: 40%;
     width: 180px;
     height: 27px;
-    background: linear-gradient(to right, #296986, #000C76);
+    background: linear-gradient(to right, #309cce, #104fae);
+    border: 2px solid #dfdfdf;
     border-radius: 5%/30%;
     margin-right: 50px;
     transition: background-color 0.3s, transform 0.3s;
@@ -102,7 +103,7 @@
     width: 90%;
     height: 30%;
     border-radius: 1%/5%;
-    background-color: #00929D96; 
+    background-color: #309ccebb; 
     background-size: cover;
 }
 
@@ -119,6 +120,12 @@
     transform: translate(-29px, -25px);
 } 
 
+.server-text {
+    font-weight: 600;
+    color: #ffffff; 
+    font-style: bold;
+  }
+  
 
 .square_portfolio_buttons1 {
     position: absolute;
@@ -126,7 +133,7 @@
     left: 2%;
     width: 25px;
     height: 25px;
-    background-color: #00929D96;
+    background-color: #309cce00;
     border-radius: 50%;
     margin-right: 50px;
     transition: background-color 0.3s, transform 0.3s;
@@ -142,7 +149,7 @@
     right: -3%;
     width: 25px;
     height: 25px;
-    background-color: #00929D96;
+    background-color: #309cce00;
     border-radius: 50%;
     margin-right: 50px;
     transition: background-color 0.3s, transform 0.3s;
@@ -158,13 +165,14 @@
     left: 45%;
     width: 180px;
     height: 27px;
-    background: linear-gradient(to right, #296986, #000C76);
+    background: linear-gradient(to right, #309cce, #104fae);
+    border: 2px solid #dfdfdf;
     border-radius: 5%/30%;
     margin-right: 50px;
     transition: background-color 0.3s, transform 0.3s;
-    font-size: 7px;
+    font-size: 9px;
     font-family: "Press Start 2P", system-ui;
-    color: #cccccc;
+    color: #efefef;
 }
 
 
@@ -180,7 +188,7 @@
     width: 90%; 
     height: 25%;
     border-radius: 1%/5%;
-    background-color: #00929D96;
+    background-color: #309ccebb;
     background-size: cover;
 }
 
@@ -202,7 +210,7 @@
     position: absolute;
     top: 40px;
     left: 20px;
-    color: #000C76;
+    color: #ffffff;
     border: none;
     background-color: rgba(255, 255, 255, 0);
     font-size: 18px;
@@ -213,13 +221,13 @@
 }
 .plus:hover {
     transform: scale(1.1);
-    color: #000C76;
+    color: #0080bb;
 }
 .minus{
     position: absolute;
     top: 40px;
     margin-left: 200px;
-    color: #000C76;
+    color: #ffffff;
     border: none;
     background-color: rgba(255, 255, 255, 0);
     font-size: 18px;
@@ -230,7 +238,7 @@
 }
 .minus:hover {
     transform: scale(1.1);
-    color: #000C76;
+    color: #0080bb;
 }
 .social-bar-wrap {
     text-align: right;

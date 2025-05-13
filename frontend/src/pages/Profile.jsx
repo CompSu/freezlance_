@@ -55,10 +55,10 @@ function Profile() {
 
         <div className="square_inform">
           <div className="square_inform_content">
-            <span>Имя пользователя: {user.name}<br /></span>
-            <span>Информация о навыках пользователя: {user.skills}<br /></span>
-            <span>Город: {user.city}<br /></span>
-            <span>Почта: {user.email}<br /></span>
+            <span>Имя пользователя: <span className="server-text">{user.name}</span><br /></span>
+            <span>Информация о навыках пользователя: <span className="server-text">{user.skills}</span><br /></span>
+            <span>Город: <span className="server-text">{user.city}</span><br /></span>
+            <span>Почта: <span className="server-text">{user.email}</span><br /></span>
           </div>
           <button className="square_inform_buttons">
             <img src="/material-symbols_settings.svg" width="15" height="15" alt="настройки" />
