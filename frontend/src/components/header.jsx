@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const [query, setQuery] = useState("");
+  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const buttonRef = useRef(null);
 
   const handleSearch = () => {
     console.log("Поиск запроса:", query);
     //API
   };
+
+  const toggleCategories = (e) => {
+    e.stopPropagation();
+    setIsCategoriesOpen((prev) => !prev);
+  };
+
+  const closeCategories = () => {
+    setIsCategoriesOpen(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeCategories);
+    return () => document.removeEventListener("click", closeCategories);
+  }, []);
 
   return (
     <header>
@@ -19,26 +35,61 @@ export default function Header() {
       </div>
 
       <div className="buttons">
-      <div className="search-wrapper">
-        <div className="search-container">
-          <input
-            type="text"
-            className="search-input"
-            placeholder="Найти услугу"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button className="search-button" onClick={handleSearch}>
-            <img src="/поиск.svg" alt="Поиск" className="search-icon" />
-          </button>
+        <div className="search-wrapper">
+          <div className="search-container">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Найти услугу"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button className="search-button" onClick={handleSearch}>
+              <img src="/поиск.svg" alt="Поиск" className="search-icon" />
+            </button>
+          </div>
         </div>
-      </div>
+
         <button className="circle-button">
-            <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
+          <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
         </button>
-        <button className="circle-button">
-          <img src="/категории.svg" width="30" height="45" alt="категории" />
-        </button>
+
+        {/* Кнопка Категорий с дропдауном */}
+        <div className="categories-container">
+          <button
+            ref={buttonRef}
+            className={`circle-button categories-button ${isCategoriesOpen ? "active" : ""}`}
+            onClick={toggleCategories}
+            onMouseDown={() => (buttonRef.current.style.transform = "scale(0.95)")}
+            onMouseUp={() =>
+              (buttonRef.current.style.transform = isCategoriesOpen ? "scale(0.95)" : "scale(1.05)")
+            }
+            onMouseLeave={() => {
+              if (!isCategoriesOpen) buttonRef.current.style.transform = "scale(1)";
+            }}
+          >
+            <img src="/категории.svg" width="30" height="45" alt="категории" />
+          </button>
+
+          {isCategoriesOpen && (
+            <div
+              className="categories-dropdown"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="categories-header">Рубрики</div>
+              <div className="categories-divider"></div>
+              <div className="categories-grid">
+                <Link to="/design" className="category-item">Дизайн</Link>
+                <Link to="/social" className="category-item">Соцсети и маркетинг</Link>
+                <Link to="/development" className="category-item">Разработка и IT</Link>
+                <Link to="/media" className="category-item">Аудио, видео, съемка</Link>
+                <Link to="/business" className="category-item">Бизнес и жизнь</Link>
+                <Link to="/texts" className="category-item">Тексты и переводы</Link>
+              </div>
+            </div>
+          )}
+        </div>
+
         <Link to="/profile">
           <button className="circle-button">
             <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
