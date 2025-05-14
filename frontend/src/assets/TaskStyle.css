@@ -1,6 +1,6 @@
 .rectangle {
-    margin-left: 20%;
-    width: 60%;
+    margin-left: 5%;
+    width: 90%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -9,44 +9,41 @@
     background-color:rgba(255,255,255,0.95);
     background-size: cover;
     position: relative;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .rectangle_text {
     position: relative;
-    top: 100px;
+    top: 50px;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     color: #000C76;
     font-family: "Press Start 2P", system-ui;
+    margin-bottom: 30px;
 }
 
 .submit {
-    position: relative;
-    width: 180px;
-    height: 27px;
+    width: 160px;
+    height: 40px;
     border: 2px solid #dfdfdf;
-    border-radius: 5%/30%;
+    border-radius: 20px;
     background: linear-gradient(to right, #309cce, #104fae);
     font-family: "Press Start 2P", system-ui;
-    font-size: 9px;
+    font-size: 12px;
     color: #efefef;
     transition: background-color 0.3s, transform 0.3s;
-}
-
-.submit:hover {
-    transform: scale(1.1);
+    margin: 20px 0;
 }
 
 .input-container {
-    position: absolute;
-    top:75px;
-    left:20px;
+    position: relative;
+    top: 0;
+    left: 0;
     font-family: "Manrope", sans-serif;
     color: #294548;
-}
-
-label {
-    margin-right: 10px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 input[type="text"],
@@ -54,231 +51,149 @@ input[type="file"],
 input[type="range"],
 textarea,
 select {
-    width: 500px;
-    padding: 20px;
+    width: 100%;
+    padding: 15px;
     margin-bottom: 15px;
     background-color: rgb(255, 255, 255);
     border: 2px solid #294548;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
 
 textarea {
-    height: 100px;
-    resize: none;
-    color: #294548;
+    height: 120px;
 }
 
 .creation-form {
-    top: 300px;
-    width: 80%;
+    top: 0;
+    width: 100%;
 }
 
 .form-section {
-    margin-bottom: 30px;
-    padding: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
     background: rgba(22, 143, 199, 0.8);
-    border-radius: 15px;
+    border-radius: 12px;
     border: 2px solid #294548;
 }
 
 .form-section h2 {
-    color: #FFFFFF;
-    font-family: "Manrope", sans-serif;
-    font-size: 28px;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
 .form-input {
     width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    background: rgba(255, 255, 255, 0.83);
-    border: 2px solid #294548;
-    border-radius: 10px;
-    color: #294548;
-    font-family: "Manrope", sans-serif;
-    font-size: 16px;
-}
-
-.form-input::placeholder {
-    color: #294548;
-    opacity: 0.7;
+    padding: 12px;
+    font-size: 14px;
 }
 
 .price-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 .file-upload-label {
-    display: inline-block;
-    padding: 12px 25px;
-    background: #ffffffdc;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s;
-    font-family: "Press Start 2P", system-ui;
-    font-size: 12px;
-    color: #294548;
-}
-
-.file-upload-label:hover {
-    transform: scale(1.05);
-}
-
-input[type="date"] {
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.83);
-    border: 2px solid #294548;
-    border-radius: 8px;
-    color: #294548;
+    padding: 10px 20px;
+    font-size: 11px;
 }
 
 .category-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 35px;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 .range-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin: 10px 0;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
 }
 
 input[type="range"] {
-    -webkit-appearance: none;
-    width: 80%;
-    max-width: 600px;
-    height: 8px;
-    background: #ddd;
-    border-radius: 4px;
-    outline: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-    background: #079ade97;
-    height: 8px;
-    border-radius: 4px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 15px;
-    height: 15px;
-    background: #07619d;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -4px;
-}
-
-input[type="range"]::-moz-range-track {
-    background: #079ade97;
-    height: 8px;
-    border-radius: 4px;
-}
-
-input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #07619d;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-input[type="range"]::-ms-thumb {
-    width: 20px;
-    height: 20px;
-    background: #07619d;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 100%;
 }
 
 #manual-price {
-    width: 150px;
-    padding: 8px;
-    font-size: 12px;
-    background: rgba(255,255,255,0.1);
-    border: 2px solid #294548;
-    color: #294548;
-}
-
-.price-input-container {
-    display: flex;
-    gap: 15px;
-    align-items: center;
+    width: 100%;
 }
 
 select {
-    width: 300px;
-    font-size: 15px;
-    padding: 8px 12px;
-    height: 40px;
-}
-
-.range-container {
-    background: rgba(255, 255, 255, 0.797);
-    border: 2px solid #294548;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.price-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    width: 100%;
+    height: 45px;
 }
 
 .price-group label {
-    font-family: "Manrope", sans-serif;
-    font-size: 14px;
-    color: #294548;
-    display: flex;
-    flex-direction: column;
-}
-
-.price-group input[type="number"] {
-    width: 100%;
-    font-size: 14px;
-    border: 2px solid #294548;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.83);
-    color: #294548;
+    font-size: 13px;
 }
 
 .total-price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #294548;
+    font-size: 15px;
 }
 
-.create-task-page .rectangle form {
-    margin-top:15%;
+@media (min-width: 480px) {
+    .rectangle {
+        margin-left: 10%;
+        width: 80%;
+    }
+    .rectangle_text {
+        font-size: 26px;
+    }
+    .form-section {
+        padding: 20px;
+    }
 }
 
-.creation-form .form-section input[type=range] {
-    margin-left:0px;
-    margin-right:0px;
-    margin-top:0px;
-    margin-bottom:0px;
-    padding-left:0px;
-    padding-right:0px;
-    padding-top:0px;
-    padding-bottom:0px;
+@media (min-width: 768px) {
+    .rectangle {
+        margin-left: 15%;
+        width: 70%;
+    }
+    .rectangle_text {
+        font-size: 28px;
+        top: 70px;
+    }
+    .price-group {
+        grid-template-columns: 1fr 1fr;
+    }
+    .category-group {
+        grid-template-columns: 1fr 1fr;
+    }
+    input[type="text"],
+    input[type="file"],
+    input[type="range"],
+    textarea,
+    select {
+        width: 100%;
+    }
 }
 
-@media (max-width:768px) {
-    .create-task-page .rectangle .rectangle_text {
-        transform: translatey(-50px);
+@media (min-width: 1024px) {
+    .rectangle {
+        margin-left: 20%;
+        width: 60%;
+    }
+    .rectangle_text {
+        font-size: 32px;
+        top: 100px;
+    }
+    .submit {
+        width: 180px;
+        height: 45px;
+        font-size: 14px;
+    }
+    .form-section h2 {
+        font-size: 24px;
+    }
+    .form-input {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .rectangle_text {
+        top: 120px;
+    }
+    .creation-form {
+        width: 90%;
     }
 }
