@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Header />
       <div className="square">
-        <img src="/холодильник-cropped (1).svg" alt="Холодильник" />
+        <img src="/холодильник-cropped (1).svg" style={{right: 200}} alt="Холодильник" />
         <div className="element">
           <span>СВЕЖЕЕ РЕШЕНИЕ ДЛЯ ВАШЕГО БИЗНЕСА</span>
         </div>

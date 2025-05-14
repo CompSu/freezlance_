@@ -294,27 +294,29 @@ header {
   position: relative;
   width: 39px;
   height: 39px;
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .notification-button {
   position: absolute;
-  width: 39px;
-  height: 39px;
+  width: 50px;
+  height: 50px;
   background: #E4F5FF;
   border: 3px solid #294548;
   border-radius: 50%;
   cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; 
   z-index: 10;
   transition: background-color 0.3s, transform 0.3s;
 }
 
 .notification-button:hover {
-  background-color: #D0EBFA;
-  transform: scale(1.05);
+  background-color: #0898cd;
+  transform: scale(1.1);
 }
 
 .notification-button.active {
@@ -408,7 +410,6 @@ header {
   opacity: 0;
 }
 
-/* Стили для скроллбара */
 .notifications-list::-webkit-scrollbar {
   width: 6px;
 }
@@ -427,7 +428,6 @@ header {
   background: #a8a8a8;
 }
 
-/* Показываем меню при клике */
 .notification-button.active + .notification-dropdown {
   display: flex;
 }

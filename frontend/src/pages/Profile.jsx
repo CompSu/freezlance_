@@ -43,7 +43,7 @@ function Profile() {
         id: 2,
         userId: 102,
         userName: "Мария",
-        userAvatar: "",
+        userAvatar: "/фейс-cropped.svg",
         text: "Приятно работать с профессионалом. Рекомендую!"
       }
     ],
@@ -52,7 +52,7 @@ function Profile() {
         id: 3,
         userId: 103,
         userName: "Сергей",
-        userAvatar:"",
+        userAvatar:"/фейс-cropped.svg",
         text: "Проект задержался и не все правки были учтены."
       }
     ]
@@ -63,13 +63,13 @@ function Profile() {
   const getImageByCategory = (category) => {
     switch (category) {
       case "design":
-        return "/images/арт и иллюстрации.jpg";
+        return "../images/арт-и-иллюстрации.jpg";
       case "code":
-        return "/images/project-code.png";
+        return "../images/десктоп-и-программирование.png";
       case "branding":
-        return "/images/project-branding.png";
+        return "../images/логотипы-и-брендинг.png";
       default:
-        return "/images/project-default.png";
+        return "../images/project-default.png";
     }
   };
 
@@ -109,7 +109,7 @@ function Profile() {
               document.getElementById("portfolioScroll").scrollBy({ left: -500, behavior: 'smooth' })
             }
           >
-            <img src="" alt="стрелка влево" style={{ transform: "rotate(180deg)" }} />
+            <img src="/стрелка.svg" alt="стрелка влево" />
           </button>
 
           <div className="portfolio-scroll-container" id="portfolioScroll">
@@ -131,7 +131,7 @@ function Profile() {
               document.getElementById("portfolioScroll").scrollBy({ left: 500, behavior: 'smooth' })
             }
           >
-            <img src="/стрелка.svg" width="35" height="50" alt="стрелка вправо" />
+            <img src="/стрелка.svg" alt="стрелка вправо" style={{ transform: "rotate(180deg)" }}/>
           </button>
 
           <Link to="/create-task">
