@@ -2,6 +2,7 @@ import "../assets/TaskStyle.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 
 export default function CreateTaskPage() {
@@ -76,28 +77,7 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="create-task-page">
-      <header>
-        <Link to="/" className="logo">
-          <img src="/logo.png" alt="Логотип" />
-          <span>FREEZLANCE</span>
-        </Link>
-        <div className="buttons">
-          <button className="circle-button">
-            <img src="/поиск.svg" width="30" height="40" alt="поиск" />
-          </button>
-          <button className="circle-button">
-            <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
-          </button>
-          <button className="circle-button">
-            <img src="/категории.svg" width="30" height="45" alt="категории" />
-          </button>
-          <Link to="/profile">
-            <button className="circle-button">
-              <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-            </button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className="rectangle">
         <div className="rectangle_text">

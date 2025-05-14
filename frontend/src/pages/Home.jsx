@@ -1,30 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = () => {
+    console.log("Ищем:", query);
+  };
+
   return (
     <>
-      <header>
-        <div className="logo">
-        <Link to="/" className="logo">
-          <img src="/logo.png" alt="Логотип" />
-          <span>FREEZLANCE</span>
-        </Link>
-        </div>
-        <div className="buttons">
-          <button className="circle-button">
-            <img src="/поиск.svg" width="30" height="40" alt="поиск" />
-          </button>
-          <button className="circle-button">
-            <img src="/категории.svg" width="30" height="45" alt="категории" />
-          </button>
-          <Link to="/profile">
-            <button className="circle-button">
-              <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-            </button>
-          </Link>
-        </div>
-      </header>
-
+      <Header />
       <div className="square">
         <img src="/холодильник-cropped (1).svg" alt="Холодильник" />
         <div className="element">
@@ -32,8 +19,8 @@ export default function Home() {
         </div>
         <div className="content">
           <span>
-          Холодильник пуст?
-          Мы поможем вам наполнить его свежими решениями, у которых не истечёт срок годности!
+            Холодильник пуст?
+            Мы поможем вам наполнить его свежими решениями, у которых не истечёт срок годности!
           </span>
           <span>
             Свежий взгляд на каждый проект и ледяной профессионализм в работе.
@@ -41,5 +28,5 @@ export default function Home() {
         </div>
       </div>
     </>
-  )
+  );
 }

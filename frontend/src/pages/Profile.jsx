@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../assets/styleProfile.css";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 
 function Profile() {
@@ -74,28 +75,7 @@ function Profile() {
 
   return (
     <>
-      <header>
-        <Link to="/" className="logo">
-          <img src="/logo.png" alt="Логотип" />
-          <span>FREEZLANCE</span>
-        </Link>
-        <div className="buttons">
-          <button className="circle-button">
-            <img src="/поиск.svg" width="30" height="40" alt="поиск" />
-          </button>
-          <button className="circle-button">
-            <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
-          </button>
-          <button className="circle-button">
-            <img src="/категории.svg" width="30" height="45" alt="категории" />
-          </button>
-          <Link to="/profile">
-            <button className="circle-button">
-              <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-            </button>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <div className="square">
         <div className="square_photo">
