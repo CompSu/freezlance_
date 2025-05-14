@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../assets/styleProfile.css";
 import { Link } from "react-router-dom";
 
+
 function Profile() {
   const [user, setUser] = useState({
     username: 'sontababy',
@@ -12,6 +13,12 @@ function Profile() {
   });
 
   const [projects, setProjects] = useState([
+    { id: 1, title: "Лендинг для бренда", category: "design" },
+    { id: 2, title: "Telegram-бот", category: "code" },
+    { id: 3, title: "Редизайн логотипа", category: "branding" },
+    { id: 4, title: "Лендинг для бренда", category: "design" },
+    { id: 5, title: "Telegram-бот", category: "code" },
+    { id: 6, title: "Редизайн логотипа", category: "branding" },
     { id: 1, title: "Лендинг для бренда", category: "design" },
     { id: 2, title: "Telegram-бот", category: "code" },
     { id: 3, title: "Редизайн логотипа", category: "branding" },
@@ -28,7 +35,7 @@ function Profile() {
         id: 1,
         userId: 101,
         userName: "Артём",
-        userAvatar: "",
+        userAvatar: "/фейс-cropped.svg",
         text: "Отличная работа! Всё сделано в срок и очень качественно"
       },
       {
@@ -55,7 +62,7 @@ function Profile() {
   const getImageByCategory = (category) => {
     switch (category) {
       case "design":
-        return "/images/project-design.png";
+        return "/images/арт и иллюстрации.jpg";
       case "code":
         return "/images/project-code.png";
       case "branding":
@@ -119,7 +126,7 @@ function Profile() {
           <button
             className="square_portfolio_buttons1"
             onClick={() =>
-              document.getElementById("portfolioScroll").scrollBy({ left: -300, behavior: 'smooth' })
+              document.getElementById("portfolioScroll").scrollBy({ left: -500, behavior: 'smooth' })
             }
           >
             <img src="" alt="стрелка влево" style={{ transform: "rotate(180deg)" }} />
@@ -141,10 +148,10 @@ function Profile() {
           <button
             className="square_portfolio_buttons2"
             onClick={() =>
-              document.getElementById("portfolioScroll").scrollBy({ left: 300, behavior: 'smooth' })
+              document.getElementById("portfolioScroll").scrollBy({ left: 500, behavior: 'smooth' })
             }
           >
-            <img src="" alt="стрелка вправо" />
+            <img src="/стрелка.svg" width="35" height="50" alt="стрелка вправо" />
           </button>
 
           <Link to="/create-task">
