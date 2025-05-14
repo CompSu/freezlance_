@@ -19,12 +19,12 @@
 }
 
 .square_photo img {
-    margin-top:0px;
-    position:relative;
-    height:100%;
-    min-height:1px;
-    width:100%;
-    z-index:1;
+    margin-top: 0px;
+    position: relative;
+    height: 100%;
+    min-height: 1px;
+    width: 100%;
+    z-index: 1;
 }
 
 .square_photo_content {
@@ -36,13 +36,8 @@
     color: #1869e4;
 }
 
-.square_photo_content span,
-.square_portfolio_content span,
-.div-horizontal-scroll span {
-    display: inline-block;
-}
-
 .square_photo_content span {
+    display: inline-block;
     width: 102%;
     height: 40px;
     padding: 12px 0 3px;
@@ -51,8 +46,13 @@
 
 .square_photo_buttons,
 .plus,
-.minus {
-    z-index:2;
+.minus,
+.square_inform_buttons,
+.square_portfolio_buttons1,
+.square_portfolio_buttons2,
+.square_portfolio_buttons3,
+.square_review_buttons {
+    z-index: 2;
     position: absolute;
     background: transparent;
     border: none;
@@ -68,6 +68,10 @@
     left: 12px;
 }
 
+.square_photo_buttons:hover {
+    color: #13303f;
+}
+
 .square_photo_buttons:hover,
 .square_inform_buttons:hover,
 .square_portfolio_buttons1:hover,
@@ -77,10 +81,6 @@
 .plus:hover,
 .minus:hover {
     transform: scale(1.1);
-}
-
-.square_photo_buttons:hover {
-    color: #13303f;
 }
 
 .square_inform {
@@ -98,10 +98,9 @@
     font-size: 14px;
 }
 
-.square_inform_buttons,
-.square_portfolio_buttons3,
-.square_review_buttons {
-    position: absolute;
+.square_inform_buttons {
+    top: 135px;
+    left: 40%;
     width: 180px;
     height: 27px;
     border: 2px solid #dfdfdf;
@@ -109,14 +108,6 @@
     background: linear-gradient(to right, #309cce, #104fae);
     font-family: "Press Start 2P", system-ui;
     font-size: 9px;
-    color: #efefef;
-    transition: background-color 0.3s, transform 0.3s;
-    left: 45%;
-}
-
-.square_inform_buttons {
-    top: 135px;
-    left: 40%;
     color: #cccccc;
 }
 
@@ -139,6 +130,11 @@
     color: #fff;
 }
 
+.square_portfolio_content span,
+.div-horizontal-scroll span {
+    display: inline-block;
+}
+
 .square_portfolio_content span {
     height: 53px;
     padding-top: 18px;
@@ -153,21 +149,10 @@
 
 .square_portfolio_buttons1,
 .square_portfolio_buttons2 {
-    position: absolute;
     width: 25px;
     height: 25px;
     background-color: transparent;
     border-radius: 50%;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.square_portfolio_buttons1 img,
-.square_portfolio_buttons2 img{
-    margin-top:0px;
-    position:relative;
-    height:100%;
-    width:100%;
-    z-index:1;
 }
 
 .square_portfolio_buttons1 {
@@ -182,6 +167,23 @@
 
 .square_portfolio_buttons3 {
     top: 225px;
+    width: 180px;
+    height: 27px;
+    border: 2px solid #dfdfdf;
+    border-radius: 5%/30%;
+    background: linear-gradient(to right, #309cce, #104fae);
+    font-family: "Press Start 2P", system-ui;
+    font-size: 9px;
+    color: #efefef;
+}
+
+.square_portfolio_buttons1 img,
+.square_portfolio_buttons2 img {
+    margin-top: 0px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
 }
 
 .square_reiting {
@@ -240,8 +242,8 @@
 }
 
 .project-card img {
-    width:100% !important;
-    height:100% !important;
+    width: 100% !important;
+    height: 100% !important;
     position: relative;
     margin: 0%;
 }
@@ -302,6 +304,13 @@
     max-height: 300px;
     height: 148px;
     overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.review-list::-webkit-scrollbar {
+    display: none;
 }
 
 .review-card {
@@ -352,20 +361,3 @@
 .square_review_buttons {
     top: 220px;
 }
-
-.review-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    max-height: 300px;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-  
-
-    scrollbar-width: none;        
-    -ms-overflow-style: none;      
-  }
-  
-  .review-list::-webkit-scrollbar {
-    display: none;                 
-  }
