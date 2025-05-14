@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    </head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Логотип">
+        <span>FREEZLANCE</span>
+    </div>
+    <div class="buttons">
+        <button class="circle-button">
+            <img src="поиск.svg" width="30" height="40" alt="поиск">
+        </button>
+        <button class="circle-button">
+            <img src="Vector (2).svg" width="30" height="40" alt="уведомления">
+        </button>
+        <button class="circle-button">
+            <img src="категории.svg" width="30" height="45" alt="категории">
+        </button>
+        <button class="circle-button">
+            <img src="фейс-cropped.svg" width="35" height="51" alt="профиль">
+        </button>
+    </div>
+</header>
+
+<div class="square">
+    <div class="square_photo">
+        <div class="square_photo_img">
+            <img src="камера иконка.svg" alt="фото профиля" id="profileImage">
+        </div>
+        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        <button class="square_photo_buttons" id="uploadButton">Загрузить фотографию</button>
+    </div>
+
+    <div class="square_photo_content">
+        <div class="username-container">
+            <div class="username-display" id="usernameDisplay">sontababy</div>
+            <div class="username-edit" id="usernameEdit">
+                <input type="text" class="username-input" id="usernameInput" value="sontababy">
+                <button class="save-username-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-fields">
+            <div class="profile-field">
+                <label>Имя пользователя:</label>
+                <input type="text" class="editable-field" value="Ульяна" data-field="firstname">
+            </div>
+            <div class="profile-field">
+                <label>Фамилия пользователя:</label>
+                <input type="text" class="editable-field" value="Диколенко" data-field="lastname">
+            </div>
+            <div class="profile-field">
+                <label>Навыки:</label>
+                <input type="text" class="editable-field" value="Веб дизайн, фотошоп" data-field="skills">
+            </div>
+            <div class="profile-field">
+                <label>Телефон:</label>
+                <input type="tel" class="editable-field" value="+7 (922) 437 42-41" data-field="phone">
+            </div>
+            <div class="profile-field">
+                <label>Дата рождения:</label>
+                <input type="date" class="editable-field" value="2005-08-03" data-field="birthdate">
+            </div>
+            <div class="profile-field">
+                <label>Город:</label>
+                <input type="text" class="editable-field" value="Ханты-Мансийск" data-field="city">
+            </div>
+            <div class="profile-field">
+                <label>Почта:</label>
+                <input type="email" class="editable-field" value="udikolenko@inbox.ru" data-field="email">
+            </div>
+        </div>
+        <button class="save-button" id="saveButton">Сохранить настройки</button>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Основные элементы
+    const saveButton = document.getElementById('saveButton');
+    const fields = document.querySelectorAll('.editable-field');
+    const emailField = document.querySelector('input[type="email"]');
+    const usernameDisplay = document.getElementById('usernameDisplay');
+    const usernameEdit = document.getElementById('usernameEdit');
+    const usernameInput = document.getElementById('usernameInput');
+    const saveUsernameBtn = document.querySelector('.save-username-btn');
+    const uploadButton = document.getElementById('uploadButton');
+    const fileInput = document.getElementById('fileInput');
+    const profileImage = document.getElementById('profileImage');
+    
+    // Загрузка сохраненных данных
+    function loadSavedData() {
+        const savedData = localStorage.getItem('profileData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            
+            // Загружаем основные поля
+            fields.forEach(field => {
+                const fieldName = field.dataset.field;
+                if (data[fieldName]) {
+                    if (field.type === 'date') {
+                        field.valueAsDate = new Date(data[fieldName]);
+                    } else {
+                        field.value = data[fieldName];
+                    }
+                }
+            });
+            
+            // Загружаем username
+            if (data.username) {
+                usernameDisplay.textContent = data.username;
+                usernameInput.value = data.username;
+            }
+            
+            // Загружаем фото
+            const savedPhoto = localStorage.getItem('profilePhoto');
+            if (savedPhoto) {
+                profileImage.src = savedPhoto;
+            }
+        }
+    }
+    
+    // Редактирование username
+    usernameDisplay.addEventListener('click', function() {
+        usernameDisplay.style.display = 'none';
+        usernameEdit.style.display = 'flex';
+        usernameInput.focus();
+    });
+    
+    function saveUsername() {
+        const newUsername = usernameInput.value.trim();
+        if (newUsername) {
+            usernameDisplay.textContent = newUsername;
+            showNotification('Имя пользователя сохранено!', 'success');
+        }
+        usernameDisplay.style.display = 'block';
+        usernameEdit.style.display = 'none';
+        return newUsername || usernameDisplay.textContent;
+    }
+    
+    saveUsernameBtn.addEventListener('click', saveUsername);
+    
+    usernameInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            saveUsername();
+        }
+    });
+    
+    // Валидация email
+    function validateEmail() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const value = emailField.value.trim();
+        
+        emailField.classList.remove('valid', 'invalid');
+        
+        if (value === '') {
+            return false;
+        }
+        
+        if (!emailRegex.test(value)) {
+            emailField.classList.add('invalid');
+            showNotification('Пожалуйста, введите корректный email', 'error');
+            return false;
+        } else {
+            emailField.classList.add('valid');
+            return true;
+        }
+    }
+    
+    // Загрузка фото
+    uploadButton.addEventListener('click', function() {
+        fileInput.click();
+    });
+    
+    fileInput.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                profileImage.src = event.target.result;
+                localStorage.setItem('profilePhoto', event.target.result);
+            }
+            
+            reader.readAsDataURL(e.target.files[0]);
+        }
+    });
+    
+    // Сохранение всех данных
+    function saveData() {
+        if (!validateEmail()) {
+            return;
+        }
+        
+        const data = {
+            username: usernameDisplay.textContent
+        };
+        
+        fields.forEach(field => {
+            data[field.dataset.field] = field.type === 'date' 
+                ? field.valueAsDate.toISOString() 
+                : field.value;
+        });
+        
+        localStorage.setItem('profileData', JSON.stringify(data));
+        showNotification('Данные успешно сохранены!', 'success');
+    }
+    
+    // Уведомления
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+    
+    // Обработчики событий
+    emailField.addEventListener('blur', validateEmail);
+    saveButton.addEventListener('click', saveData);
+    
+    // Инициализация
+    loadSavedData();
+});
+</script>
+</body>
+</html>

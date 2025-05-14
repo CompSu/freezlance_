@@ -5,14 +5,13 @@ export default function Header() {
   const [query, setQuery] = useState("");
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   const categoriesButtonRef = useRef(null);
   const notificationsButtonRef = useRef(null);
-  const notificationsDropdownRef = useRef(null);
 
   const handleSearch = () => {
     console.log("Поиск запроса:", query);
-    // API
   };
 
   const toggleCategories = (e) => {
@@ -25,15 +24,18 @@ export default function Header() {
     setIsNotificationsOpen((prev) => !prev);
   };
 
-  const closeDropdowns = (e) => {
+  const closeDropdowns = () => {
     setIsCategoriesOpen(false);
     setIsNotificationsOpen(false);
+    setIsProfileMenuOpen(false);
   };
 
   useEffect(() => {
     document.addEventListener("click", closeDropdowns);
     return () => document.removeEventListener("click", closeDropdowns);
   }, []);
+
+  const isAuthenticated = true; // для бэка
 
   return (
     <header>
@@ -77,20 +79,13 @@ export default function Header() {
           </button>
 
           {isNotificationsOpen && (
-            <div
-              className="notification-dropdown"
-              ref={notificationsDropdownRef}
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="notification-dropdown" onClick={(e) => e.stopPropagation()}>
               <div className="notification-header">Уведомления</div>
               <div className="notifications-list">
                 <div className="notification-item">Фрилансер откликнулся на задачу</div>
                 <div className="notification-item read">Оставьте отзыв о работе фрилансера</div>
-                <div className="notification-item">Какое-то очередное ненужное уведомление</div>
                 <div className="notification-item">Новое сообщение в чате</div>
                 <div className="notification-item read">Ваша задача выполнена</div>
-                <div className="notification-item">Системное уведомление</div>
-                <div className="notification-item">Напоминание: срок задачи истекает завтра</div>
               </div>
             </div>
           )}
@@ -128,14 +123,32 @@ export default function Header() {
           )}
         </div>
 
-        <Link to="/profile">
-          <button className="circle-button">
-            <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-          </button>
-        </Link>
-      </div>
+          {isAuthenticated ? (
+            <Link to="/profile">
+              <button className="circle-button">
+              <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
+              </button>
+            </Link>
+          ) : (
+            <div
+              className="profile-container"
+              onMouseEnter={() => setIsProfileMenuOpen(true)}
+              onMouseLeave={() => setIsProfileMenuOpen(false)}
+            >
+              <div className="circle-button">
+                <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
+              </div>
+
+              {isProfileMenuOpen && (
+                <div className="auth-dropdown">
+                  <Link to="/login" className="auth-btn login-btn">ВХОД</Link>
+                  <Link to="/register" className="auth-btn">РЕГИСТРАЦИЯ</Link>
+                </div>
+              )}
+            </div>
+          )}
+
+        </div>
     </header>
   );
 }
-
-

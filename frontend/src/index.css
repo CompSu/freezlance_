@@ -438,6 +438,70 @@ header {
   display: block;
 }
 
+.profile-container {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+.profile-icon {
+    width: 35px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.profile-container .circle-button img{
+    margin-left:5px;
+}
+
+.auth-dropdown {
+    position: absolute;
+    width: 175px;
+    height: 135px;
+    left: 50%;
+    top: 55px;
+    transform: translateX(-50%);
+    background: #293d48;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    z-index: 100;
+}
+
+.profile-container:hover .auth-dropdown {
+    display: flex;
+}
+
+.auth-btn {
+    width: 147px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    text-decoration: none;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 13px;
+    color: #000000;
+    transition: all 0.3s;
+}
+
+.auth-btn:hover {
+    background: #296986;
+    color: #FFFFFF;
+}
+
+.login-btn {
+    font-size: 14px;
+}
+
 .logo span:hover{
   color:#0856a9;
   transform:translatex(0px) translatey(0px);
