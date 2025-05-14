@@ -1,134 +1,17 @@
-.rectangle {
-    margin-left: 5%;
-    width: 90%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color:rgba(255,255,255,0.95);
-    background-size: cover;
-    position: relative;
-    padding: 20px;
-    box-sizing: border-box;
-}
 
-.rectangle_text {
-    position: relative;
-    top: 50px;
-    text-align: center;
-    font-size: 24px;
-    color: #000C76;
-    font-family: "Press Start 2P", system-ui;
-    margin-bottom: 30px;
-}
-
-.submit {
-    width: 160px;
-    height: 40px;
-    border: 2px solid #dfdfdf;
-    border-radius: 20px;
-    background: linear-gradient(to right, #309cce, #104fae);
-    font-family: "Press Start 2P", system-ui;
-    font-size: 12px;
-    color: #efefef;
-    transition: background-color 0.3s, transform 0.3s;
-    margin: 20px 0;
-}
-
-.input-container {
-    position: relative;
-    top: 0;
-    left: 0;
-    font-family: "Manrope", sans-serif;
-    color: #294548;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="file"],
-input[type="range"],
-textarea,
-select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: rgb(255, 255, 255);
-    border: 2px solid #294548;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-textarea {
-    height: 120px;
-}
-
-.creation-form {
-    top: 0;
-    width: 100%;
-}
-
-.form-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background: rgba(22, 143, 199, 0.8);
-    border-radius: 12px;
-    border: 2px solid #294548;
-}
-
-.form-section h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.form-input {
-    width: 100%;
-    padding: 12px;
-    font-size: 14px;
-}
 
 .price-group {
     grid-template-columns: 1fr;
     gap: 15px;
 }
 
-.file-upload-label {
-    padding: 10px 20px;
-    font-size: 11px;
-}
 
 .category-group {
     grid-template-columns: 1fr;
     gap: 15px;
 }
 
-.range-container {
-    flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-}
 
-input[type="range"] {
-    width: 100%;
-}
-
-#manual-price {
-    width: 100%;
-}
-
-select {
-    width: 100%;
-    height: 45px;
-}
-
-.price-group label {
-    font-size: 13px;
-}
-
-.total-price {
-    font-size: 15px;
-}
 
 @media (min-width: 480px) {
     .rectangle {

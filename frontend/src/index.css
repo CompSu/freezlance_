@@ -106,7 +106,76 @@ header {
   top:86px;
 }
 
+.search-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  width: 300px;
+}
 
+.search-container {
+  position: relative;
+  width: 39px;
+  height: 39px;
+  transition: all 0.3s ease;
+}
+
+.search-button {
+  position: absolute;
+  right: 0;
+  width: 39px;
+  height: 39px;
+  background: #E4F5FF;
+  border: 3px solid #294548;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+.search-input {
+  position: absolute;
+  width: 39px;
+  height: 39px;
+  right: 0;
+  background: #E4F5FF;
+  border: 3px solid #294548;
+  border-radius: 26px;
+  padding: 0 39px 0 15px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: #7F7F7F;
+  outline: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.search-container:hover .search-input {
+  width: 250px;
+  opacity: 1;
+}
+
+.search-input::placeholder {
+  color: #7F7F7F;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.1s;
+}
+
+.search-container:hover .search-input::placeholder {
+  opacity: 1;
+}
 
 .logo span:hover{
   color:#0856a9;
