@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../assets/styleProfile.css";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-
 
 function Profile() {
   const [user, setUser] = useState({
@@ -12,6 +11,19 @@ function Profile() {
     city: 'Ханты-Мансийск',
     email: 'udikolenko@inbox.ru',
   });
+
+  const [editedUser, setEditedUser] = useState(user);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSave = () => {
+    setUser(editedUser); // Пока локально
+    setIsEditing(false);
+  };
 
   const [projects, setProjects] = useState([
     { id: 1, title: "Лендинг для бренда", category: "design" },
@@ -88,13 +100,72 @@ function Profile() {
 
         <div className="square_inform">
           <div className="square_inform_content">
-            <span>Имя пользователя: <span className="server-text">{user.name}</span><br /></span>
-            <span>Информация о навыках пользователя: <span className="server-text">{user.skills}</span><br /></span>
-            <span>Город: <span className="server-text">{user.city}</span><br /></span>
-            <span>Почта: <span className="server-text">{user.email}</span><br /></span>
+            <span>
+              Имя пользователя:{" "}
+              {isEditing ? (
+                <input
+                  className="profile-input"
+                  type="text"
+                  name="name"
+                  value={editedUser.name}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                <span className="server-text">{user.name}</span>
+              )}
+              <br />
+            </span>
+            <span>
+              Информация о навыках пользователя:{" "}
+              {isEditing ? (
+                <input
+                  className="profile-input"
+                  type="text"
+                  name="skills"
+                  value={editedUser.skills}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                <span className="server-text">{user.skills}</span>
+              )}
+              <br />
+            </span>
+            <span>
+              Город:{" "}
+              {isEditing ? (
+                <input
+                  className="profile-input"
+                  type="text"
+                  name="city"
+                  value={editedUser.city}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                <span className="server-text">{user.city}</span>
+              )}
+              <br />
+            </span>
+            <span>
+              Почта:{" "}
+              {isEditing ? (
+                <input
+                  className="profile-input"
+                  type="email"
+                  name="email"
+                  value={editedUser.email}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                <span className="server-text">{user.email}</span>
+              )}
+              <br />
+            </span>
           </div>
-          <button className="square_inform_buttons">
-            <span>Настройки профиля</span>
+          <button
+            className="square_inform_buttons"
+            onClick={() => (isEditing ? handleSave() : setIsEditing(true))}
+          >
+            <span>{isEditing ? "Сохранить" : "Настройки профиля"}</span>
           </button>
         </div>
 
@@ -177,4 +248,3 @@ function Profile() {
 }
 
 export default Profile;
-
