@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const [query, setQuery] = useState("");
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const buttonRef = useRef(null);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
+  const categoriesButtonRef = useRef(null);
+  const notificationsButtonRef = useRef(null);
+  const notificationsDropdownRef = useRef(null);
 
   const handleSearch = () => {
     console.log("Поиск запроса:", query);
-    //API
+    // API
   };
 
   const toggleCategories = (e) => {
@@ -16,13 +20,19 @@ export default function Header() {
     setIsCategoriesOpen((prev) => !prev);
   };
 
-  const closeCategories = () => {
+  const toggleNotifications = (e) => {
+    e.stopPropagation();
+    setIsNotificationsOpen((prev) => !prev);
+  };
+
+  const closeDropdowns = (e) => {
     setIsCategoriesOpen(false);
+    setIsNotificationsOpen(false);
   };
 
   useEffect(() => {
-    document.addEventListener("click", closeCategories);
-    return () => document.removeEventListener("click", closeCategories);
+    document.addEventListener("click", closeDropdowns);
+    return () => document.removeEventListener("click", closeDropdowns);
   }, []);
 
   return (
@@ -50,32 +60,60 @@ export default function Header() {
           </div>
         </div>
 
-        <button className="circle-button">
-          <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
-        </button>
-
-        {/* Кнопка Категорий с дропдауном */}
-        <div className="categories-container">
+        <div className="notification-container">
           <button
-            ref={buttonRef}
-            className={`circle-button categories-button ${isCategoriesOpen ? "active" : ""}`}
-            onClick={toggleCategories}
-            onMouseDown={() => (buttonRef.current.style.transform = "scale(0.95)")}
+            ref={notificationsButtonRef}
+            className={`circle-button notification-button ${isNotificationsOpen ? "active" : ""}`}
+            onClick={toggleNotifications}
+            onMouseDown={() => (notificationsButtonRef.current.style.transform = "scale(0.95)")}
             onMouseUp={() =>
-              (buttonRef.current.style.transform = isCategoriesOpen ? "scale(0.95)" : "scale(1.05)")
+              (notificationsButtonRef.current.style.transform = isNotificationsOpen ? "scale(0.95)" : "scale(1.05)")
             }
             onMouseLeave={() => {
-              if (!isCategoriesOpen) buttonRef.current.style.transform = "scale(1)";
+              if (!isNotificationsOpen) notificationsButtonRef.current.style.transform = "scale(1)";
+            }}
+          >
+            <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
+          </button>
+
+          {isNotificationsOpen && (
+            <div
+              className="notification-dropdown"
+              ref={notificationsDropdownRef}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="notification-header">Уведомления</div>
+              <div className="notifications-list">
+                <div className="notification-item">Фрилансер откликнулся на задачу</div>
+                <div className="notification-item read">Оставьте отзыв о работе фрилансера</div>
+                <div className="notification-item">Какое-то очередное ненужное уведомление</div>
+                <div className="notification-item">Новое сообщение в чате</div>
+                <div className="notification-item read">Ваша задача выполнена</div>
+                <div className="notification-item">Системное уведомление</div>
+                <div className="notification-item">Напоминание: срок задачи истекает завтра</div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="categories-container">
+          <button
+            ref={categoriesButtonRef}
+            className={`circle-button categories-button ${isCategoriesOpen ? "active" : ""}`}
+            onClick={toggleCategories}
+            onMouseDown={() => (categoriesButtonRef.current.style.transform = "scale(0.95)")}
+            onMouseUp={() =>
+              (categoriesButtonRef.current.style.transform = isCategoriesOpen ? "scale(0.95)" : "scale(1.05)")
+            }
+            onMouseLeave={() => {
+              if (!isCategoriesOpen) categoriesButtonRef.current.style.transform = "scale(1)";
             }}
           >
             <img src="/категории.svg" width="30" height="45" alt="категории" />
           </button>
 
           {isCategoriesOpen && (
-            <div
-              className="categories-dropdown"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="categories-dropdown" onClick={(e) => e.stopPropagation()}>
               <div className="categories-header">Рубрики</div>
               <div className="categories-divider"></div>
               <div className="categories-grid">
@@ -99,3 +137,5 @@ export default function Header() {
     </header>
   );
 }
+
+
