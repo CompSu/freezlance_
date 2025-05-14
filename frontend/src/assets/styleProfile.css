@@ -63,6 +63,35 @@
     transition: background-color 0.3s, transform 0.3s;
 }
 
+.square_portfolio_buttons1,
+.square_portfolio_buttons2 {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.square_portfolio_buttons1 img,
+.square_portfolio_buttons2 img{
+    margin-top:0px;
+    position:relative;
+    height:100%;
+    width:100%;
+    z-index:1;
+}
+
+.square_portfolio_buttons1 {
+    top: 45%;
+    left: 2%;
+}
+
+.square_portfolio_buttons2 {
+    top: 48%;
+    right: 2%;
+}
+
 .square_photo_buttons {
     top: 75px;
     left: 12px;
