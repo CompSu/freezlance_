@@ -172,3 +172,127 @@
             position: absolute;
             top: 20%;
         }
+
+
+        /* Span Tag */
+#root .square_text span{
+ color:#2a7fc9;
+}
+
+/* Portfolio */
+#root div .portfolio{
+ background-color:rgba(16,139,192,0.64);
+ position:relative;
+ top:10%;
+ left:0px;
+ bottom:0px;
+ right:0px;
+}
+
+/* Division */
+#root > div{
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Square */
+#root div .square{
+ width:80%;
+ height:100%;
+ overflow:auto;
+}
+
+/* Portfolio */
+#root div .portfolio{
+ top:15%;
+ text-align:justify;
+ line-height:0px;
+}
+
+#root .portfolio .text_portfolio{
+ position:relative;
+ margin-left:10%;
+}
+
+/* Portfolio */
+#root div .square .portfolio{
+ height:auto !important;
+}
+
+/* Portfolio */
+#root div .portfolio{
+ top:35%;
+}
+
+/* Image */
+.portfolio_user .user-main img{
+ width:50px;
+ height:50px;
+ margin-top:0px;
+ position:relative;
+}
+
+/* Span Tag */
+.portfolio_user .user-main span{
+ position:relative;
+ right:0px;
+ bottom:0px;
+ left:0px;
+ top:0px;
+}
+
+/* User rating */
+.portfolio_user .user-main .user-rating{
+ position:relative;
+ top:0px;
+ left:0px;
+ bottom:0px;
+ right:0px;
+}
+
+/* User main */
+.portfolio .portfolio_user .user-main{
+ position:relative;
+ bottom:0px;
+ right:0px;
+ transform:translatex(0px) translatey(0px);
+}
+
+#root .portfolio .portfolio_user{
+ height:150px;
+}
+
+/* Portfolio user text */
+.portfolio .portfolio_user .portfolio_user_text{
+ position:relative;
+ top:10px;
+ left:30%;
+ bottom:0px;
+ right:0px;
+}
+
+/* User main */
+.portfolio .portfolio_user .user-main{
+ top:0%;
+ left:25%;
+ margin-bottom:10px;
+ width:100%;
+}
+
+/* User button */
+.portfolio_user .user_buttons .user_button{
+ margin-right:50px;
+ position:relative;
+ left:35%;
+ margin-top:10px;
+}
+
+/* Portfolio */
+#root div .portfolio{
+ margin-bottom:1px;
+}
+
+/* File specs */
+.text_portfolio .task-description .file-specs{
+ position:relative;
+ margin-top:50px;
+}

@@ -151,13 +151,13 @@ header {
 }
 
 .search-input {
-  position: absolute;
+  position: absolute; 
   width: 39px;
   height: 39px;
   right: 0;
   background: #E4F5FF;
   border: 3px solid #294548;
-  padding: 0 39px 0 15px;
+  padding: 0 39px 0 15px !important;  
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   color: #7F7F7F;
@@ -180,7 +180,7 @@ header {
 }
 
 .search-input::placeholder {
-  color: #7F7F7F;
+  color: #7F7F7F; 
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   opacity: 0;
