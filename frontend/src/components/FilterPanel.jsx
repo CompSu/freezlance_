@@ -11,11 +11,44 @@ const categoryMap = {
     "advertisement",
     "polygraphy",
   ],
-  social: ["socialnetworksandmarketplaces"],
-  development: ["webandmobiledevelopment"],
-  media: [],   
-  business: [], 
-  texts: [],   
+  development: [
+    "webandmobiledevelopment",
+    "desktop",
+    "scripts",
+    "gamedev",
+    "servers",
+    "test"
+  ],
+  social: [
+    "smm",
+    "clients_db",
+    "email",
+    "marketplaces",
+    "marketing"
+  ],
+  business: [
+    "accounting",
+    "calls",
+    "legal",
+    "sites_sale",
+    "hr",
+    "presentation",
+    "construction"
+  ],
+  media: [
+    "audio",
+    "music",
+    "audio_edit",
+    "video",
+    "animation"
+  ],    
+  texts: [
+    "content",
+    "translation",
+    "business_text",
+    "typing",
+    "cv"
+  ],   
 };
 
 export default function FilterPanel({ items, setFilteredItems, currentCategory }) {
@@ -71,11 +104,38 @@ export default function FilterPanel({ items, setFilteredItems, currentCategory }
     presentationsandinfographics: "Презентации и инфографика",
     artandillustrations: "Арт и иллюстрация",
     webandmobiledevelopment: "Веб и моб. разработка",
-    socialnetworksandmarketplaces: "Соц.сети и маркетплейсы",
+    smm: "Соцсети и SMM",
     interiorandexterior: "Интерьер и экстерьер",
     processingandediting: "Обработка и редактирование",
     advertisement: "Реклама",
     polygraphy: "Полиграфия",
+    webdev: "Веб разработка",
+    desktop: "Декстоп и программирование",
+    scripts: "Скрипты и боты",
+    gamedev: "Игры",
+    servers: "Сервера и хостинг",
+    test: "Тест и помощь",
+    clients_db: "База данных клиентов",
+    email: "E-mail рассылки",
+    marketplaces: "Маркетплейсы и доски объявлений",
+    marketing: "Маркетинг и PR",
+    accounting: "Бухгалтерия",
+    calls: "Обзвоны",
+    legal: "Юридическая помощь",
+    sites_sale: "Продажа сайтов",
+    hr: "Подбор персонала",
+    presentation: "Презентация",
+    construction: "Стройка",
+    audio: "Аудиозапись",
+    music: "Музыка",
+    audio_edit: "Редактирование аудио",
+    animation: "Анимация",
+    video: "Видеоролики",
+    content: "Тексты для сайта",
+    translation: "Переводы",
+    business_text: "Бизнес тексты",
+    typing: "Набор текста",
+    cv: "Резюме"
   };
 
   return (

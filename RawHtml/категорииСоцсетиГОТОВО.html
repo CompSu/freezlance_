@@ -1,0 +1,449 @@
+!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREEZLANCE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .price-range { display: flex; gap: 15px; margin-top: 10px; }
+        .price-input { flex: 1; position: relative; }
+        .price-label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #000;
+        }
+        .price-field {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 2px solid #49767B;
+            border-radius: 8px;
+            background: #D9D9D9;
+            font-family: "Manrope", sans-serif;
+            font-size: 16px;
+            color: #000C76;
+        }
+        .price-field::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .price-field:focus { outline: none; border-color: #000C76; }
+        .main-container { display: flex; margin-top: 67px; min-height: calc(100vh - 85px); }
+        .filters {
+            width: 20%;
+            padding: 25px;
+            background: #00929D;
+            color: #fff;
+        }
+        .filter-group { margin-bottom: 15px; }
+        .filter-group h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #49767B;
+            border-radius: 8px;
+            background: #D9D9D9;
+            font-family: "Manrope", sans-serif;
+        }
+        .content {
+            width: 80%;
+            padding: 15px;
+            background-image: url("заливка.jpg");
+            color: #FFFFFF;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        .square-item {
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(228, 245, 255, 0.8);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .square-item.hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .image-container {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .service-image {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .service-content { padding: 10px; }
+        .service-description {
+            font-family: "Manrope", sans-serif;
+            color: #000;
+            font-size: 16px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .price-block {
+            background: #E4F5FF;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .price {
+            font-family: "Press Start 2P", system-ui;
+            color: #000C76;
+            font-size: 14px;
+        }
+        .user-info { padding-top: 12px; }
+        .user-main { display: flex; align-items: center; gap: 10px; }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #296986;
+            font-weight: 700;
+        }
+        .user-rating { color: #FFD700; font-size: 12px; }
+        .apply {
+            width: 85px;
+            height: 25px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #296986, #000C76);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .content_apply {
+            margin-top: 50px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Логотип">
+        <span>FREEZLANCE</span>
+    </div>
+    <div class="buttons">
+        <button class="circle-button">
+            <img src="поиск.svg" width="30" height="40" alt="поиск">
+        </button>
+        <button class="circle-button">
+            <img src="Vector%20(2).svg" width="30" height="40" alt="уведомления">
+        </button>
+        <button class="circle-button">
+            <img src="категории.svg"  width="30" height="45" alt="категории">
+        </button>
+        <button class="circle-button">
+            <img src="фейс-cropped.svg" width="35" height="50" alt="профиль">
+        </button>
+    </div>
+</header>
+
+<div class="main-container">
+    <div class="filters">
+        <h2>Фильтр</h2>
+        <div class="filter-group">
+            <h3>Подкатегория</h3>
+            <select id="categoryFilter">
+                <option value="all">Все подкатегории</option>
+                <option value="smm">Соцсети и SMM</option>
+                <option value="clients_db">База данных клиентов</option>
+                <option value="email">E-mail рассылки</option>
+                <option value="marketplaces">Маркетплейсы и доски объявлений</option>
+                <option value="marketing">Маркетинг и PR</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <h3>Цена</h3>
+            <div class="price-range">
+                <div class="price-input">
+                    <span class="price-label">От</span>
+                    <input type="number" id="minPrice"
+                           class="price-field"
+                           placeholder="400"
+                           min="400"
+                           step="100">
+                </div>
+                <div class="price-input">
+                    <span class="price-label">До</span>
+                    <input type="number" id="maxPrice" class="price-field" placeholder="200000" min="400" step="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-group">
+            <h3>Положительных отзывов</h3>
+            <select id="reviewsFilter">
+                <option value="0">Все</option>
+                <option value="1">от 1</option>
+                <option value="5">от 5</option>
+                <option value="10">от 10</option>
+                <option value="20">от 20</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <h3>Срок выполнения</h3>
+            <select id="deadlineFilter">
+                <option value="any">Любой</option>
+                <option value="upto24hours">До 24 часов</option>
+                <option value="upto3days">До 3 дней</option>
+                <option value="uptoaweek">До недели</option>
+            </select>
+        </div>
+        <div class="button_apply">
+            <button class="apply">Применить</button>
+        </div>
+        <div class="content_apply">
+            <span>Если вы не нашли нужную задачу, вы можете создать собственную в профиле</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1>Соцсети и маркетинг</h1>
+        <div class="grid">
+            <div class="square-item"
+                 data-category="smm"
+                 data-reviews="734"
+                 data-deadline="upto3days">
+                <div class="image-container">
+                    <img src="smm.jpg" class="service-image" alt="SMM">
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                         Продвижение в Instagram/Facebook/TikTok<br>
+                         Создание контент-планов<br>
+                         Таргетированная реклама
+                    </p>
+                    <div class="price-block">
+                        <span class="price">от 12 000 ₽</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-main">
+                            <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                            <div class="user-meta">
+                                <span class="username">sontababy</span>
+                                <div class="user-rating">★★★★★</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="square-item"
+                 data-category="clients_db"
+                 data-reviews="415"
+                 data-deadline="uptoaweek">
+                <div class="image-container">
+                    <img src="crm.jpg" class="service-image" alt="CRM">
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Сбор контактных данных B2B/B2C<br>
+                        Верификация и сегментация<br>
+                        Интеграция с CRM-системами
+                    </p>
+                    <div class="price-block">
+                        <span class="price">от 25 000 ₽</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-main">
+                            <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                            <div class="user-meta">
+                                <span class="username">sontababy</span>
+                                <div class="user-rating">★★★☆☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="square-item"
+                 data-category="email"
+                 data-reviews="298"
+                 data-deadline="upto24hours">
+                <div class="image-container">
+                    <img src="email.jpg" class="service-image" alt="Email">
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                         Цепляющие темы писем<br>
+                         A/B тестирование рассылок<br>
+                         Анализ открытий и CTR
+                    </p>
+                    <div class="price-block">
+                        <span class="price">от 8 000 ₽</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-main">
+                            <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                            <div class="user-meta">
+                                <span class="username">sontababy</span>
+                                <div class="user-rating">★☆☆☆☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="square-item"
+                 data-category="marketplaces"
+                 data-reviews="657"
+                 data-deadline="upto3days">
+                <div class="image-container">
+                    <img src="marketplace.jpg" class="service-image" alt="Маркетплейсы">
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Оптимизация карточек на Wildberries/Ozon<br>
+                        Продвижение в топ выдачи<br>
+                        Работа с отзывами
+                    </p>
+                    <div class="price-block">
+                        <span class="price">от 18 000 ₽</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-main">
+                            <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                            <div class="user-meta">
+                                <span class="username">sontababy</span>
+                                <div class="user-rating">★★★★☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="square-item"
+                 data-category="marketing"
+                 data-reviews="921"
+                 data-deadline="uptoaweek">
+                <div class="image-container">
+                    <img src="pr.jpg" class="service-image" alt="PR">
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Медийная реклама<br>
+                        Организация PR-кампаний<br>
+                        Копирайтинг для СМИ
+                    </p>
+                    <div class="price-block">
+                        <span class="price">от 35 000 ₽</span>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-main">
+                            <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                            <div class="user-meta">
+                                <span class="username">sontababy</span>
+                                <div class="user-rating">★★☆☆☆</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const applyButton = document.querySelector('.apply');
+        const grid = document.querySelector('.grid');
+        let originalItems = Array.from(document.querySelectorAll('.square-item')); // Сохраняем оригиналы
+
+        applyButton.addEventListener('click', function() {
+            // Получаем текущие значения фильтров
+            const category = document.getElementById('categoryFilter').value;
+            const minPrice = parseInt(document.getElementById('minPrice').value.replace(/\s/g, '')) || 0;
+            const maxPrice = parseInt(document.getElementById('maxPrice').value.replace(/\s/g, '')) || Infinity;
+            const reviews = parseInt(document.getElementById('reviewsFilter').value) || 0;
+            const deadline = document.getElementById('deadlineFilter').value;
+
+            // Всегда работаем с оригинальными элементами
+            const processedItems = originalItems.map(originalItem => {
+                // Создаем новый элемент из оригинала
+                const item = originalItem.cloneNode(true);
+
+                // Получаем актуальные данные
+                const itemCategory = item.dataset.category;
+                const itemPrice = parseInt(item.querySelector('.price').textContent.replace(/\D/g, ''));
+                const itemReviews = parseInt(item.dataset.reviews);
+                const itemDeadline = item.dataset.deadline;
+
+                // Проверка условий
+                const categoryMatch = category === 'all' || itemCategory === category;
+                const priceMatch = itemPrice >= minPrice && itemPrice <= maxPrice;
+                const reviewsMatch = itemReviews >= reviews;
+                const deadlineMatch = checkDeadline(itemDeadline, deadline);
+
+                return {
+                    element: item,
+                    match: categoryMatch && priceMatch && reviewsMatch && deadlineMatch,
+                    score: calculateScore(categoryMatch, priceMatch, reviewsMatch, deadlineMatch),
+                    reviews: itemReviews,
+                    price: itemPrice
+                };
+            });
+
+            // Фильтрация и сортировка
+            const filteredItems = processedItems
+                .filter(item => item.match)
+                .sort((a, b) => {
+                    if (b.score !== a.score) return b.score - a.score;
+                    if (b.reviews !== a.reviews) return b.reviews - a.reviews;
+                    return a.price - b.price;
+                });
+
+            // Полная перестройка grid
+            grid.innerHTML = '';
+            filteredItems.forEach(({element}) => {
+                grid.appendChild(element);
+            });
+        });
+
+        function calculateScore(catMatch, priceMatch, revMatch, dlMatch) {
+            return (catMatch ? 40 : 0) +
+                (priceMatch ? 30 : 0) +
+                (revMatch ? 20 : 0) +
+                (dlMatch ? 10 : 0);
+        }
+
+        function checkDeadline(itemDeadline, selectedDeadline) {
+            const deadlineMap = {
+                'any': Infinity,
+                'upto24hours': 1,
+                'upto3days': 3,
+                'uptoaweek': 7
+            };
+            const itemValue = deadlineMap[itemDeadline] || parseInt(itemDeadline);
+            const selectedValue = deadlineMap[selectedDeadline];
+            return selectedValue >= itemValue;
+        }
+    });
+</script>
+</body>
+</html>
