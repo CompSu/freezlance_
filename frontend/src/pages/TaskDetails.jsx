@@ -8,7 +8,7 @@ const TaskDetails = () => {
     <>
       <Header />
 
-    <div className="square">
+    <div className="squareTask">
       <div className="square_text">
         <span>Новый логотип. Уникальный логотип. Разработка лого.</span>
       </div>
@@ -18,10 +18,10 @@ const TaskDetails = () => {
           <img src="/powerpoint-corporate-template-0003-btc-_5 1.png" alt="Пример работы" />
           <div className="portfolio_buttons">
             <button className="buttons">
-              <img src="/ep_arrow-up.svg" alt="Назад" />
+              <img src="/стрелка.svg" alt="Назад" />
             </button>
             <button className="buttons">
-              <img src="/ep_arrow-up (1).svg" alt="Вперёд" />
+              <img src="/стрелка.svg" alt="Вперёд" />
             </button>
           </div>
           <div className="portfolio_text"><span>Портфолио</span></div>

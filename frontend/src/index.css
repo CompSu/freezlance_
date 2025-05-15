@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/font/PressStart2P-Regular.woff2') format('woff2');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -63,7 +70,7 @@ header {
 .square {
   margin-left: 10%;
   width: 80%;
-  height: 900px;
+  height: 900px !important;
   display: flex;
   flex-direction: column;
   color:#458396;

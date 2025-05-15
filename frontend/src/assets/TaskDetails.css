@@ -1,176 +1,349 @@
-        .square_text {
-            position: absolute;
-            top: 115px;
-            text-align: center;
-            font-family: "Press Start 2P", system-ui;
-            font-size: 24px;
-            color: #000000;
-        }
-        .portfolio {
-            position: absolute;
-            left: 5%;
-            top: 190px;
-            width: 90%;
-            height: 85%;
-            background: #00929D96;
-            border-radius: 15px;
-        }
-        .portfolio_photo {
-            position: absolute;
-            top: 2%;
-            left: 5%;
-            width: 50%;
-            height: 15%;
-            background: #00929D96;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .portfolio_photo img {
-            width: 60%;
-            height: 80%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .portfolio_buttons {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 1rem;
-        }
+@font-face {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  src: url('./font/PressStart2P-Regular.woff2') format('woff2');
+}
 
-        .slider-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .slide {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 100%;
-            max-height: 100%;
-        }
-        .portfolio_text {
-            position: absolute;
-            bottom: 5px;
-            font-family: "Manrope", sans-serif;
-            font-size: 14px;
-            color: #FFFFFF;
-        }
-        .portfolio_user {
-            position: absolute;
-            top: 2%;
-            right: 5%;
-            width: 35%;
-            height: 7%;
-            background:#00929D96;
-            border-radius: 15px;
-            padding-top: 12px;
-        }
-        .user-main {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .user-avatar {
-            position: absolute;
-            left: 5px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .username {
-            position: absolute;
-            top: 20px;
-            left: 55px;
-            font-family: "Manrope", sans-serif;
-            font-size: 14px;
-            color: #296986;
-            font-weight: 700;
-        }
-        .user-rating {
-            position: absolute;
-            top: 23px;
-            left: 135px;
-            color: #FFD700;
-            font-size: 12px;
-        }
-        .portfolio_user_text {
-            position: absolute;
-            top: 60px;
-            left: 20px;
-            font-family: "Manrope", sans-serif;
-            font-size: 15px;
-            color: #FFFFFF;
-        }
-        .user_buttons {
-            position: absolute;
-            top: 95px;
-            left: 20%;
-        }
-        .user_button {
-            width: 80%;
-            height: 25px;
-            background: linear-gradient(to right, #296986, #000C76);
-            border-radius: 5%/30%;
-            margin-right: 50px;
-            transition: background-color 0.3s, transform 0.3s;
-            font-size: 9px;
-            font-family: "Press Start 2P", system-ui;
-            color: #cccccc;
-        }
-        .task-description {
-            padding: 20px;
-            color: #FFFFFF;
-            font-size: 12px;
-            line-height: 1.6;
-        }
+.squareTask{
+  height:1800px;
+  margin-left: 10%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  color:#458396;
+  align-items: center;
+  justify-content: center;
+  background-color:rgba(255,255,255,0.95);
+  background-size: cover;
+  position: relative;
+}
 
-        .task-description h4 {
-            color: #FFD700;
-            margin: 15px 0 10px;
-            font-size: 14px;
-        }
+.square_text {
+    position: absolute;
+    top: 115px;
+    text-align: center;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 24px;
+    color: #000000;
+}
 
-        .guarantees-list, .requirements-list {
-            padding-left: 25px;
-            margin: 10px 0;
-        }
+.portfolio {
+    position: absolute;
+    left: 5%;
+    top: 190px;
+    width: 90%;
+    height: 85%;
+    background: #00929D96;
+    border-radius: 15px;
+}
 
-        .guarantees-list li, .requirements-list li {
-            margin-bottom: 8px;
-        }
+.portfolio_photo {
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    width: 50%;
+    height: 15%;
+    background: #00929D96;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-        .requirements-list em {
-            color: #E4F5FF;
-            font-style: normal;
-            font-size: 10px;
-            display: block;
-            margin-top: 3px;
-        }
+.portfolio_photo img {
+    width: 60%;
+    height: 80%;
+    object-fit: cover;
+    object-position: center;
+}
 
-        .file-specs {
-            margin-top: 10px;
-            padding: 15px;
-            background: rgba(0, 146, 157, 0.5);
-            border-radius: 8px;
-        }
+.portfolio_buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
 
-        strong {
-            color: #296986;
-            font-weight: 700;
-        }
-        .text_portfolio {
-            position: absolute;
-            top: 20%;
-        }
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
+.slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.portfolio_text {
+    position: absolute;
+    bottom: 5px;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.portfolio_user {
+    position: absolute;
+    top: 2%;
+    right: 5%;
+    width: 35%;
+    height: 7%;
+    background: #00929D96;
+    border-radius: 15px;
+    padding-top: 12px;
+}
+
+.user-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    position: absolute;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    position: absolute;
+    top: 20px;
+    left: 55px;
+    font-family: "Manrope", sans-serif;
+    font-size: 14px;
+    color: #296986;
+    font-weight: 700;
+}
+
+.user-rating {
+    position: absolute;
+    top: 23px;
+    left: 135px;
+    color: #FFD700;
+    font-size: 12px;
+}
+
+.portfolio_user_text {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+.user_buttons {
+    position: absolute;
+    top: 95px;
+    left: 20%;
+}
+
+.user_button {
+    width: 80%;
+    height: 25px;
+    border-radius: 5%/30%;
+    margin-right: 50px;
+    font-size: 9px;
+    font-family: "Press Start 2P", system-ui;
+    background: linear-gradient(to right, #309cce, #104fae);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.5s
+}
+
+.user_button:hover {
+    transform: scale(1.1);
+}
+
+
+.task-description {
+    padding: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.task-description h4 {
+    color: #FFD700;
+    margin: 15px 0 10px;
+    font-size: 14px;
+}
+
+.guarantees-list,
+.requirements-list {
+    padding-left: 25px;
+    margin: 10px 0;
+}
+
+.guarantees-list li,
+.requirements-list li {
+    margin-bottom: 8px;
+}
+
+.requirements-list em {
+    color: #E4F5FF;
+    font-style: normal;
+    font-size: 10px;
+    display: block;
+    margin-top: 3px;
+}
+
+.file-specs {
+    margin-top: 10px;
+    padding: 15px;
+    background: rgba(0, 146, 157, 0.5);
+    border-radius: 8px;
+}
+
+strong {
+    color: #296986;
+    font-weight: 700;
+}
+
+.text_portfolio {
+    position: absolute;
+    top: 20%;
+}
+
+
+/* Span Tag */
+#root .square_text span{
+ color:#317db4;
+}
+
+/* Portfolio */
+#root div .portfolio{
+ background-color:rgba(11,133,182,0.59);
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Portfolio photo */
+#root .portfolio .portfolio_photo{
+ background-color:#ffffff;
+ position:relative;
+}
+
+/* Portfolio user */
+#root .portfolio .portfolio_user{
+ background-color:#ffffff;
+}
+
+/* Portfolio text */
+.portfolio .portfolio_photo .portfolio_text{
+ color:#097ecc;
+}
+
+/* Portfolio buttons */
+.portfolio .portfolio_photo .portfolio_buttons{
+ position:absolute;
+ top:114px;
+ height:55px;
+}
+
+/* Buttons */
+.portfolio_photo .portfolio_buttons .buttons{
+ margin-right:0px;
+ background-color:#4daeee;
+ border-style:none;
+}
+
+/* Portfolio user */
+#root .portfolio .portfolio_user{
+ position:absolute;
+ left:60%;
+ bottom:0%;
+ right:0px;
+ top:35px;
+}
+
+/* User main */
+.portfolio .portfolio_user .user-main{
+ position:relative;
+}
+
+/* Image */
+.portfolio_user .user-main img{
+ position:relative;
+ top:0px;
+ left:4px;
+}
+
+/* Span Tag */
+.portfolio_user .user-main span{
+ position:relative;
+ top:0px;
+ left:0px;
+}
+
+/* User rating */
+.portfolio_user .user-main .user-rating{
+ position:relative;
+ right:0px;
+ left:0px;
+ top:0px;
+ bottom:0px;
+}
+
+/* Portfolio user text */
+.portfolio .portfolio_user .portfolio_user_text{
+ color:#1e83d6;
+ text-align:center;
+ position:relative;
+ top:0px;
+ left:0px;
+ bottom:0px;
+ right:0px;
+}
+
+/* User button */
+.portfolio_user .user_buttons .user_button{
+ margin-right:0px;
+ position:relative;
+ width:100px;
+ top:-20px;
+ left:70px;
+}
+
+/* Text portfolio */
+#root .portfolio .text_portfolio{
+ position:relative;
+ top:0px;
+ bottom:0px;
+ right:0px;
+ padding-left:70px;
+ padding-top:31px;
+}
+
+/* Task description */
+.portfolio .text_portfolio .task-description{
+ padding-left:0px;
+ padding-right:0px;
+ padding-top:0px;
+ padding-bottom:0px;
+ text-align:justify;
+}
+
+/* Task description */
+#root div .squareTask .portfolio .text_portfolio .task-description{
+ width:90% !important;
+}
+
+/* File specs */
+.text_portfolio .task-description .file-specs{
+ background-color:rgba(255,255,255,0.5);
+}
 
