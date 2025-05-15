@@ -70,7 +70,7 @@ export default function LoginModal({ onClose, onSwitch  }) {
               type="password"
               id="password"
               name="password"
-              placeholder="Придумайте пароль"
+              placeholder="Укажите свой пароль"
               value={formData.password}
               onChange={handleInputChange}
               required
@@ -79,13 +79,13 @@ export default function LoginModal({ onClose, onSwitch  }) {
 
           <div className="role-selection">
             <div
-              className={`role-btn client-btn ${selectedRole === "client" ? "active" : ""}`}
+              className={`role-btn signup1 ${selectedRole === "client" ? "active" : ""}`}
               onClick={() => setSelectedRole("client")}
             >
               Я заказчик
             </div>
             <div
-              className={`role-btn freelancer-btn ${selectedRole === "freelancer" ? "active" : ""}`}
+              className={`role-btn signup2 ${selectedRole === "freelancer" ? "active" : ""}`}
               onClick={() => setSelectedRole("freelancer")}
             >
               Я фрилансер

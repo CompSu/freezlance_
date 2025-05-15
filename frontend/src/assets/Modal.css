@@ -4,7 +4,7 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(5px);
-  z-index: 999;
+  z-index: 1000;
 }
 
 .container,
@@ -14,7 +14,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 325px;
-  background-color: #294548;
+  background-color: #38b7e5;
   border-radius: 10px;
   padding: 20px;
   z-index: 1000;
@@ -65,7 +65,7 @@
 .form-group {
   position: relative;
   width: 267px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   top: 45px;
 }
 
@@ -134,27 +134,44 @@ input[type="date"]:focus::before {
   line-height: 19px;
   cursor: pointer;
   border: none;
+  background: #FFFFFF;
+  color: #000000;
 }
 
-.client-btn,
-.signup1 {
+.role-btn:hover {
+    transform: scale(1.1);
+}
+
+.role-btn:active {
+    background: #076b96;
+}
+
+.client-btn {
   left: 0;
-  background: #296986;
-  color: #FFFFFF;
 }
 
 .freelancer-btn,
 .signup2 {
   right: 0;
-  background: #FFFFFF;
-  color: #000000;
+}
+
+.signup1, .signup2 {
+  background: #fff;
+  color: #000;
+  transition: 0.3s;
+}
+
+.signup1.active,
+.signup2.active {
+  background: #296986;
+  color: #fff;
 }
 
 .submit-btn,
 .register-btn {
   width: 151px;
   height: 27px;
-  background: #000C76;
+  background: #076b96;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -168,10 +185,12 @@ input[type="date"]:focus::before {
 }
 
 .submit-btn {
-  position: absolute;
-  top: 275px;
-  left: 75px;
-  bottom: 20px;
+ position:relative;
+ top:50px;
+ left:60px;
+ bottom:0px;
+ background-color:#076b96;
+ border-style:none;
 }
 
 .submit-btn span,
@@ -190,6 +209,11 @@ input[type="date"]:focus::before {
   font-size: 12px;
 }
 
+.register-link span,
+.login-link span {
+  color: #1e608c;
+}
+
 .register-link {
   position: absolute;
   bottom: 10px;
@@ -201,10 +225,11 @@ input[type="date"]:focus::before {
   margin-top: 15px;
 }
 
-.register-link a,
-.login-link a {
+.register-link span:hover,
+.login-link span:hover {
   color: #FFFFFF;
   text-decoration: underline;
+  cursor:pointer;
 }
 
 .register-frame {

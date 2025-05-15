@@ -404,7 +404,7 @@ header {
   height: 7px;
   left: 5px;
   top: 16px;
-  background: #FA0505;
+  background: #ae3737;
   border-radius: 50%;
   transition: all 0.2s;
 }
@@ -463,11 +463,11 @@ header {
 .auth-dropdown {
     position: absolute;
     width: 175px;
-    height: 135px;
+    height: 75px;
     left: 50%;
     top: 55px;
     transform: translateX(-50%);
-    background: #293d48;
+    background: #266586;
     border-radius: 10px;
     display: none;
     flex-direction: column;

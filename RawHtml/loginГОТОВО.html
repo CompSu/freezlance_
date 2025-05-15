@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Вакансионный сайт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .auth-frame {
+            position: absolute;
+            width: 295px;
+            height: 339px;
+            left: 43px;
+            top: 39px;
+            background: #294548;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        
+        .auth-title {
+            position: absolute;
+            width: 192px;
+            height: 16px;
+            left: 51px;
+            top: 20px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        .form-group {
+            top: 30px;
+            position: relative;
+            margin-bottom: 30px;
+            width: 267px;
+            height: 40px;
+        }
+        
+        .form-group label {
+            position: absolute;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 13px;
+            line-height: 13px;
+            color: #FFFFFF;
+            top: -15px;
+            left: 10px;
+        }
+        
+        .form-group input {
+            position: absolute;
+            width: 267px;
+            height: 23px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            border: none;
+            padding: 0 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+        }
+        
+        .form-group input::placeholder {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 19px;
+            color: #7F7F7F;
+            text-align: center;
+        }
+        
+        .role-selection {
+            position: relative;
+            width: 267px;
+            height: 29px;
+            margin-bottom: 30px;
+        }
+        
+        .role-btn {
+            position: absolute;
+            width: 121px;
+            height: 29px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 19px;
+            cursor: pointer;
+        }
+        
+        .client-btn {
+            left: 0;
+            background: #296986;
+            color: #FFFFFF;
+        }
+        
+        .freelancer-btn {
+            right: 0;
+            background: #FFFFFF;
+            color: #000000;
+        }
+        
+        .submit-btn {
+            position: absolute;
+            top: 275px;
+            width: 151px;
+            height: 27px;
+            left: 75px;
+            bottom: 20px;
+            background: #000C76;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .submit-btn span {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            line-height: 14px;
+            color: #FFFFFF;
+        }
+        
+        .register-link {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            color: #FFFFFF;
+            font-size: 12px;
+        }
+        
+        .register-link a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+        <div class="auth-frame">
+            <h2 class="auth-title">ВХОД</h2>
+            
+            <form method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Имя</label>
+                    <input type="text" id="username" name="username" placeholder="Укажите свое имя" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Укажите свой email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="Придумайте пароль" required>
+                </div>
+                
+                <div class="role-selection">
+                    <div class="role-btn client-btn">Я заказчик</div>
+                    <div class="role-btn freelancer-btn">Я фрилансер</div>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <span>войти</span>
+                </button>
+            </form>
+            
+            <p class="register-link">Еще нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a></p>
+        </div>
+
+    <script>
+        document.querySelector('.client-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.freelancer-btn').style.background = '#FFFFFF';
+            document.querySelector('.freelancer-btn').style.color = '#000000';
+        });
+        
+        document.querySelector('.freelancer-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.client-btn').style.background = '#FFFFFF';
+            document.querySelector('.client-btn').style.color = '#000000';
+        });
+    </script>
+</body>
+</html>

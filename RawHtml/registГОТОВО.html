@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Вакансионный сайт</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        .register-container {
+            position: relative;
+            width: 325px;
+            height: 650px;
+        }
+        
+        .register-frame {
+            box-sizing: border-box;
+            position: relative;
+            width: 315px;
+            background: #294548;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        
+        .register-title {
+            position: absolute;
+            width: 192px;
+            height: 16px;
+            left: 50%;
+            top: 28px;
+            transform: translateX(-50%);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+        
+        .form-group {
+            top: 45px;
+            position: relative;
+            margin-bottom: 35px;
+            width: 267px;
+        }
+        
+        .form-group label {
+            position: absolute;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 13px;
+            line-height: 13px;
+            color: #FFFFFF;
+            top: -15px;
+            left: 10px;
+        }
+        
+        .form-group input {
+            width: 267px;
+            height: 23px;
+            background: #FFFFFF;
+            border-radius: 10px;
+            border: none;
+            padding: 0 10px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+        }
+        
+        .form-group input::placeholder {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 19px;
+            color: #7F7F7F;
+            text-align: center;
+        }
+        
+        input[type="date"] {
+            text-align: center;
+            color: #7F7F7F
+        }
+        
+        input[type="date"]::before {
+            content: attr(placeholder);
+            width: 100%;
+            color: #7F7F7F;
+        }
+        
+        input[type="date"]:focus::before {
+            content: '' !important;
+        }
+        
+        .role-selection {
+            top: 30px;
+            position: relative;
+            width: 267px;
+            height: 29px;
+            margin: 40px 0;
+        }
+        
+        .role-btn {
+            position: absolute;
+            width: 121px;
+            height: 29px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 19px;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .signup1 {
+            left: 0;
+            background: #296986;
+            color: #FFFFFF;
+        }
+        
+        .signup2 {
+            right: 0;
+            background: #FFFFFF;
+            color: #000000;
+        }
+        
+        .register-btn {
+            width: 262px;
+            height: 27px;
+            background: #000C76;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 10px;
+        }
+        
+        .register-btn span {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 14px;
+            line-height: 14px;
+            color: #FFFFFF;
+        }
+        
+        .login-link {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            color: #FFFFFF;
+            font-size: 12px;
+            margin-top: 15px;
+        }
+        
+        .login-link a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-frame">
+            <h2 class="register-title">РЕГИСТРАЦИЯ</h2>
+            
+            <form method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" placeholder="Укажите свое имя" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="surname">Фамилия</label>
+                    <input type="text" id="surname" name="surname" placeholder="Укажите свою фамилию" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nick">Ник</label>
+                    <input type="text" id="nick" name="nick" placeholder="Придумайте ник" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Укажите свою почту" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="number">Телефон</label>
+                    <input type="tel" id="number" name="number" placeholder="+7 (999) 999 99 99" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата рождения</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="psw">Пароль</label>
+                    <input type="password" id="psw" name="psw" placeholder="Придумайте пароль" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="psw-repeat">Пароль</label>
+                    <input type="password" id="psw-repeat" name="psw-repeat" placeholder="Повторите пароль" required>
+                </div>
+                
+                <div class="role-selection">
+                    <button type="button" class="role-btn signup1">Я заказчик</button>
+                    <button type="button" class="role-btn signup2">Я фрилансер</button>
+                </div>
+                
+                <button type="submit" class="register-btn">
+                    <span>ЗАРЕГИСТРИРОВАТЬСЯ</span>
+                </button>
+            </form>
+            
+            <p class="login-link">Уже есть аккаунт? <a href="{{ url_for('login') }}">Войдите</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Обработка выбора роли
+        document.querySelector('.signup1').addEventListener('click', function() {
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.signup2').style.background = '#FFFFFF';
+            document.querySelector('.signup2').style.color = '#000000';
+        });
+        
+        document.querySelector('.signup2').addEventListener('click', function() {
+            this.style.background = '#296986';
+            this.style.color = '#FFFFFF';
+            document.querySelector('.signup1').style.background = '#FFFFFF';
+            document.querySelector('.signup1').style.color = '#000000';
+        });
+        
+        // Обработка поля даты
+        const dateInput = document.querySelector('input[type="date"]');
+        dateInput.addEventListener('focus', function() {
+            this.type = 'date';
+        });
+        
+        dateInput.addEventListener('blur', function() {
+            if (!this.value) {
+                this.type = 'text';
+            }
+        });
+    </script>
+</body>
+</html>
