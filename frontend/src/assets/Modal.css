@@ -1,0 +1,220 @@
+.modal-overlay,
+.register-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.container,
+.register-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 325px;
+  background-color: #294548;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.container {
+  height: 450px;
+}
+
+.register-container {
+  height: 650px;
+}
+
+.auth-frame {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 295px;
+  height: 339px;
+  background: #294548;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.auth-title,
+.register-title {
+  position: absolute;
+  width: 192px;
+  height: 16px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.auth-title {
+  left: 51px;
+  top: 20px;
+}
+
+.register-title {
+  left: 50%;
+  top: 28px;
+  transform: translateX(-50%);
+}
+
+.form-group {
+  position: relative;
+  width: 267px;
+  margin-bottom: 35px;
+  top: 45px;
+}
+
+.form-group label {
+  position: absolute;
+  top: -15px;
+  left: 10px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 13px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+.form-group input {
+  width: 267px;
+  height: 23px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: none;
+  padding: 0 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.form-group input::placeholder {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  color: #7F7F7F;
+  text-align: center;
+}
+
+input[type="date"] {
+  text-align: center;
+  color: #7F7F7F;
+}
+
+input[type="date"]::before {
+  content: attr(placeholder);
+  width: 100%;
+  color: #7F7F7F;
+}
+
+input[type="date"]:focus::before {
+  content: '' !important;
+}
+
+.role-selection {
+  position: relative;
+  width: 267px;
+  height: 29px;
+  margin: 40px 0;
+  top: 30px;
+}
+
+.role-btn {
+  position: absolute;
+  width: 121px;
+  height: 29px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 19px;
+  cursor: pointer;
+  border: none;
+}
+
+.client-btn,
+.signup1 {
+  left: 0;
+  background: #296986;
+  color: #FFFFFF;
+}
+
+.freelancer-btn,
+.signup2 {
+  right: 0;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.submit-btn,
+.register-btn {
+  width: 151px;
+  height: 27px;
+  background: #000C76;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.register-btn {
+  width: 262px;
+  margin: 2px;
+}
+
+.submit-btn {
+  position: absolute;
+  top: 275px;
+  left: 75px;
+  bottom: 20px;
+}
+
+.submit-btn span,
+.register-btn span {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  line-height: 14px;
+  color: #FFFFFF;
+}
+
+.register-link,
+.login-link {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.register-link {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.login-link {
+  margin-top: 15px;
+}
+
+.register-link a,
+.login-link a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+.register-frame {
+  box-sizing: border-box;
+  position: relative;
+  width: 315px;
+  background: #294548;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+}

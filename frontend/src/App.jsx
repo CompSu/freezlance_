@@ -4,14 +4,14 @@ import { Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import CreateTaskForm from './pages/CreateTaskForm';
+import RegisterModal from './components/RegisterModal';
 
-function App() {
+
+
+function App()
+ {
   return (
     <div>
-      <nav>
-        <Link to="/">Главная</Link> | <Link to="/profile">Профиль</Link>
-      </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
