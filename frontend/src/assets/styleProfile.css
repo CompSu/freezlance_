@@ -314,6 +314,11 @@ border-color:#000000;
     font-size: 12px;
     font-weight: 500;
     font-family: Arial, sans-serif;
+    transition: transform 0.5s;
+}
+
+.project-card:hover {
+    transform: scale(1.12);
 }
 
 .project-card img {

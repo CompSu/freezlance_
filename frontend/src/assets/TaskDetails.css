@@ -1,0 +1,174 @@
+        .square_text {
+            position: absolute;
+            top: 115px;
+            text-align: center;
+            font-family: "Press Start 2P", system-ui;
+            font-size: 24px;
+            color: #000000;
+        }
+        .portfolio {
+            position: absolute;
+            left: 5%;
+            top: 190px;
+            width: 90%;
+            height: 85%;
+            background: #00929D96;
+            border-radius: 15px;
+        }
+        .portfolio_photo {
+            position: absolute;
+            top: 2%;
+            left: 5%;
+            width: 50%;
+            height: 15%;
+            background: #00929D96;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .portfolio_photo img {
+            width: 60%;
+            height: 80%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .portfolio_buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .portfolio_text {
+            position: absolute;
+            bottom: 5px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        .portfolio_user {
+            position: absolute;
+            top: 2%;
+            right: 5%;
+            width: 35%;
+            height: 7%;
+            background:#00929D96;
+            border-radius: 15px;
+            padding-top: 12px;
+        }
+        .user-main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-avatar {
+            position: absolute;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            position: absolute;
+            top: 20px;
+            left: 55px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #296986;
+            font-weight: 700;
+        }
+        .user-rating {
+            position: absolute;
+            top: 23px;
+            left: 135px;
+            color: #FFD700;
+            font-size: 12px;
+        }
+        .portfolio_user_text {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+        .user_buttons {
+            position: absolute;
+            top: 95px;
+            left: 20%;
+        }
+        .user_button {
+            width: 80%;
+            height: 25px;
+            background: linear-gradient(to right, #296986, #000C76);
+            border-radius: 5%/30%;
+            margin-right: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 9px;
+            font-family: "Press Start 2P", system-ui;
+            color: #cccccc;
+        }
+        .task-description {
+            padding: 20px;
+            color: #FFFFFF;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .task-description h4 {
+            color: #FFD700;
+            margin: 15px 0 10px;
+            font-size: 14px;
+        }
+
+        .guarantees-list, .requirements-list {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+
+        .guarantees-list li, .requirements-list li {
+            margin-bottom: 8px;
+        }
+
+        .requirements-list em {
+            color: #E4F5FF;
+            font-style: normal;
+            font-size: 10px;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .file-specs {
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(0, 146, 157, 0.5);
+            border-radius: 8px;
+        }
+
+        strong {
+            color: #296986;
+            font-weight: 700;
+        }
+        .text_portfolio {
+            position: absolute;
+            top: 20%;
+        }

@@ -1,0 +1,181 @@
+        .price-range { display: flex; gap: 15px; margin-top: 10px; }
+        .price-input { flex: 1; position: relative; }
+        .price-label {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #000;
+        }
+        .price-field {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 2px solid #49767B;
+            border-radius: 8px;
+            background: #D9D9D9;
+            font-family: "Manrope", sans-serif;
+            font-size: 16px;
+            color: #000C76;
+        }
+        .price-field::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .price-field:focus { outline: none; border-color: #000C76; }
+        .main-container { display: flex; margin-top: 85px; min-height: calc(100vh - 85px); }
+        .filters {
+            width: 20%;
+            padding: 25px;
+            background: #00929D;
+            color: #fff;
+        }
+        .filter-group { margin-bottom: 15px; }
+        .filter-group h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #000;
+        }
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 2px solid #49767B;
+            border-radius: 8px;
+            background: #D9D9D9;
+            font-family: "Manrope", sans-serif;
+        }
+        .content {
+            width: 80%;
+            padding: 15px;
+            color: #FFFFFF;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .price-block {
+            background: #E4F5FF;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .price {
+            font-family: "Press Start 2P", system-ui;
+            color: #000C76;
+            font-size: 14px;
+        }
+        .user-info { padding-top: 12px; }
+        .user-main { display: flex; align-items: center; gap: 10px; }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #296986;
+            font-weight: 700;
+        }
+        .user-rating { color: #FFD700; font-size: 12px; }
+        .apply {
+            width: 85px;
+            height: 25px;
+            border-radius: 10px;
+            background: linear-gradient(to right, #296986, #000C76);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .content_apply {
+            margin-top: 50px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .task-card {
+            background-color:rgba(255,255,255,0.63);
+            border-top-left-radius:20px;
+            border-top-right-radius:20px;
+            border-bottom-left-radius:20px;
+            border-bottom-right-radius:20px;
+            position:relative;
+            height:300px;
+            overflow:hidden;
+            width:275px;
+            text-align:center;
+        }
+
+
+.filters .filters{
+ width:100% !important;
+ height:100% !important;
+ overflow:hidden;
+ background-color:rgba(0,146,157,0);
+ color:#447eb5;
+}
+
+.filters{
+ background-color:rgba(255,255,255,0.88);
+}
+
+/* Content apply */
+.main-container .filters .content_apply{
+ color:#447eb5;
+ margin-top:20px;
+}
+
+/* Select */
+.main-container .filters select{
+ background-color:#ffffff;
+}
+
+/* Input */
+.price-range .price-input input[type=number]{
+ background-color:#ffffff;
+}
+
+/* Heading */
+.grid .task-card h3{
+ margin-top:20px;
+ margin-bottom:0px;
+}
+
+/* Paragraph */
+.grid .task-card p{
+ margin-bottom:0px;
+}
+
+/* Task card user */
+.grid .task-card .task-card-user{
+ height:50px;
+}
+
+/* Span Tag */
+.grid .task-card-user span{
+ position:relative;
+ bottom:0px;
+ right:4%;
+ top:10px;
+ left:0%;
+}
+
+.grid .task-card .task-card-content{
+ position:relative;
+ top:35%;
+}
+
+/* Paragraph */
+.grid .task-card p{
+ margin-top:1px;
+}
+
+/* Task card image */
+.grid .task-card .task-card-image{
+ position:relative;
+ top:0%;
+}

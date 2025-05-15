@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/styleProfile.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 
 function Profile() {
@@ -83,6 +83,12 @@ function Profile() {
       default:
         return "../images/project-default.png";
     }
+  };
+
+  const navigate = useNavigate();
+
+  const handleOpenTask = (id) => {
+    navigate(`/task/${id}`);
   };
 
   return (
@@ -185,7 +191,12 @@ function Profile() {
 
           <div className="portfolio-scroll-container" id="portfolioScroll">
             {projects.map((project) => (
-              <div className="project-card" key={project.id}>
+              <div
+                className="project-card"
+                key={project.id}
+                onClick={() => handleOpenTask(project.id)}
+                style={{ cursor: "pointer" }}
+              >
                 <img
                   src={getImageByCategory(project.category)}
                   alt={project.title}
@@ -195,6 +206,7 @@ function Profile() {
               </div>
             ))}
           </div>
+
 
           <button
             className="square_portfolio_buttons2"

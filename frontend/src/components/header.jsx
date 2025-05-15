@@ -8,12 +8,12 @@ export default function Header() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [activeModal, setActiveModal] = useState(null); // 'login' | 'register' | null
+  const [activeModal, setActiveModal] = useState(null);
 
   const categoriesButtonRef = useRef(null);
   const notificationsButtonRef = useRef(null);
 
-  const isAuthenticated = false; // для бэка
+  const isAuthenticated = true; // для бэка
 
   const handleSearch = () => {
     console.log("Поиск запроса:", query);
@@ -120,12 +120,12 @@ export default function Header() {
                 <div className="categories-header">Рубрики</div>
                 <div className="categories-divider"></div>
                 <div className="categories-grid">
-                  <Link to="/design" className="category-item">Дизайн</Link>
-                  <Link to="/social" className="category-item">Соцсети и маркетинг</Link>
-                  <Link to="/development" className="category-item">Разработка и IT</Link>
-                  <Link to="/media" className="category-item">Аудио, видео, съемка</Link>
-                  <Link to="/business" className="category-item">Бизнес и жизнь</Link>
-                  <Link to="/texts" className="category-item">Тексты и переводы</Link>
+                    <Link to="/category/design" className="category-item">Дизайн</Link>
+                    <Link to="/category/social" className="category-item">Соцсети и маркетинг</Link>
+                    <Link to="/category/development" className="category-item">Разработка и IT</Link>
+                    <Link to="/category/media" className="category-item">Аудио, видео, съемка</Link>
+                    <Link to="/category/business" className="category-item">Бизнес и жизнь</Link>
+                    <Link to="/category/texts" className="category-item">Тексты и переводы</Link>
                 </div>
               </div>
             )}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREEZLANCE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .example_square {
+            position: absolute;
+            left: 20%;
+            width: 60%;
+            height: 230%;
+            background-image: url("заливка.jpg");
+            background-size: cover;
+        }
+        .example_square_text {
+            position: absolute;
+            top: 115px;
+            text-align: center;
+            font-family: "Press Start 2P", system-ui;
+            font-size: 24px;
+            color: #000000;
+        }
+        .example_portfolio {
+            position: absolute;
+            left: 5%;
+            top: 190px;
+            width: 90%;
+            height: 85%;
+            background: #00929D96;
+            border-radius: 15px;
+        }
+        .example_portfolio_photo {
+            position: absolute;
+            top: 2%;
+            left: 5%;
+            width: 50%;
+            height: 15%;
+            background: #00929D96;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .example_portfolio_photo img {
+            width: 60%;
+            height: 80%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .example_portfolio_buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1rem;
+        }
+        .example_buttons{
+            background: rgba(0, 146, 157, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .example_portfolio_text {
+            position: absolute;
+            bottom: 5px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #FFFFFF;
+        }
+        .example_portfolio_user {
+            position: absolute;
+            top: 2%;
+            right: 5%;
+            width: 35%;
+            height: 7%;
+            background:#00929D96;
+            border-radius: 15px;
+            padding-top: 12px;
+        }
+        user-main {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-avatar {
+            position: absolute;
+            left: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .username {
+            position: absolute;
+            top: 20px;
+            left: 55px;
+            font-family: "Manrope", sans-serif;
+            font-size: 14px;
+            color: #296986;
+            font-weight: 700;
+        }
+        .user-rating {
+            position: absolute;
+            top: 23px;
+            left: 135px;
+            color: #FFD700;
+            font-size: 12px;
+        }
+        .example_portfolio_user_text {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+            color: #FFFFFF;
+        }
+        .user_buttons {
+            position: absolute;
+            top: 95px;
+            left: 20%;
+        }
+        .user_button {
+            width: 80%;
+            height: 25px;
+            background: linear-gradient(to right, #296986, #000C76);
+            border-radius: 5%/30%;
+            margin-right: 50px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 9px;
+            font-family: "Press Start 2P", system-ui;
+            color: #cccccc;
+        }
+        .task-description {
+            padding: 20px;
+            color: #FFFFFF;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .task-description h4 {
+            color: #FFD700;
+            margin: 15px 0 10px;
+            font-size: 14px;
+        }
+
+        .guarantees-list, .requirements-list {
+            padding-left: 25px;
+            margin: 10px 0;
+        }
+
+        .guarantees-list li, .requirements-list li {
+            margin-bottom: 8px;
+        }
+
+        .requirements-list em {
+            color: #E4F5FF;
+            font-style: normal;
+            font-size: 10px;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .file-specs {
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(0, 146, 157, 0.5);
+            border-radius: 8px;
+        }
+
+        strong {
+            color: #296986;
+            font-weight: 700;
+        }
+        .example_text_portfolio {
+            position: absolute;
+            top: 20%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Логотип">
+        <span>FREEZLANCE</span>
+    </div>
+    <div class="buttons">
+        <button class="circle-button">
+            <img src="поиск.svg" width="30" height="40" alt="поиск">
+        </button>
+        <button class="circle-button">
+            <img src="Vector%20(2).svg" width="30" height="40" alt="уведомления">
+        </button>
+        <button class="circle-button">
+            <img src="категории.svg"  width="30" height="45" alt="категории">
+        </button>
+        <button class="circle-button">
+            <img src="фейс-cropped.svg" width="35" height="50" alt="профиль">
+        </button>
+    </div>
+</header>
+<div class="example_square">
+    <div class="example_square_text"><span>Новый логотип. Уникальный логотип. Разработка лого.</span></div>
+    <div class="example_portfolio">
+        <div class="example_portfolio_photo" style="text-align: center">
+            <img src="powerpoint-corporate-template-0003-btc-_5%201.png" class="portfolio-image" alt="Пример работы">
+            <div class="example_portfolio_buttons">
+                <button class="example_buttons"><img src="ep_arrow-up.svg"></button>
+                <button class="example_buttons"><img src="ep_arrow-up%20(1).svg"></button>
+            </div>
+            <div class="example_portfolio_text"><span>Портфолио</span></div>
+        </div>
+        <div class="example_portfolio_user">
+                <div class="user-main">
+                    <img src="9b29c60ed0a928d4cfdd268c0042b5ea4f7548c3%20(3).jpg" class="user-avatar" alt="Аватар">
+                    <div class="user-meta">
+                        <span class="username">sontababy</span>
+                        <div class="user-rating">3★</div>
+                    </div>
+                </div>
+            <div class="example_portfolio_user_text">
+                <span>3 дня на выполнение</span>
+            </div>
+            <div class="user_buttons">
+                <button class="user_button">Заказать за 5000р</button>
+            </div>
+        </div>
+        <div class="example_text_portfolio">
+            <h3> О задаче:</h3>
+            <div class="task-description">
+                <p>Описание: Разработаю дизайн логотипа, который разорвёт Ваших конкурентов!</p>
+                <p>Хочешь привлечь внимание и создать запоминающийся образ бренда?<br>
+                    Тогда тебе необходим уникальный логотип, ведь это – инвестиции в успех проекта!<br>
+                    Без качественной «упаковки» вашего бизнеса Вы не сможете выделиться среди конкурентов<br>
+                    и завоевать лояльность вашей аудитории</p>
+
+                <h4>Гарантии:</h4>
+                <ul class="guarantees-list">
+                    <li>Разработка логотипа до полного утверждения</li>
+                    <li>Бесплатные правки и корректировки</li>
+                    <li>Всегда на связи 24/7</li>
+                    <li>Только уникальный и креативный логотип</li>
+                    <li>100% результат, реально!</li>
+                </ul>
+
+                <h4>Что Вы получаете в итоге:</h4>
+                <p>После утверждения логотипа, Вы получаете исходники в векторном и растровом формате:<br>
+                    (EPS, AI, PDF, PNG, SVG, JPG)</p>
+                <p>Разработаю дизайн логотипа твоей мечты!<br>
+                    Напиши мне, <strong>"хочу дизайн логотипа"</strong> и я с радостью возьмусь за Ваш заказ</p>
+
+                <h4>Нужно для заказа:</h4>
+                <ul class="requirements-list">
+                    <li>Название<br><em>(Какое текстовое содержание должно быть в логотипе)</em></li>
+                    <li>Слоган<br><em>(Подпись под логотипом описывающая род деятельности Вашей компании)</em></li>
+                    <li>Основные услуги компании<br><em>(Перечислите основные услуги, которые предоставляет Ваша компания)</em></li>
+                    <li>Стилистика логотипа<br><em>(Строгий, шуточный, детский, агрессивный, спортивный)</em></li>
+                    <li>Графические элементы<br><em>(Дом, машина, животное, человек)</em></li>
+                    <li>Примеры логотипов<br><em>(Примеры логотипов, которые нравятся. Можно не из тематической области)</em></li>
+                    <li>Цветовая гамма</li>
+                </ul>
+
+                <div class="file-specs">
+                    <p><strong>Файлы:</strong> Доп. опции к логотипу.pdf</p>
+                    <p><strong>Вид:</strong> Новый логотип</p>
+                    <p><strong>Стиль:</strong> Плоский</p>
+                    <p><strong>Создание логотипа:</strong> С нуля</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
