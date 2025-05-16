@@ -24,37 +24,47 @@ export default function TaskCard({ task }) {
   };
 
   const handleClick = () => {
-    navigate(`/task/${task.id}`); 
+    navigate(`/vacancies/${task.id}`);
   };
 
   return (
     <div className="task-card" onClick={handleClick} style={{ cursor: "pointer" }}>
-      <img
-        src={`/images/${task.image}`}
-        alt={task.title}
-        className="task-card-image"
-      />
+      {task.image_url ? (
+        <img
+          src={task.image_url}
+          alt={task.title}
+          className="task-card-image"
+        />
+      ) : (
+        <div className="task-card-no-image">Нет изображения</div>
+      )}
       <div className="task-card-content">
         <h3 className="task-card-title">{task.title}</h3>
         <p className="task-card-description">{task.description}</p>
 
         <div className="task-card-info">
-          <div className="price">Цена: {task.price} ₽</div>
-          <div className="reviews">
-            Отзывы: {task.reviews} {renderStars(task.rating)}
+          <div className="price">
+            {task.salary ? `Цена: ${task.salary}` : 'Цена договорная'}
           </div>
-          <div className="deadline">
-            Срок: {deadlineLabels[task.deadline] || "Не указан"}
+          <div className="category">
+            Категория: {task.subcategory?.name}
+          </div>
+          <div className="status">
+            Статус: {task.status}
           </div>
         </div>
 
         <div className="task-card-user">
           <img
-            src={`/avatars/${task.avatar}`}
-            alt={task.username}
+            src={task.author.avatar_url || '/default-avatar.jpg'}
+            alt={task.author.username}
             className="user-avatar"
           />
-          <span className="username">{task.username}</span>
+          <span className="username">{task.author.username}</span>
+          <div className="rating">
+            {renderStars(task.author.rating_avg)}
+            <span className="rating-count">({task.author.rating_count})</span>
+          </div>
         </div>
       </div>
     </div>

@@ -1,67 +1,78 @@
 import "../assets/TaskStyle.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-
+import Header from "../components/header";
+import api from '../api/axios';
 
 export default function CreateTaskPage() {
   const [mainCategory, setMainCategory] = useState("");
   const [subCategories, setSubCategories] = useState([]);
   const [subCategory, setSubCategory] = useState("");
-
+  const [minBudget, setMinBudget] = useState(400);
+  const [maxBudget, setMaxBudget] = useState(200000);
+  const [formData, setFormData] = useState({
+    title: '',
+    description: '',
+    salary: '',
+    subcategory_id: ''
+  });
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const navigate = useNavigate();
-const handleSubmit = async (e) => {
-  e.preventDefault();
 
-  const taskData = {
-    title,
-    description,
-    category,
-    subcategory,
-    requirements,
-    date,
-    minBudget,
-    maxBudget,
-    //файл и т.д.
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = async () => {
+    try {
+      const response = await api.get('/vacancies');
+      setCategories(response.data.categories);
+    } catch (err) {
+      setError('Ошибка при загрузке категорий');
+    } finally {
+      setLoading(false);
+    }
   };
 
-  try {
-    const response = await fetch("", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(taskData),
-    });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    if (!response.ok) {
-      throw new Error("Ошибка при создании задачи");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      const submissionData = {
+        ...formData,
+        salary: `${minBudget} - ${maxBudget} ₽`,
+        subcategory_id: subCategory
+      };
+
+      const response = await api.post('/vacancies', submissionData);
+      navigate(`/vacancies/${response.data.vacancy.id}`);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Ошибка при создании вакансии');
     }
-
-    navigate("/profile");
-  } catch (error) {
-    console.error("Ошибка при отправке задачи:", error);
-    alert("Не удалось создать задачу.");
-  }
-};
-
-
-  
-  const [minBudget, setMinBudget] = useState(400);
-  const [maxBudget, setMaxBudget] = useState(1000);
-
-  const categoryMap = {
-    design: ["Логотипы", "Арт", "Иллюстрации"],
-    copywriting: ["Статьи", "Реклама", "Слоганы"],
-    social: ["Посты", "Сториз", "Реклама"],
   };
 
   const handleMainCategoryChange = (e) => {
     const value = e.target.value;
     setMainCategory(value);
-    setSubCategories(categoryMap[value] || []);
+    const category = categories.find(cat => cat.name === value);
+    if (category) {
+      setSubCategories(category.subcategories);
+    } else {
+      setSubCategories([]);
+    }
     setSubCategory("");
   };
 
@@ -75,6 +86,8 @@ const handleSubmit = async (e) => {
     setMaxBudget(val);
   };
 
+  if (loading) return <div>Загрузка...</div>;
+
   return (
     <div className="create-task-page">
       <Header />
@@ -83,22 +96,35 @@ const handleSubmit = async (e) => {
         <div className="rectangle_text">
           <span>Создание задачи</span>
         </div>
-        <form className="creation-form">
+        <form className="creation-form" onSubmit={handleSubmit}>
           <section className="form-section">
-            <h2>
-             Основное
-            </h2>
-            <textarea className="form-input" rows="5" placeholder="Название задачи" />
+            <h2>Основное</h2>
+            <textarea 
+              className="form-input" 
+              rows="5" 
+              placeholder="Название задачи" 
+              name="title" 
+              value={formData.title} 
+              onChange={handleInputChange}
+              required 
+            />
           </section>
 
           <section className="form-section">
             <h2>Рубрика</h2>
             <div className="category-group">
-              <select id="main-category" value={mainCategory} onChange={handleMainCategoryChange}>
+              <select 
+                id="main-category" 
+                value={mainCategory} 
+                onChange={handleMainCategoryChange}
+                required
+              >
                 <option value="">Основная категория</option>
-                <option value="design">Дизайн</option>
-                <option value="copywriting">Копирайтинг</option>
-                <option value="social">СоцСети</option>
+                {categories.map(category => (
+                  <option key={category.id} value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
 
               <select
@@ -106,11 +132,12 @@ const handleSubmit = async (e) => {
                 value={subCategory}
                 onChange={(e) => setSubCategory(e.target.value)}
                 disabled={!mainCategory}
+                required
               >
                 <option value="">Подкатегория</option>
-                {subCategories.map((item) => (
-                  <option key={item} value={item}>
-                    {item}
+                {subCategories.map((sub) => (
+                  <option key={sub.id} value={sub.id}>
+                    {sub.name}
                   </option>
                 ))}
               </select>
@@ -118,20 +145,20 @@ const handleSubmit = async (e) => {
           </section>
 
           <section className="form-section">
-            <h2>
-              Описание
-            </h2>
-            <textarea className="form-input" rows="5" placeholder="Подробное описание задачи" />
-            <label className="file-upload-label">
-              Прикрепить файл
-              <input type="file" hidden />
-            </label>
+            <h2>Описание</h2>
+            <textarea 
+              className="form-input" 
+              rows="5" 
+              placeholder="Подробное описание задачи" 
+              name="description" 
+              value={formData.description} 
+              onChange={handleInputChange}
+              required
+            />
           </section>
 
           <section className="form-section">
-            <h2>
-              Бюджет
-            </h2>
+            <h2>Бюджет</h2>
             <div className="range-container">
               <label>Минимальный бюджет</label>
               <input
@@ -171,24 +198,11 @@ const handleSubmit = async (e) => {
             </div>
           </section>
 
-          <section className="form-section">
-            <h2>
-              Срок
-            </h2>
-            <input type="date" className="form-input" />
-          </section>
+          {error && <div className="error-message">{error}</div>}
 
-          <section className="form-section">
-            <h2>
-              Требования
-            </h2>
-            <textarea className="form-input" rows="4" placeholder="Требования к исполнителю" />
-          </section>
-
-          <button className="submit" onClick={handleSubmit}>
+          <button className="submit" type="submit">
             Опубликовать задачу
           </button>
-
         </form>
       </div>
     </div>

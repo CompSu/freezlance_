@@ -1,28 +1,54 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "../assets/Modal.css";
+import api from '../api/axios';
 
-export default function RegisterModal({ onClose, onSwitch }) {
+export default function RegisterModal({ onClose, onSwitch, onRegisterSuccess }) {
   const [selectedRole, setSelectedRole] = useState("client");
   const [formData, setFormData] = useState({
-    name: "",
-    surname: "",
-    nick: "",
+    username: "",
+    first_name: "",
+    last_name: "",
     email: "",
-    number: "",
-    date: "",
+    phone: "",
+    birth_date: "",
     password: "",
-    repeatPassword: ""
+    confirm_password: ""
   });
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Регистрация отправлена:", formData, "роль:", selectedRole);
-    onClose();
+    
+    if (formData.password !== formData.confirm_password) {
+      setError("Пароли не совпадают");
+      return;
+    }
+
+    try {
+      const response = await api.post('/register', {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        confirm_password: formData.confirm_password,
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        phone: formData.phone,
+        birth_date: formData.birth_date
+      });
+
+      if (response.data.user) {
+        onRegisterSuccess(response.data.user);
+        onClose();
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || "Ошибка при регистрации");
+    }
   };
 
   useEffect(() => {
@@ -40,39 +66,41 @@ export default function RegisterModal({ onClose, onSwitch }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="register-container" onClick={(e) => e.stopPropagation()}>
         <h2 className="register-title">РЕГИСТРАЦИЯ</h2>
-        <form method="POST" className="auth-form" onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Имя</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
+            <label htmlFor="username">Имя пользователя</label>
+            <input type="text" id="username" name="username" value={formData.username} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="surname">Фамилия</label>
-            <input type="text" id="surname" name="surname" value={formData.surname} onChange={handleInputChange} required />
+            <label htmlFor="first_name">Имя</label>
+            <input type="text" id="first_name" name="first_name" value={formData.first_name} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="nick">Ник</label>
-            <input type="text" id="nick" name="nick" value={formData.nick} onChange={handleInputChange} required />
+            <label htmlFor="last_name">Фамилия</label>
+            <input type="text" id="last_name" name="last_name" value={formData.last_name} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="number">Телефон</label>
-            <input type="tel" id="number" name="number" value={formData.number} onChange={handleInputChange} required />
+            <label htmlFor="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="date">Дата рождения</label>
-            <input type="date" id="date" name="date" value={formData.date} onChange={handleInputChange} required />
+            <label htmlFor="birth_date">Дата рождения</label>
+            <input type="date" id="birth_date" name="birth_date" value={formData.birth_date} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
             <label htmlFor="password">Пароль</label>
             <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChange} required />
           </div>
           <div className="form-group">
-            <label htmlFor="repeatPassword">Повторите пароль</label>
-            <input type="password" id="repeatPassword" name="repeatPassword" value={formData.repeatPassword} onChange={handleInputChange} required />
+            <label htmlFor="confirm_password">Повторите пароль</label>
+            <input type="password" id="confirm_password" name="confirm_password" value={formData.confirm_password} onChange={handleInputChange} required />
           </div>
+
+          {error && <div className="error-message">{error}</div>}
 
           <div className="role-selection">
             <div
@@ -103,3 +131,4 @@ export default function RegisterModal({ onClose, onSwitch }) {
     modalRoot
   );
 }
+

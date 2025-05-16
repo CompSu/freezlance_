@@ -1,23 +1,32 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import "../assets/Modal.css";
+import api from '../api/axios';
 
-export default function LoginModal({ onClose, onSwitch  }) {
+export default function LoginModal({ onClose, onSwitch, onLoginSuccess }) {
   const [selectedRole, setSelectedRole] = useState("client");
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
     password: ""
   });
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setError(""); // Очищаем ошибку при изменении данных
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Форма входа отправлена:", formData, "роль:", selectedRole);
-    onClose();
+    try {
+      const response = await api.post('/login', formData);
+      if (response.data.user) {
+        onLoginSuccess(response.data.user);
+        onClose();
+      }
+    } catch (err) {
+      setError(err.response?.data?.error || "Ошибка при входе");
+    }
   };
 
   const modalRoot = document.getElementById("modal-root");
@@ -39,26 +48,13 @@ export default function LoginModal({ onClose, onSwitch  }) {
 
         <form className="auth-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="username">Имя</label>
+            <label htmlFor="username">Имя пользователя</label>
             <input
               type="text"
               id="username"
               name="username"
-              placeholder="Укажите свое имя"
+              placeholder="Введите имя пользователя"
               value={formData.username}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Укажите свой email"
-              value={formData.email}
               onChange={handleInputChange}
               required
             />
@@ -70,12 +66,14 @@ export default function LoginModal({ onClose, onSwitch  }) {
               type="password"
               id="password"
               name="password"
-              placeholder="Укажите свой пароль"
+              placeholder="Введите пароль"
               value={formData.password}
               onChange={handleInputChange}
               required
             />
           </div>
+
+          {error && <div className="error-message">{error}</div>}
 
           <div className="role-selection">
             <div

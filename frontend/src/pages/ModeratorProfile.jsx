@@ -1,41 +1,50 @@
-import React from "react";
-import Header from "../components/Header";
+import React, { useState, useEffect } from "react";
+import Header from "../components/header";
 import "../assets/Moder.css";
 import { Link } from "react-router-dom";
+import api from '../api/axios';
 
 const ModeratorProfile = () => {
-  const tasksForModeration = [
-    {
-      id: 1,
-      title: "Редизайн лендинга",
-      author: "Светлана",
-      createdAt: "2025-05-14 12:45",
-    },
-    {
-      id: 2,
-      title: "Разработка Telegram-бота",
-      author: "Иван",
-      createdAt: "2025-05-15 09:30",
-    },
-  ];
+  const [vacancies, setVacancies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    loadVacancies();
+  }, []);
+
+  const loadVacancies = async () => {
+    try {
+      const response = await api.get('/moderator/vacancies');
+      setVacancies(response.data.pending_vacancies);
+    } catch (err) {
+      setError(`Ошибка при загрузке вакансий: ${err.response?.data?.error || err.message}`);
+      console.error('Detailed error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <div>Загрузка...</div>;
 
   return (
     <>
       <Header />
       <div className="square">
         <div className="ModerRole">
-            <h2>Панель модератора</h2>
-            <p>Задачи на модерации:</p>
+          <h2>Панель модератора</h2>
+          <p>Задачи на модерации:</p>
         </div>
-        {tasksForModeration.length > 0 ? (
+        {error && <p className="error-message">{error}</p>}
+        {vacancies.length > 0 ? (
           <div className="moderation-list">
-            {tasksForModeration.map((task) => (
-              <div key={task.id} className="moderation-item">
-                <h3>{task.title}</h3>
-                <p>Автор: {task.author}</p>
-                <p>Дата: {task.createdAt}</p>
+            {vacancies.map((vacancy) => (
+              <div key={vacancy.id} className="moderation-item">
+                <h3>{vacancy.title}</h3>
+                <p>Автор: {vacancy.author.username}</p>
+                <p>Дата: {new Date(vacancy.created_at).toLocaleString()}</p>
                 <div className="actions">
-                  <Link to={`/moderation/${task.id}`} className="button">
+                  <Link to={`/moderation`} className="button">
                     Просмотреть
                   </Link>
                 </div>

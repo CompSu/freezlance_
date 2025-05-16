@@ -1,54 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../assets/CategoryPage.css";
+import api from '../api/axios';
 
 const categoryMap = {
-  design: [
-    "logoandbraiding",
-    "presentationsandinfographics",
-    "artandillustrations",
-    "interiorandexterior",
-    "processingandediting",
-    "advertisement",
-    "polygraphy",
+  "Дизайн": [
+    "Логотипы",
+    "Графика",
+    "UI/UX",
+    "3D-моделирование",
+    "Обработка и редактирование",
+    "Реклама",
+    "Полиграфия"
   ],
-  development: [
-    "webandmobiledevelopment",
-    "desktop",
-    "scripts",
-    "gamedev",
-    "servers",
-    "test"
+  "Разработка": [
+    "Веб-разработка",
+    "Мобильные приложения",
+    "Игры",
+    "Базы данных",
+    "Скрипты и боты",
+    "Тестирование"
   ],
-  social: [
-    "smm",
-    "clients_db",
-    "email",
-    "marketplaces",
-    "marketing"
+  "Маркетинг": [
+    "SEO",
+    "SMM",
+    "Контекстная реклама",
+    "Аналитика"
   ],
-  business: [
-    "accounting",
-    "calls",
-    "legal",
-    "sites_sale",
-    "hr",
-    "presentation",
-    "construction"
+  "Тексты": [
+    "Копирайтинг",
+    "Рерайтинг",
+    "Переводы",
+    "Редактирование",
+    "Контент",
+    "Бизнес-тексты",
+    "Набор текста",
+    "Резюме"
   ],
-  media: [
-    "audio",
-    "music",
-    "audio_edit",
-    "video",
-    "animation"
-  ],    
-  texts: [
-    "content",
-    "translation",
-    "business_text",
-    "typing",
-    "cv"
-  ],   
+  "Бизнес": [
+    "Бухгалтерия",
+    "Обзвоны",
+    "Юридические услуги",
+    "Продажа сайтов",
+    "HR",
+    "Презентации",
+    "Строительство"
+  ],
+  "Медиа": [
+    "Аудио",
+    "Музыка",
+    "Аудиомонтаж",
+    "Видео",
+    "Анимация"
+  ]
 };
 
 export default function FilterPanel({ items, setFilteredItems, currentCategory }) {
@@ -57,10 +60,12 @@ export default function FilterPanel({ items, setFilteredItems, currentCategory }
   const [maxPrice, setMaxPrice] = useState("");
   const [reviews, setReviews] = useState("0");
   const [deadline, setDeadline] = useState("any");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleApplyFilters = () => {
-    const min = parseInt(minPrice) || 0;
-    const max = parseInt(maxPrice) || Infinity;
+    const min = parseInt(minPrice) || 400;
+    const max = parseInt(maxPrice) || 200000;
     const reviewCount = parseInt(reviews) || 0;
 
     const deadlineMap = {
@@ -73,70 +78,32 @@ export default function FilterPanel({ items, setFilteredItems, currentCategory }
     const validSubcategories = categoryMap[currentCategory] || [];
 
     const filtered = items.filter(item => {
-      const itemCategory = item.category;
-      const itemPrice = parseInt(item.price);
-      const itemReviews = parseInt(item.reviews);
+      const itemSubcategory = item.subcategory?.name;
+      const itemPrice = parseInt(item.salary) || 0;
+      const itemReviews = item.author?.rating_count || 0;
       const itemDeadline = deadlineMap[item.deadline] || parseInt(item.deadline);
 
       const categoryMatch =
         category === "all"
-          ? validSubcategories.includes(itemCategory)
-          : itemCategory === category;
+          ? validSubcategories.includes(itemSubcategory)
+          : itemSubcategory === category;
 
-      return (
-        categoryMatch &&
-        itemPrice >= min &&
-        itemPrice <= max &&
-        itemReviews >= reviewCount &&
-        deadlineMap[deadline] >= itemDeadline
-      );
+      const priceMatch = (!min || itemPrice >= min) && (!max || itemPrice <= max);
+      const reviewsMatch = itemReviews >= reviewCount;
+
+      return categoryMatch && priceMatch && reviewsMatch && deadlineMap[deadline] >= itemDeadline;
     });
 
     setFilteredItems(filtered);
   };
 
+  useEffect(() => {
+    handleApplyFilters();
+  }, [minPrice, maxPrice, reviews, deadline]);
+
   const subcategoriesOptions = currentCategory
     ? categoryMap[currentCategory] || []
     : [];
-
-  const subcategoryLabels = {
-    logoandbraiding: "Логотипы и брендинг",
-    presentationsandinfographics: "Презентации и инфографика",
-    artandillustrations: "Арт и иллюстрация",
-    webandmobiledevelopment: "Веб и моб. разработка",
-    smm: "Соцсети и SMM",
-    interiorandexterior: "Интерьер и экстерьер",
-    processingandediting: "Обработка и редактирование",
-    advertisement: "Реклама",
-    polygraphy: "Полиграфия",
-    webdev: "Веб разработка",
-    desktop: "Декстоп и программирование",
-    scripts: "Скрипты и боты",
-    gamedev: "Игры",
-    servers: "Сервера и хостинг",
-    test: "Тест и помощь",
-    clients_db: "База данных клиентов",
-    email: "E-mail рассылки",
-    marketplaces: "Маркетплейсы и доски объявлений",
-    marketing: "Маркетинг и PR",
-    accounting: "Бухгалтерия",
-    calls: "Обзвоны",
-    legal: "Юридическая помощь",
-    sites_sale: "Продажа сайтов",
-    hr: "Подбор персонала",
-    presentation: "Презентация",
-    construction: "Стройка",
-    audio: "Аудиозапись",
-    music: "Музыка",
-    audio_edit: "Редактирование аудио",
-    animation: "Анимация",
-    video: "Видеоролики",
-    content: "Тексты для сайта",
-    translation: "Переводы",
-    business_text: "Бизнес тексты",
-    typing: "Набор текста",
-    cv: "Резюме"
-  };
 
   return (
     <div className="filters">
@@ -148,12 +115,11 @@ export default function FilterPanel({ items, setFilteredItems, currentCategory }
           <option value="all">Все подкатегории</option>
           {subcategoriesOptions.map((subcat) => (
             <option key={subcat} value={subcat}>
-              {subcategoryLabels[subcat] || subcat}
+              {subcat}
             </option>
           ))}
         </select>
       </div>
-
 
       <div className="filter-group">
         <h3>Цена</h3>
@@ -212,6 +178,8 @@ export default function FilterPanel({ items, setFilteredItems, currentCategory }
       <div className="content_apply">
         <span>Если вы не нашли нужную задачу, вы можете создать собственную в профиле</span>
       </div>
+
+      {error && <div className="error-message">{error}</div>}
     </div>
   );
 }

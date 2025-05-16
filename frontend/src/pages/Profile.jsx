@@ -1,73 +1,188 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
+import { Alert, Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import api from '../api/axios';
 import "../assets/styleProfile.css";
-import { Link, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import { Link } from "react-router-dom";
+import Header from "../components/header";
 
-function Profile() {
-  const [user, setUser] = useState({
-    username: 'sontababy',
-    name: 'Ульяна',
-    skills: 'Веб-дизайн, фотошоп',
-    city: 'Ханты-Мансийск',
-    email: 'udikolenko@inbox.ru',
-  });
+const Profile = () => {
+    const [profile, setProfile] = useState({
+        approved_vacancies: [],
+        pending_vacancies: [],
+        skills: [],
+        portfolio_items: []
+    });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const [editMode, setEditMode] = useState(false);
+    const [formData, setFormData] = useState({
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        about: '',
+        birth_date: ''
+    });
+    const [newSkill, setNewSkill] = useState({
+        name: '',
+        level: 1,
+        category: ''
+    });
+    const navigate = useNavigate();
+    const [reviews, setReviews] = useState({ positive: [], negative: [] });
+    const [reviewType, setReviewType] = useState("positive");
+    const [portfolioItems, setPortfolioItems] = useState([]);
+    const [avatarFile, setAvatarFile] = useState(null);
+    const fileInputRef = useRef(null);
 
-  const [editedUser, setEditedUser] = useState(user);
-  const [isEditing, setIsEditing] = useState(false);
+    useEffect(() => {
+        loadProfile();
+    }, []);
+
+    useEffect(() => {
+        if (profile?.username) {
+            loadReviews();
+            loadPortfolio();
+        }
+    }, [profile?.username]);
+
+    const loadProfile = async () => {
+        try {
+            const response = await api.get('/profile');
+            if (response.data) {
+                setProfile({
+                    ...response.data,
+                    approved_vacancies: response.data.approved_vacancies || [],
+                    pending_vacancies: response.data.pending_vacancies || [],
+                    skills: response.data.skills || [],
+                    portfolio_items: response.data.portfolio_items || []
+                });
+                setFormData({
+                    first_name: response.data.first_name || '',
+                    last_name: response.data.last_name || '',
+                    email: response.data.email || '',
+                    phone: response.data.phone || '',
+                    about: response.data.about || '',
+                    birth_date: response.data.birth_date || ''
+                });
+            }
+        } catch (err) {
+            if (err.response?.status === 401) {
+                navigate('/');
+            } else {
+                setError('Ошибка при загрузке профиля');
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const loadReviews = async () => {
+        try {
+            const response = await api.get(`/users/${profile.username}/reviews`);
+            const allReviews = response.data.reviews;
+            
+            // Разделяем отзывы на положительные (4-5) и отрицательные (1-3)
+            const positive = allReviews.filter(review => review.rating >= 4);
+            const negative = allReviews.filter(review => review.rating < 4);
+            
+            setReviews({
+                positive,
+                negative
+            });
+        } catch (err) {
+            setError('Ошибка при загрузке отзывов');
+        }
+    };
+
+    const loadPortfolio = async () => {
+        try {
+            const response = await api.get('/profile/portfolio');
+            setPortfolioItems(response.data.portfolio_items);
+        } catch (err) {
+            setError('Ошибка при загрузке портфолио');
+        }
+    };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setEditedUser((prev) => ({ ...prev, [name]: value }));
-  };
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
-  const handleSave = () => {
-    setUser(editedUser); // Пока локально
-    setIsEditing(false);
-  };
+    const handleSkillInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewSkill(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
 
-  const [projects, setProjects] = useState([
-    { id: 1, title: "Лендинг для бренда", category: "design" },
-    { id: 2, title: "Telegram-бот", category: "code" },
-    { id: 3, title: "Редизайн логотипа", category: "branding" },
-    { id: 4, title: "Лендинг для бренда", category: "design" },
-    { id: 5, title: "Telegram-бот", category: "code" },
-    { id: 6, title: "Редизайн логотипа", category: "branding" },
-    { id: 1, title: "Лендинг для бренда", category: "design" },
-    { id: 2, title: "Telegram-бот", category: "code" },
-    { id: 3, title: "Редизайн логотипа", category: "branding" },
-    { id: 4, title: "Лендинг для бренда", category: "design" },
-    { id: 5, title: "Telegram-бот", category: "code" },
-    { id: 6, title: "Редизайн логотипа", category: "branding" }
-  ]);
+    const handleAddSkill = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await api.post('/profile/skills', newSkill);
+            setProfile(prev => ({
+                ...prev,
+                skills: [...prev.skills, response.data.skill]
+            }));
+            setNewSkill({ name: '', level: 1, category: '' });
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при добавлении навыка');
+        }
+    };
 
-  const [reviewType, setReviewType] = useState("positive");
+    const handleSubmit = async () => {
+        try {
+            const response = await api.put('/profile', formData);
+            setProfile(prev => ({
+                ...prev,
+                ...response.data.user
+            }));
+            setEditMode(false);
+            setError('');
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при обновлении профиля');
+        }
+    };
 
-  const reviews = {
-    positive: [
-      {
-        id: 1,
-        userId: 101,
-        userName: "Артём",
-        userAvatar: "/фейс-cropped.svg",
-        text: "Отличная работа! Всё сделано в срок и очень качественно"
-      },
-      {
-        id: 2,
-        userId: 102,
-        userName: "Мария",
-        userAvatar: "/фейс-cropped.svg",
-        text: "Приятно работать с профессионалом. Рекомендую!"
-      }
-    ],
-    negative: [
-      {
-        id: 3,
-        userId: 103,
-        userName: "Сергей",
-        userAvatar:"/фейс-cropped.svg",
-        text: "Проект задержался и не все правки были учтены."
-      }
-    ]
+    const handleSkillDelete = async (skillId) => {
+        try {
+            await api.delete('/profile/skills', { data: { skill_id: skillId } });
+            setProfile(prev => ({
+                ...prev,
+                skills: prev.skills.filter(skill => skill.id !== skillId)
+            }));
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при удалении навыка');
+        }
+    };
+
+    const handlePortfolioAdd = async (itemData) => {
+        try {
+            const response = await api.post('/profile/portfolio', itemData);
+            setProfile(prev => ({
+                ...prev,
+                portfolio_items: [...prev.portfolio_items, response.data.portfolio_item]
+            }));
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при добавлении работы в портфолио');
+        }
+    };
+
+    const handlePortfolioDelete = async (itemId) => {
+        try {
+            await api.delete('/profile/portfolio', { data: { item_id: itemId } });
+            setProfile(prev => ({
+                ...prev,
+                portfolio_items: prev.portfolio_items.filter(item => item.id !== itemId)
+            }));
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при удалении работы из портфолио');
+        }
   };
 
   const currentReviews = reviews[reviewType];
@@ -85,150 +200,291 @@ function Profile() {
     }
   };
 
-  const navigate = useNavigate();
-
   const handleOpenTask = (id) => {
     navigate(`/task/${id}`);
+  };
+
+  const handleAvatarChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const formData = new FormData();
+        formData.append('avatar', file);
+
+        try {
+            const response = await api.post('/profile/avatar', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+            setProfile(prev => ({
+                ...prev,
+                avatar_url: response.data.avatar_url
+            }));
+            setAvatarFile(file);
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при загрузке аватара');
+        }
+    }
+  };
+
+  const handleAvatarClick = () => {
+    fileInputRef.current.click();
+  };
+
+    if (loading) return <div>Загрузка...</div>;
+    if (!profile) return <div>Профиль не найден</div>;
+
+  const renderApplications = (applications) => {
+    if (!applications || applications.length === 0) {
+        return <p>Нет заявок</p>;
+    }
+
+    return applications.map(application => (
+        <div key={application.id} className="application-card mb-3">
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">{application.vacancy.title}</h5>
+                    <p className="card-text">{application.message}</p>
+                    <p className="card-text">
+                        <small className="text-muted">Статус: {application.status}</small>
+                    </p>
+                    {application.status === 'accepted' && !application.contact_info && (
+                        <Link 
+                            to={`/applications/${application.id}/accept`}
+                            className="btn btn-primary"
+                        >
+                            Принять предложение
+                        </Link>
+                    )}
+                    {application.contact_info && (
+                        <div className="mt-2">
+                            <strong>Контактная информация:</strong>
+                            <p>{application.contact_info}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    ));
   };
 
   return (
     <>
       <Header />
+            {error && <Alert variant="danger" className="error-alert">{error}</Alert>}
 
       <div className="square">
-        <div className="square_photo">
+        <div className="square_photo" onClick={handleAvatarClick}>
+          {profile.avatar_url ? (
+            <img 
+              src={`http://localhost:5000${profile.avatar_url}`} 
+              alt="фото профиля" 
+              className="profile-avatar"
+            />
+          ) : (
+            <>
           <img src="/cam.svg" width="35" height="50" alt="фото профиля" />
           <button className="square_photo_buttons">Загрузить фотографию</button>
+            </>
+          )}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleAvatarChange}
+            accept="image/*"
+            style={{ display: 'none' }}
+          />
         </div>
         <div className="square_photo_content">
-          <span>{user.username}</span>
+                    <span>{profile.username}</span>
         </div>
 
         <div className="square_inform">
           <div className="square_inform_content">
+                        {/* Основная информация */}
+                        <div className="basic-info">
             <span>
               Имя пользователя:{" "}
-              {isEditing ? (
+                                {editMode ? (
                 <input
                   className="profile-input"
                   type="text"
-                  name="name"
-                  value={editedUser.name}
+                                        name="first_name"
+                                        value={formData.first_name}
                   onChange={handleInputChange}
                 />
               ) : (
-                <span className="server-text">{user.name}</span>
+                                    <span className="server-text">{profile.first_name}</span>
               )}
+                            </span>
               <br />
-            </span>
             <span>
-              Информация о навыках пользователя:{" "}
-              {isEditing ? (
+                                Email:{" "}
+                                {editMode ? (
                 <input
                   className="profile-input"
-                  type="text"
-                  name="skills"
-                  value={editedUser.skills}
+                                        type="email"
+                                        name="email"
+                                        value={formData.email}
                   onChange={handleInputChange}
                 />
               ) : (
-                <span className="server-text">{user.skills}</span>
+                                    <span className="server-text">{profile.email}</span>
               )}
+                            </span>
               <br />
-            </span>
             <span>
-              Город:{" "}
-              {isEditing ? (
+                                Телефон:{" "}
+                                {editMode ? (
                 <input
                   className="profile-input"
-                  type="text"
-                  name="city"
-                  value={editedUser.city}
+                                        type="tel"
+                                        name="phone"
+                                        value={formData.phone}
                   onChange={handleInputChange}
                 />
               ) : (
-                <span className="server-text">{user.city}</span>
+                                    <span className="server-text">{profile.phone}</span>
               )}
+                            </span>
               <br />
-            </span>
             <span>
-              Почта:{" "}
-              {isEditing ? (
-                <input
+                                О себе:{" "}
+                                {editMode ? (
+                                    <textarea
                   className="profile-input"
-                  type="email"
-                  name="email"
-                  value={editedUser.email}
+                                        name="about"
+                                        value={formData.about}
                   onChange={handleInputChange}
                 />
               ) : (
-                <span className="server-text">{user.email}</span>
+                                    <span className="server-text">{profile.about}</span>
               )}
-              <br />
             </span>
           </div>
-          <button
-            className="square_inform_buttons"
-            onClick={() => (isEditing ? handleSave() : setIsEditing(true))}
-          >
-            <span>{isEditing ? "Сохранить" : "Настройки профиля"}</span>
-          </button>
+
+                        {/* Навыки */}
+                        <div className="skills-section">
+                            <h3 className="section-title">Навыки</h3>
+                            <div className="skills-list">
+                                {profile.skills?.length > 0 ? (
+                                    profile.skills.map(skill => (
+                                        <div key={skill.id} className="skill-item">
+                                            <span>{skill.name} - Уровень: {skill.level}</span>
+                                            {editMode && (
+                                                <Button 
+                                                    variant="danger" 
+                                                    size="sm"
+                                                    onClick={() => handleSkillDelete(skill.id)}
+                                                >
+                                                    ✕
+                                                </Button>
+                                            )}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <span className="server-text">Нет добавленных навыков</span>
+                                )}
+                                {editMode && (
+                                    <Form onSubmit={handleAddSkill} className="add-skill-form">
+                                        <Form.Group>
+                                            <Form.Control
+                                                type="text"
+                                                name="name"
+                                                value={newSkill.name}
+                                                onChange={handleSkillInputChange}
+                                                placeholder="Название навыка"
+                                                className="profile-input"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Control
+                                                type="number"
+                                                name="level"
+                                                value={newSkill.level}
+                                                onChange={handleSkillInputChange}
+                                                min="1"
+                                                max="5"
+                                                className="profile-input"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Control
+                                                type="text"
+                                                name="category"
+                                                value={newSkill.category}
+                                                onChange={handleSkillInputChange}
+                                                placeholder="Категория"
+                                                className="profile-input"
+                                            />
+                                        </Form.Group>
+                                        <Button type="submit" variant="primary" size="sm">
+                                            Добавить навык
+                                        </Button>
+                                    </Form>
+                                )}
+                            </div>
         </div>
 
-        <div className="square_portfolio">
-          <div className="square_portfolio_content">
-            <span>Предыдущие проекты</span>
+                        {/* Вакансии */}
+                        <div className="vacancies-section">
+                            <h3 className="section-title">Мои вакансии</h3>
+                            <div className="active-vacancies">
+                                <h6>Активные вакансии</h6>
+                                {profile.approved_vacancies?.length > 0 ? (
+                                    profile.approved_vacancies.map(vacancy => (
+                                        <div key={vacancy.id} className="vacancy-item">
+                                            {vacancy.title}
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>Нет активных вакансий</p>
+                                )}
+                            </div>
+                            <div className="pending-vacancies">
+                                <h6>На модерации</h6>
+                                {profile.pending_vacancies?.length > 0 ? (
+                                    profile.pending_vacancies.map(vacancy => (
+                                        <div key={vacancy.id} className="vacancy-item">
+                                            {vacancy.title} (На модерации)
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p>Нет вакансий на модерации</p>
+                                )}
+                            </div>
           </div>
 
-          <button
-            className="square_portfolio_buttons1"
-            onClick={() =>
-              document.getElementById("portfolioScroll").scrollBy({ left: -500, behavior: 'smooth' })
-            }
-          >
-            <img src="/стрелка.svg" alt="стрелка влево" />
-          </button>
-
-          <div className="portfolio-scroll-container" id="portfolioScroll">
-            {projects.map((project) => (
+                        {/* Портфолио */}
+                        <div className="portfolio-section">
+                            <h3 className="section-title">Портфолио</h3>
+                            <div className="portfolio-scroll-container">
+                                {portfolioItems.map((item) => (
               <div
                 className="project-card"
-                key={project.id}
-                onClick={() => handleOpenTask(project.id)}
+                                        key={item.id}
+                                        onClick={() => handleOpenTask(item.id)}
                 style={{ cursor: "pointer" }}
               >
                 <img
-                  src={getImageByCategory(project.category)}
-                  alt={project.title}
+                                            src={getImageByCategory(item.category)}
+                                            alt={item.title}
                   className="project-image"
                 />
-                <div className="project-title">{project.title}</div>
+                                        <div className="project-title">{item.title}</div>
               </div>
             ))}
           </div>
-
-
-          <button
-            className="square_portfolio_buttons2"
-            onClick={() =>
-              document.getElementById("portfolioScroll").scrollBy({ left: 500, behavior: 'smooth' })
-            }
-          >
-            <img src="/стрелка.svg" alt="стрелка вправо" style={{ transform: "rotate(180deg)" }}/>
-          </button>
-
           <Link to="/create-task">
             <button className="square_portfolio_buttons3">
-              <span>Добавить новую задачу</span>
+                                    <span>Добавить новую работу</span>
             </button>
           </Link>
         </div>
 
-        <div className="square_reiting">
-          <div className="div-horizontal-scroll">
-            <span>Рейтинг и отзывы</span>
-          </div>
-
+                        {/* Отзывы */}
+                        <div className="reviews-section">
+                            <h3 className="section-title">Отзывы</h3>
           <div className="rating-buttons">
             <button className="plus" onClick={() => setReviewType("positive")}>
               Положительные
@@ -237,7 +493,6 @@ function Profile() {
               Отрицательные
             </button>
           </div>
-
           <div className="review-list">
             {currentReviews.map((review) => (
               <div key={review.id} className="review-card">
@@ -250,13 +505,20 @@ function Profile() {
                 </div>
               </div>
             ))}
+                            </div>
           </div>
 
-          <button className="square_review_buttons">Добавить отзыв</button>
+                        <button
+                            className="square_inform_buttons"
+                            onClick={() => (editMode ? handleSubmit() : setEditMode(true))}
+                        >
+                            <span>{editMode ? "Сохранить" : "Настройки профиля"}</span>
+                        </button>
+                    </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Profile;

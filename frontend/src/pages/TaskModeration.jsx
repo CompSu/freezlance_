@@ -1,105 +1,118 @@
-import Header from "../components/Header";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Container, Card, Button, Form, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import api from '../api/axios';
+import Header from "../components/header";
 import "../assets/Moder.css";
 
-export default function ModerateVacancyPage() {
-  const { id } = useParams(); // получаем id из URL
-  const [rejectionReason, setRejectionReason] = useState("");
+const TaskModeration = () => {
+    const [vacancies, setVacancies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
 
-  // Заглушка нескольких вакансий
-  const fakeVacancies = {
-    1: {
-      title: "Редизайн лендинга",
-      author: { username: "Светлана" },
-      created_at: "14.05.2025 12:45",
-      salary: "20 000 ₽",
-      description: "Нужно обновить дизайн существующего лендинга. Требуется современный минимализм.",
-    },
-    2: {
-      title: "Разработка Telegram-бота",
-      author: { username: "Иван" },
-      created_at: "15.05.2025 09:30",
-      salary: "25 000 ₽",
-      description: "Бот для уведомлений и автосообщений. Желательно с панелью админа.",
-    }
-  };
+    useEffect(() => {
+        loadVacancies();
+    }, []);
 
-  const vacancy = fakeVacancies[id];
+    const loadVacancies = async () => {
+        try {
+            const response = await api.get('/moderator/vacancies');
+            setVacancies(response.data.pending_vacancies);
+        } catch (err) {
+            if (err.response?.status === 403) {
+                navigate('/');
+            } else {
+                setError('Ошибка при загрузке вакансий');
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
-  const handleSubmit = (e, action) => {
-    e.preventDefault();
-    console.log("ID вакансии:", id);
-    console.log("Действие:", action);
-    console.log("Причина отклонения:", rejectionReason);
-    // Здесь axios-запрос
-  };
+    const handleModerate = async (vacancyId, action, rejectionReason = '') => {
+        try {
+            await api.put(`/moderator/vacancies/${vacancyId}`, {
+                action,
+                rejection_reason: rejectionReason
+            });
+            
+            // Обновляем список вакансий после модерации
+            setVacancies(vacancies.filter(v => v.id !== vacancyId));
+        } catch (err) {
+            setError(err.response?.data?.error || 'Ошибка при модерации вакансии');
+        }
+    };
 
-  if (!vacancy) {
+    if (loading) return <div>Загрузка...</div>;
+
     return (
-      <>
-        <Header />
-        <div className="main-content">
-          <div className="ModContainer">
-            <h2 className="page-title">Вакансия не найдена</h2>
-            <p>Проверьте правильность ссылки или вернитесь назад.</p>
-          </div>
-        </div>
-      </>
+        <>
+            <Header />
+            <Container className="py-4">
+                <h2>Модерация вакансий</h2>
+                
+                {error && <Alert variant="danger">{error}</Alert>}
+                
+                {vacancies.length === 0 ? (
+                    <Alert variant="info">Нет вакансий для модерации</Alert>
+                ) : (
+                    vacancies.map(vacancy => (
+                        <Card key={vacancy.id} className="mb-3">
+                            <Card.Body>
+                                <Card.Title>{vacancy.title}</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">
+                                    Автор: {vacancy.author.username}
+                                </Card.Subtitle>
+                                
+                                <Card.Text>
+                                    {vacancy.description}
+                                </Card.Text>
+                                
+                                <div className="mb-3">
+                                    <strong>Категория:</strong> {vacancy.subcategory.name}
+                                </div>
+                                
+                                {vacancy.salary && (
+                                    <div className="mb-3">
+                                        <strong>Бюджет:</strong> {vacancy.salary}
+                                    </div>
+                                )}
+                                
+                                <div className="d-flex gap-2">
+                                    <Button 
+                                        variant="success"
+                                        onClick={() => handleModerate(vacancy.id, 'approve')}
+                                    >
+                                        Одобрить
+                                    </Button>
+                                    
+                                    <Form 
+                                        className="d-flex gap-2"
+                                        onSubmit={(e) => {
+                                            e.preventDefault();
+                                            const reason = e.target.elements.reason.value;
+                                            handleModerate(vacancy.id, 'reject', reason);
+                                        }}
+                                    >
+                                        <Form.Control
+                                            type="text"
+                                            name="reason"
+                                            placeholder="Причина отклонения"
+                                            required
+                                        />
+                                        <Button variant="danger" type="submit">
+                                            Отклонить
+                                        </Button>
+                                    </Form>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    ))
+                )}
+            </Container>
+        </>
     );
-  }
+};
 
-  return (
-    <>
-      <Header />
-      <div className="main-content">
-        <div className="ModContainer">
-          <h2 className="page-title">Модерация вакансии</h2>
-
-          <div className="vacancy-details">
-            <h3 className="vacancy-title">{vacancy.title}</h3>
-            <p className="vacancy-meta">Автор: <b>{vacancy.author.username}</b></p>
-            <p className="vacancy-meta">Дата: <b>{vacancy.created_at}</b></p>
-            {vacancy.salary && <p className="vacancy-meta">Зарплата: <b>{vacancy.salary}</b></p>}
-            <div className="vacancy-description">
-              {vacancy.description}
-            </div>
-          </div>
-
-          <form className="moderation-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="form-group">
-              <label htmlFor="rejection_reason">Причина отклонения (если отклоняете):</label>
-              <textarea
-                id="rejection_reason"
-                name="rejection_reason"
-                rows="3"
-                value={rejectionReason}
-                onChange={(e) => setRejectionReason(e.target.value)}
-              />
-            </div>
-
-            <div className="moderation-actions">
-              <button
-                type="submit"
-                className="button approve"
-                onClick={(e) => handleSubmit(e, "approve")}
-              >
-                Одобрить
-              </button>
-              <button
-                type="submit"
-                className="button reject"
-                onClick={(e) => handleSubmit(e, "reject")}
-              >
-                Отклонить
-              </button>
-              <button className="button back" onClick={() => window.history.back()}>
-                Назад
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-}
+export default TaskModeration;

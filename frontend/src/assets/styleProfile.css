@@ -16,6 +16,12 @@
     border: 7px solid #1f6485;
     border-radius: 5%;
     background-color: #309cce;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.square_photo:hover {
+    opacity: 0.8;
 }
 
 .square_photo img {
@@ -119,13 +125,14 @@
     top: 120px;
     margin-left: 20%;
     width: 70%;
-    height: 20%;
+    min-height: 600px;
+    height: auto;
+    padding-bottom: 30px;
 }
 
 .square_inform_content {
-    position: absolute;
-    top: 20px;
-    left: 30px;
+    position: relative;
+    padding: 20px 30px;
     font-family: "Manrope", sans-serif;
     font-size: 14px;
 }
@@ -169,7 +176,6 @@ border-color:#000000;
  border-radius:5px;
  border-width:2px;
 }
-
 
 .square_portfolio_buttons3,
 .square_review_buttons,
@@ -358,7 +364,9 @@ border-color:#000000;
 .portfolio-scroll-container {
     display: flex;
     gap: 20px;
-    margin: 0 60px;
+    margin: 10px 0;
+    overflow-x: auto;
+    padding: 10px 0;
 }
 
 .portfolio-scroll-wrapper::-webkit-scrollbar,
@@ -379,36 +387,15 @@ border-color:#000000;
 }
 
 .review-list {
-    display: flex;
-    flex-direction: column;
     position: relative;
-    top: 43px;
-    gap: 16px;
     max-height: 300px;
-    height: 148px;
     overflow-y: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.review-list::-webkit-scrollbar {
-    display: none;
+    margin-top: 15px;
 }
 
 .review-card {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    background-color: white;
-    padding: 12px;
-    border-radius: 12px;
-    width: 1049px;
-    margin-left: 18px;
-    margin-top: -5px;
-    position: relative;
-    top: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin: 10px 0;
+    width: auto;
 }
 
 .review-avatar,
@@ -418,7 +405,6 @@ border-color:#000000;
     border-radius: 50%;
     margin-top: 6px;
 }
-
 
 .review-content {
     flex: 1;
@@ -443,4 +429,121 @@ border-color:#000000;
 
 .square_review_buttons {
     top: 220px;
+}
+
+.add-skill-form {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.add-skill-form .form-group {
+    margin-bottom: 10px;
+}
+
+.add-skill-form .profile-input {
+    margin-bottom: 8px;
+    background-color: white;
+}
+
+.add-skill-form button {
+    margin-top: 10px;
+    width: 100%;
+    background: linear-gradient(to right, #309cce, #104fae);
+    border: none;
+}
+
+.add-skill-form button:hover {
+    background: linear-gradient(to right, #2580aa, #0d3d8a);
+}
+
+.vacancies-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.portfolio-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.reviews-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.section-title {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.basic-info {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.basic-info span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.skills-section {
+    margin-top: 20px;
+}
+
+.skill-item {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vacancy-item {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.review-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.review-content {
+    color: white;
+}
+
+.review-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
 }

@@ -1,172 +1,241 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import RegisterModal from './RegisterModal';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import LoginModal from './LoginModal';
+import RegisterModal from './RegisterModal';
+import api from '../api/axios';
 
-export default function Header() {
-  const [query, setQuery] = useState("");
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [activeModal, setActiveModal] = useState(null);
+const categories = [
+    "Дизайн",
+    "Разработка",
+    "Маркетинг",
+    "Тексты",
+    "Бизнес",
+    "Медиа"
+];
 
-  const categoriesButtonRef = useRef(null);
-  const notificationsButtonRef = useRef(null);
+const Header = () => {
+    const [showLoginModal, setShowLoginModal] = useState(false);
+    const [showRegisterModal, setShowRegisterModal] = useState(false);
+    const [user, setUser] = useState(null);
+    const [showCategories, setShowCategories] = useState(false);
+    const [showNotifications, setShowNotifications] = useState(false);
+    const [showAuthDropdown, setShowAuthDropdown] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+    const navigate = useNavigate();
 
-  const isAuthenticated = true; // для бэка
-  const userRole = "moderator"; // или "user"
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
 
+    useEffect(() => {
+        if (user) {
+            loadNotifications();
+        }
+    }, [user]);
 
-  const handleSearch = () => {
-    console.log("Поиск запроса:", query);
-  };
+    const loadNotifications = async () => {
+        try {
+            const response = await api.get('/notifications');
+            setNotifications(response.data.notifications);
+        } catch (error) {
+            console.error('Ошибка при загрузке уведомлений:', error);
+        }
+    };
 
-  const toggleCategories = (e) => {
-    e.stopPropagation();
-    setIsCategoriesOpen((prev) => !prev);
-  };
+    const handleLoginSuccess = (userData) => {
+        setUser(userData);
+        localStorage.setItem('user', JSON.stringify(userData));
+        setShowLoginModal(false);
+    };
 
-  const toggleNotifications = (e) => {
-    e.stopPropagation();
-    setIsNotificationsOpen((prev) => !prev);
-  };
+    const handleRegisterSuccess = (userData) => {
+        setShowLoginModal(true);
+        setShowRegisterModal(false);
+    };
 
-  const closeDropdowns = () => {
-    setIsCategoriesOpen(false);
-    setIsNotificationsOpen(false);
-    setIsProfileMenuOpen(false);
-  };
+    const handleLogout = async () => {
+        try {
+            await api.post('/logout');
+            localStorage.removeItem('user');
+            setUser(null);
+            navigate('/');
+        } catch (error) {
+            console.error('Ошибка при выходе:', error);
+        }
+    };
 
-  useEffect(() => {
-    document.addEventListener("click", closeDropdowns);
-    return () => document.removeEventListener("click", closeDropdowns);
-  }, []);
+    const handleSearch = (e) => {
+        if (e.key === 'Enter') {
+            const query = e.target.value;
+            navigate(`/search?q=${encodeURIComponent(query)}`);
+        }
+    };
 
-  const openLogin = () => setActiveModal("login");
-  const openRegister = () => setActiveModal("register");
-  const closeModal = () => setActiveModal(null);
+    const handleCategoryClick = (category) => {
+        setShowCategories(false);
+        navigate(`/category/${encodeURIComponent(category)}`);
+    };
 
-  return (
-    <div className={`main-content ${activeModal ? "blurred" : ""}`}>
-      <header>
-        <div className="logo">
-          <Link to="/" className="logo">
-            <img src="/logo.png" alt="Логотип" />
-            <span>FREEZLANCE</span>
-          </Link>
-        </div>
+    return (
+        <header>
+            <Link to="/" className="logo">
+                <img src="/logo.png" alt="Freezlance" />
+                <span>Freezlance</span>
+            </Link>
 
-        <div className="buttons">
-          <div className="search-wrapper">
-            <div className="search-container">
-              <input
-                type="text"
-                className="search-input"
-                placeholder="Найти услугу"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-              <button className="search-button" onClick={handleSearch}>
-                <img src="/поиск.svg" alt="Поиск" className="search-icon" />
-              </button>
-            </div>
-          </div>
-
-          <div className="notification-container">
-            <button
-              ref={notificationsButtonRef}
-              className={`circle-button notification-button ${isNotificationsOpen ? "active" : ""}`}
-              onClick={toggleNotifications}
-              onMouseDown={() => (notificationsButtonRef.current.style.transform = "scale(0.95)")}
-              onMouseUp={() =>
-                (notificationsButtonRef.current.style.transform = isNotificationsOpen ? "scale(0.95)" : "scale(1.05)")
-              }
-              onMouseLeave={() => {
-                if (!isNotificationsOpen) notificationsButtonRef.current.style.transform = "scale(1)";
-              }}
-            >
-              <img src="/уведомления.svg" width="30" height="40" alt="уведомления" />
-            </button>
-
-            {isNotificationsOpen && (
-              <div className="notification-dropdown" onClick={(e) => e.stopPropagation()}>
-                <div className="notification-header">Уведомления</div>
-                <div className="notifications-list">
-                  <div className="notification-item">Фрилансер откликнулся на задачу</div>
-                  <div className="notification-item read">Оставьте отзыв о работе фрилансера</div>
-                  <div className="notification-item">Новое сообщение в чате</div>
-                  <div className="notification-item read">Ваша задача выполнена</div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="categories-container">
-            <button
-              ref={categoriesButtonRef}
-              className={`circle-button categories-button ${isCategoriesOpen ? "active" : ""}`}
-              onClick={toggleCategories}
-              onMouseDown={() => (categoriesButtonRef.current.style.transform = "scale(0.95)")}
-              onMouseUp={() =>
-                (categoriesButtonRef.current.style.transform = isCategoriesOpen ? "scale(0.95)" : "scale(1.05)")
-              }
-              onMouseLeave={() => {
-                if (!isCategoriesOpen) categoriesButtonRef.current.style.transform = "scale(1)";
-              }}
-            >
-              <img src="/категории.svg" width="30" height="45" alt="категории" />
-            </button>
-
-            {isCategoriesOpen && (
-              <div className="categories-dropdown" onClick={(e) => e.stopPropagation()}>
-                <div className="categories-header">Рубрики</div>
-                <div className="categories-divider"></div>
-                <div className="categories-grid">
-                    <Link to="/category/design" className="category-item">Дизайн</Link>
-                    <Link to="/category/social" className="category-item">Соцсети и маркетинг</Link>
-                    <Link to="/category/development" className="category-item">Разработка и IT</Link>
-                    <Link to="/category/media" className="category-item">Аудио, видео, съемка</Link>
-                    <Link to="/category/business" className="category-item">Бизнес и жизнь</Link>
-                    <Link to="/category/texts" className="category-item">Тексты и переводы</Link>
-                </div>
-              </div>
-            )}
-          </div>
-
-            {isAuthenticated ? (
-              <Link to={userRole === "moderator" ? "/moderator" : "/profile"}>
-                <button className="circle-button">
-                  <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-                </button>
-              </Link>
-            ) : (
-              <div
-                className="profile-container"
-                onMouseEnter={() => setIsProfileMenuOpen(true)}
-                onMouseLeave={() => setIsProfileMenuOpen(false)}
-              >
-                <div className="circle-button">
-                  <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
+            <div className="buttons">
+                <div className="search-wrapper">
+                    <div className="search-container">
+                        <button className="search-button">
+                            <img src="/поиск.svg" alt="Поиск" className="search-icon" />
+                        </button>
+                        <input
+                            type="text"
+                            className="search-input"
+                            placeholder="Поиск..."
+                            onKeyPress={handleSearch}
+                        />
+                    </div>
                 </div>
 
-                {isProfileMenuOpen && (
-                  <div className="auth-dropdown">
-                    <button onClick={openLogin}>ВХОД</button>
-                    <button onClick={openRegister}>РЕГИСТРАЦИЯ</button>
-                  </div>
+                {user && (
+                    <div className="notification-container">
+                        <button 
+                            className={`circle-button ${showNotifications ? 'active' : ''}`}
+                            onClick={() => setShowNotifications(!showNotifications)}
+                        >
+                            <img src="/уведомления.svg" alt="Уведомления" />
+                        </button>
+                        {showNotifications && (
+                            <div className="notification-dropdown">
+                                <div className="notification-header">
+                                    <h3>Уведомления</h3>
+                                </div>
+                                <div className="notifications-list">
+                                    {notifications.map(notification => (
+                                        <div 
+                                            key={notification.id} 
+                                            className={`notification-item ${notification.is_read ? 'read' : ''}`}
+                                            onClick={() => navigate(notification.link)}
+                                        >
+                                            {notification.message}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 )}
-              </div>
+
+                <div className="categories-container">
+                    <button 
+                        className={`circle-button ${showCategories ? 'active' : ''}`}
+                        onClick={() => setShowCategories(!showCategories)}
+                    >
+                        <img src="/категории.svg" alt="Категории" />
+                    </button>
+                    {showCategories && (
+                        <div className="categories-dropdown">
+                            <div className="categories-header">
+                                <h3>Категории</h3>
+                            </div>
+                            <div className="categories-content">
+                                {categories.map(category => (
+                                    <div 
+                                        key={category}
+                                        className="category-item"
+                                        onClick={() => handleCategoryClick(category)}
+                                    >
+                                        {category}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div className="profile-container">
+                    {user ? (
+                        <>
+                            <button 
+                                className="circle-button"
+                                onClick={() => setShowAuthDropdown(!showAuthDropdown)}
+                            >
+                                <img src="/фейс-cropped.svg" alt="Профиль" />
+                            </button>
+                            {showAuthDropdown && (
+                                <div className="auth-dropdown">
+                                    <Link to="/profile" className="auth-btn">Профиль</Link>
+                                    {user.is_moderator && (
+                                        <Link to="/moderator" className="auth-btn">Модерация</Link>
+                                    )}
+                                    <button onClick={handleLogout} className="auth-btn">Выйти</button>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <div 
+                            className="profile-container"
+                            onMouseEnter={() => setShowAuthDropdown(true)}
+                            onMouseLeave={() => setShowAuthDropdown(false)}
+                        >
+                            <button className="circle-button">
+                                <img src="/фейс-cropped.svg" alt="Войти" />
+                            </button>
+                            {showAuthDropdown && (
+                                <div className="auth-dropdown">
+                                    <button 
+                                        onClick={() => {
+                                            setShowLoginModal(true);
+                                            setShowAuthDropdown(false);
+                                        }} 
+                                        className="auth-btn login-btn"
+                                    >
+                                        Войти
+                                    </button>
+                                    <button 
+                                        onClick={() => {
+                                            setShowRegisterModal(true);
+                                            setShowAuthDropdown(false);
+                                        }} 
+                                        className="auth-btn"
+                                    >
+                                        Регистрация
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {showLoginModal && (
+                <LoginModal
+                    onClose={() => setShowLoginModal(false)}
+                    onSwitch={() => {
+                        setShowLoginModal(false);
+                        setShowRegisterModal(true);
+                    }}
+                    onLoginSuccess={handleLoginSuccess}
+                />
             )}
 
-            {activeModal === "login" && (
-              <LoginModal onClose={closeModal} onSwitch={() => setActiveModal("register")} />
+            {showRegisterModal && (
+                <RegisterModal
+                    onClose={() => setShowRegisterModal(false)}
+                    onSwitch={() => {
+                        setShowRegisterModal(false);
+                        setShowLoginModal(true);
+                    }}
+                    onRegisterSuccess={handleRegisterSuccess}
+                />
             )}
-            {activeModal === "register" && (
-              <RegisterModal onClose={closeModal} onSwitch={() => setActiveModal("login")} />
-            )}
-        </div>
-      </header>
-    </div>
-  );
-}
+        </header>
+    );
+};
+
+export default Header;
 

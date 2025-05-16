@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../components/header";
 
 export default function Home() {
   const [query, setQuery] = useState("");
