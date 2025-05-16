@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ subcategory.name }} <small class="text-muted">({{ vacancies_count }} вакансий)</small></h2>
+    
+    {% if vacancies %}
+        <div class="list-group mt-3">
+            {% for vacancy in vacancies %}
+                <div class="list-group-item">
+                    <h4>
+                        <a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}">
+                            {{ vacancy.title }}
+                        </a>
+                    </h4>
+                    <p>{{ vacancy.description|truncate(200) }}</p>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Опубликовано: {{ vacancy.created_at.strftime('%d.%m.%Y') }}</span>
+                        <span class="badge badge-primary">{{ vacancy.salary if vacancy.salary else "Зарплата не указана" }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info mt-3">
+            В этой подкатегории пока нет активных вакансий
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Добавить вакансию - Вакансионный сайт{% endblock %}
+
+{% block content %}
+    <h2>Добавить вакансию</h2>
+    
+    <form method="POST" class="vacancy-form">
+        <div class="form-group">
+            <label for="title">Название вакансии:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="subcategory">Категория:</label>
+            <select id="subcategory" name="subcategory" required>
+                <option value="">Выберите категорию</option>
+                {% for category in categories %}
+                    <optgroup label="{{ category.name }}">
+                        {% for subcategory in category.subcategories %}
+                            <option value="{{ subcategory.id }}">{{ subcategory.name }}</option>
+                        {% endfor %}
+                    </optgroup>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Описание:</label>
+            <textarea id="description" name="description" rows="10" required></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label for="salary">Зарплата (необязательно):</label>
+            <input type="text" id="salary" name="salary">
+        </div>
+        
+        <button type="submit" class="button">Опубликовать</button>
+    </form>
+{% endblock %}
