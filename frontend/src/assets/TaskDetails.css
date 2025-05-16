@@ -347,3 +347,32 @@ strong {
  background-color:rgba(255,255,255,0.5);
 }
 
+/* Square task */
+#root div .squareTask{
+ justify-content:flex-start;
+}
+
+.headingErrorTask {
+ position:relative;
+ justify-content:center;
+ top:20%;
+}
+
+/* Heading */
+#root div .headingErrorTask h2{
+ position:relative;
+
+}
+
+/* Button */
+#root div .squareTask .headingErrorTask button{
+ background-color:#32adff;
+ border-style:none;
+ color:#ffffff;
+ cursor: pointer;
+ transition: transform 0.5s
+}
+
+#root div .squareTask button:hover{
+   transform: scale(1.1);
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import "../assets/styleProfile.css";
+import "../assets/Moder.css";
 import { Link } from "react-router-dom";
 
 const ModeratorProfile = () => {
@@ -23,9 +23,10 @@ const ModeratorProfile = () => {
     <>
       <Header />
       <div className="square">
-        <h2>Панель модератора</h2>
-        <p>Задачи на модерации:</p>
-
+        <div className="ModerRole">
+            <h2>Панель модератора</h2>
+            <p>Задачи на модерации:</p>
+        </div>
         {tasksForModeration.length > 0 ? (
           <div className="moderation-list">
             {tasksForModeration.map((task) => (

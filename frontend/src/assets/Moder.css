@@ -1,0 +1,145 @@
+#root div .ModerRole{
+ position:absolute;
+ top:10%;
+ left:5%;
+ bottom:0%;
+ right:0%;
+ height:100px;
+ width:500px;
+}
+
+#root div .moderation-list{
+ position:relative;
+ top:1%;
+ left:0%;
+ bottom:0%;
+ right:0%;
+ background-color:#2c6695;
+ border-radius: 40px;
+ width:70%;
+ height:60%;
+ overflow:scroll;
+ display:flex;
+ flex-direction:row;
+}
+
+#root div .moderation-list::-webkit-scrollbar {
+    display: none;
+}
+
+#root .moderation-list .moderation-item{
+ height:25%;
+ width:25%;
+ margin-left:30px;
+ margin-top:30px;
+}
+
+#root .moderation-list .moderation-item{
+ background-color:rgba(255,255,255,0.99);
+ width:250px;
+ height:150px;
+ border-radius: 30px;
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ transition: transform 0.5s;
+}
+
+#root .moderation-list .moderation-item:hover {
+    transform: scale(1.1);
+}
+
+.moderation-list .moderation-item h3{
+ margin-top:0px;
+ margin-bottom:0px;
+ text-align:center;
+}
+
+.moderation-list .moderation-item p{
+ margin-top:5px;
+ margin-bottom:5px;
+ text-align:center;
+}
+
+.moderation-list .actions a{
+ background-color:#6cb6f3;
+ color:#ffffff;
+ text-decoration:none;
+}
+
+
+.ModContainer {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  height: 70%;
+  width: 500px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* Moderation container */
+#root div .ModerationContainer{
+ background-color:#76bcee;
+}
+
+/* Rejection reason */
+#rejection_reason{
+ position:relative;
+ top:0px;
+ left:0px;
+ bottom:0px;
+ right:0px;
+}
+
+/* Form Division */
+#root div form{
+ display:flex;
+ position:relative;
+ top:69px;
+ flex-direction:column;
+ align-items:center;
+}
+
+/* Form group */
+#root .moderation-form .form-group{
+ top:0px;
+ bottom:0px;
+ right:0px;
+ width:400px;
+ height:110px;
+}
+
+/* Label */
+.moderation-form .form-group label{
+ color:#6fa5dc;
+ position:relative;
+ bottom:0px;
+ left:0px;
+}
+
+/* Form Division */
+#root div form{
+ top:54px;
+ transform:translatex(0px) translatey(0px);
+}
+
+/* Button */
+.moderation-form .moderation-actions .button{
+ margin-left:0px;
+ margin-right:35px;
+ background-color:#96c4e8;
+ border-style:none;
+ border-radius: 5px;
+ height:25px;
+ color:#020202;
+ cursor:pointer;
+ transition: transform 0.5s;
+}
+
+.moderation-form .moderation-actions .button:hover {
+    transform: scale(1.1);
+}

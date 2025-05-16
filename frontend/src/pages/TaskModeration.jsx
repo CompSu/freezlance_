@@ -1,31 +1,59 @@
 import Header from "../components/Header";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
+import "../assets/Moder.css";
 
 export default function ModerateVacancyPage() {
+  const { id } = useParams(); // получаем id из URL
   const [rejectionReason, setRejectionReason] = useState("");
 
-  // Заглушка вакансии
-  const vacancy = {
-    title: "Разработка лендинга для портфолио",
-    author: { username: "freelancer123" },
-    created_at: "16.05.2025 14:35",
-    salary: "15 000 ₽",
-    description: "Нужен простой, но стильный лендинг с адаптивной версткой для размещения в портфолио.",
-    rejection_reason: "",
+  // Заглушка нескольких вакансий
+  const fakeVacancies = {
+    1: {
+      title: "Редизайн лендинга",
+      author: { username: "Светлана" },
+      created_at: "14.05.2025 12:45",
+      salary: "20 000 ₽",
+      description: "Нужно обновить дизайн существующего лендинга. Требуется современный минимализм.",
+    },
+    2: {
+      title: "Разработка Telegram-бота",
+      author: { username: "Иван" },
+      created_at: "15.05.2025 09:30",
+      salary: "25 000 ₽",
+      description: "Бот для уведомлений и автосообщений. Желательно с панелью админа.",
+    }
   };
+
+  const vacancy = fakeVacancies[id];
 
   const handleSubmit = (e, action) => {
     e.preventDefault();
-    // Заглушка: заменить на запрос к API
+    console.log("ID вакансии:", id);
     console.log("Действие:", action);
     console.log("Причина отклонения:", rejectionReason);
+    // Здесь axios-запрос
   };
+
+  if (!vacancy) {
+    return (
+      <>
+        <Header />
+        <div className="main-content">
+          <div className="ModContainer">
+            <h2 className="page-title">Вакансия не найдена</h2>
+            <p>Проверьте правильность ссылки или вернитесь назад.</p>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
       <Header />
       <div className="main-content">
-        <div className="container">
+        <div className="ModContainer">
           <h2 className="page-title">Модерация вакансии</h2>
 
           <div className="vacancy-details">
