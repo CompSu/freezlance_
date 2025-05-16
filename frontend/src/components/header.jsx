@@ -14,6 +14,8 @@ export default function Header() {
   const notificationsButtonRef = useRef(null);
 
   const isAuthenticated = true; // для бэка
+  const userRole = "moderator"; // или "user"
+
 
   const handleSearch = () => {
     console.log("Поиск запроса:", query);
@@ -131,37 +133,37 @@ export default function Header() {
             )}
           </div>
 
-          {isAuthenticated ? (
-            <Link to="/profile">
-              <button className="circle-button">
-                <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-              </button>
-            </Link>
-          ) : (
-            <div
-              className="profile-container"
-              onMouseEnter={() => setIsProfileMenuOpen(true)}
-              onMouseLeave={() => setIsProfileMenuOpen(false)}
-            >
-              <div className="circle-button">
-                <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
-              </div>
-
-              {isProfileMenuOpen && (
-                <div className="auth-dropdown">
-                  <button onClick={openLogin}>ВХОД</button>
-                  <button onClick={openRegister}>РЕГИСТРАЦИЯ</button>
+            {isAuthenticated ? (
+              <Link to={userRole === "moderator" ? "/moderator" : "/profile"}>
+                <button className="circle-button">
+                  <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
+                </button>
+              </Link>
+            ) : (
+              <div
+                className="profile-container"
+                onMouseEnter={() => setIsProfileMenuOpen(true)}
+                onMouseLeave={() => setIsProfileMenuOpen(false)}
+              >
+                <div className="circle-button">
+                  <img src="/фейс-cropped.svg" width="35" height="50" alt="профиль" />
                 </div>
-              )}
-            </div>
-          )}
 
-          {activeModal === "login" && (
-            <LoginModal onClose={closeModal} onSwitch={() => setActiveModal("register")} />
-          )}
-          {activeModal === "register" && (
-            <RegisterModal onClose={closeModal} onSwitch={() => setActiveModal("login")} />
-          )}
+                {isProfileMenuOpen && (
+                  <div className="auth-dropdown">
+                    <button onClick={openLogin}>ВХОД</button>
+                    <button onClick={openRegister}>РЕГИСТРАЦИЯ</button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {activeModal === "login" && (
+              <LoginModal onClose={closeModal} onSwitch={() => setActiveModal("register")} />
+            )}
+            {activeModal === "register" && (
+              <RegisterModal onClose={closeModal} onSwitch={() => setActiveModal("login")} />
+            )}
         </div>
       </header>
     </div>
