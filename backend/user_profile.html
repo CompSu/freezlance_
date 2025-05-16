@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3>{{ user.username }}</h3>
+                    {% if user.first_name or user.last_name %}
+                        <p>{{ user.first_name }} {{ user.last_name }}</p>
+                    {% endif %}
+                    
+                    {% if user.about %}
+                        <div class="mt-3">
+                            <h5>О себе:</h5>
+                            <p>{{ user.about }}</p>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="mt-3">
+                        {% if user.phone %}
+                            <p><i class="fas fa-phone"></i> {{ user.phone }}</p>
+                        {% endif %}
+                        {% if user.email %}
+                            <p><i class="fas fa-envelope"></i> {{ user.email }}</p>
+                        {% endif %}
+                        {% if user.birth_date %}
+                            <p><i class="fas fa-birthday-cake"></i> {{ user.birth_date.strftime('%d.%m.%Y') }}</p>
+                        {% endif %}
+                    </div>
+                    
+                    <p class="text-muted">На сайте с {{ user.created_at.strftime('%d.%m.%Y') }}</p>
+                </div>
+            </div>
+        </div>
+        
+ {% if user.rating_count > 0 %}
+    <div class="mt-3">
+        <h5>Рейтинг: {{ user.rating_avg }} ★</h5>
+        <small>на основе {{ user.rating_count }} отзывов</small>
+        <br>
+        <a href="{{ url_for('user_reviews', username=user.username) }}" class="btn btn-sm btn-outline-info mt-2">
+            Посмотреть отзывы
+        </a>
+    </div>
+    {% else %}
+    <div class="mt-3">
+        <p>Пока нет оценок</p>
+    </div>
+    {% endif %}
+    
+    <!-- Кнопка для оставления отзыва -->
+    {% if 'user_id' in session and user.id != session['user_id'] %}
+        {% set has_review = user.reviews_received|selectattr('reviewer_id', 'equalto', session['user_id'])|list %}
+        {% if not has_review %}
+        <a href="{{ url_for('add_review', username=user.username) }}" class="btn btn-primary mt-3">
+            Оставить отзыв
+        </a>
+        {% endif %}
+    {% endif %}
+
+        <div class="col-md-8">
+            <h3>Активные вакансии</h3>
+            {% if vacancies %}
+                <div class="list-group">
+                    {% for vacancy in vacancies %}
+                        <a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ vacancy.title }}</h5>
+                                <small>{{ vacancy.created_at.strftime('%d.%m.%Y') }}</small>
+                            </div>
+                            <p class="mb-1">{{ vacancy.description[:100] }}...</p>
+                            {% if vacancy.salary %}
+                                <small>Зарплата: {{ vacancy.salary }}</small>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info">Пользователь пока не разместил ни одной вакансии</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Отклик на вакансию: {{ vacancy.title }}</h2>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="message">Сопроводительное сообщение</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Отправить отклик</button>
+            <a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+{% endblock %}

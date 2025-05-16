@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Отклики на вакансию: {{ vacancy.title }}</h2>
+    
+    {% if applications %}
+        <div class="list-group mt-3">
+            {% for app in applications %}
+                <div class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <h5>
+                            <a href="{{ url_for('user_profile', username=app.freelancer.username) }}">
+                                {{ app.freelancer.username }}
+                            </a>
+                            <span class="badge badge-{{ 'success' if app.status == 'accepted' else 'danger' if app.status == 'rejected' else 'warning' }}">
+                                {{ 'Принят' if app.status == 'accepted' else 'Отклонен' if app.status == 'rejected' else 'На рассмотрении' }}
+                            </span>
+                        </h5>
+                        <small class="text-muted">{{ app.created_at.strftime('%d.%m.%Y %H:%M') }}</small>
+                    </div>
+                    
+                    <p class="mt-2">{{ app.message }}</p>
+                    
+                    {% if app.status == 'accepted' %}
+                        <div class="alert alert-success">
+                            <strong>Контактная информация:</strong> {{ app.contact_info }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if 'user_id' in session and vacancy.user_id == session['user_id'] and app.status == 'pending' %}
+                        <form method="POST" action="{{ url_for('accept_application', application_id=app.id) }}" class="mt-2">
+                            <div class="form-group">
+                                <label for="contact_info_{{ app.id }}">Ваши контактные данные для связи:</label>
+                                <input type="text" class="form-control" id="contact_info_{{ app.id }}" name="contact_info" required>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-sm">Принять</button>
+                            <button type="submit" formaction="{{ url_for('reject_application', application_id=app.id) }}" class="btn btn-danger btn-sm">Отклонить</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info mt-3">Нет откликов на эту вакансию</div>
+    {% endif %}
+    
+    <a href="{{ url_for('vacancy_details', vacancy_id=vacancy.id) }}" class="btn btn-secondary mt-3">Назад к вакансии</a>
+</div>
+{% endblock %}
