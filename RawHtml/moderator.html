@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREEZLANCE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        .moderation-panel {
+            position: absolute;
+            width: 343px;
+            height: 36px;
+            left: 65px;
+            top: 100px;
+            font-family: 'Boxing', sans-serif;
+            font-weight: 400;
+            font-size: 36px;
+            display: flex;
+            align-items: center;
+            color: #000C76;
+        }
+
+        .vacancies-title,
+        .author-title,
+        .date-title {
+            position: absolute;
+            left: 65px;
+            font-family: 'Boxing', sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            color: #FFFFFF;
+        }
+
+        .view-button {
+            position: absolute;
+            left: 65px;
+            font-family: 'Boxing', sans-serif;
+            font-size: 24px;
+            color: #FFFFFF !important;
+            background: #000C76;
+            border: 2px solid #FFFFFF;
+            border-radius: 15px;
+            padding: 10px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+
+        }
+
+        .view-button:hover {
+            background: #FFFFFF;
+            color: #000C76 !important;
+            border-color: #000C76;
+        }
+
+        .vacancies-title {
+            width: 295px;
+            top: 168px;
+        }
+
+        .author-title {
+            width: 77px;
+            top: 243px;
+        }
+
+        .date-title {
+            width: 62px;
+            top: 318px;
+        }
+
+        @font-face {
+            font-family: "Boxing", sans-serif;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="logo.png" alt="Логотип">
+        <span>FREEZLANCE</span>
+    </div>
+    <div class="buttons">
+        <button class="circle-button">
+            <img src="Vector%20(2).svg" width="30" height="40" alt="уведомления">
+        </button>
+        <button class="circle-button">
+            <img src="фейс-cropped.svg" width="35" height="50" alt="профиль">
+        </button>
+    </div>
+</header>
+<div class="square">
+        <div class="moderation-panel">Панель модерации</div>
+        <div class="vacancies-title">Вакансии на модерации:</div>
+        <div class="author-title">Автор:</div>
+        <div class="date-title">Дата:</div>
+    <button class="view-button">Посмотреть</button>
+</div>
+<footer>
+</footer>
+</body>
+</html>
