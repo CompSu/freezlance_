@@ -2,7 +2,7 @@ import "../assets/TaskStyle.css";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/header";
+import Header from "../components/Header";
 import api from '../api/axios';
 
 export default function CreateTaskPage() {

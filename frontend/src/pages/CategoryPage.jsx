@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Header from "../components/header";
+import Header from "../components/Header";
 import FilterPanel from "../components/FilterPanel"; 
 import TaskCard from "../components/TaskCard";
 import "../assets/CategoryPage.css";

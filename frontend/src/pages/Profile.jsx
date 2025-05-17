@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import "../assets/styleProfile.css";
 import { Link } from "react-router-dom";
-import Header from "../components/header";
+import Header from "../components/Header";
 
 const Profile = () => {
     const [profile, setProfile] = useState({

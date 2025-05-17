@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import Header from "../components/header";
+import Header from "../components/Header";
 import "../assets/TaskDetails.css";
 import api from '../api/axios';
 

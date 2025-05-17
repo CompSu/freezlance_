@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "../components/header";
+import Header from "../components/Header";
 import "../assets/Moder.css";
 import { Link } from "react-router-dom";
 import api from '../api/axios';

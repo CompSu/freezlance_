@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Header from '../components/header';
+import Header from "../components/Header";
 import api from '../api/axios';
 
 const AcceptOffer = () => {

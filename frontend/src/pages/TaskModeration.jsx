@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Card, Button, Form, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
-import Header from "../components/header";
+import Header from "../components/Header";
 import "../assets/Moder.css";
 
 const TaskModeration = () => {
