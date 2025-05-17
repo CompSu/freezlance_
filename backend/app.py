@@ -510,6 +510,24 @@ def vacancy_details(vacancy_id):
             db.session.rollback()
             return jsonify({'error': f'Error deleting vacancy: {str(e)}'}), 500
 
+@app.route('/api/vacancies/<int:vacancy_id>/close', methods=['PUT'])
+def close_vacancy(vacancy_id):
+    if 'user_id' not in session:
+        return jsonify({'error': 'Authentication required'}), 401
+    
+    vacancy = Vacancy.query.get_or_404(vacancy_id)
+    
+    if vacancy.user_id != session['user_id']:
+        return jsonify({'error': 'Access denied'}), 403
+    
+    vacancy.is_active = False
+    db.session.commit()
+    
+    return jsonify({
+        'message': 'Vacancy closed successfully',
+        'vacancy': vacancy.to_dict()
+    })
+
 @app.route('/api/vacancies/<int:vacancy_id>/applications', methods=['GET', 'POST'])
 def manage_applications(vacancy_id):
     if 'user_id' not in session:
@@ -555,7 +573,7 @@ def manage_applications(vacancy_id):
     notification = Notification(
         user_id=vacancy.user_id,
         message=f'New application for vacancy "{vacancy.title}" from user {user.username}',
-        link=f'/api/vacancies/{vacancy_id}/applications'
+        link=f'/applications/{application.id}/accept'
     )
     db.session.add(notification)
     
@@ -587,25 +605,22 @@ def accept_application_by_freelancer(application_id):
         return jsonify({'error': 'Authentication required'}), 401
         
     application = Application.query.get_or_404(application_id)
-    
-    # Проверяем, что пользователь имеет доступ к этому предложению
-    if application.freelancer_id != session['user_id']:
-        return jsonify({'error': 'Access denied'}), 403
         
-    if application.status != 'accepted':
-        return jsonify({'error': 'Application is not accepted by client'}), 400
+    if application.status != 'pending':
+        return jsonify({'error': 'Can only accept pending applications'}), 400
         
     data = request.get_json()
     if not data or 'comment' not in data:
         return jsonify({'error': 'Comment is required'}), 400
         
     # Обновляем статус и добавляем комментарий
-    application.status = 'in_progress'
+    application.status = 'accepted'
+    application.contact_info = data.get('comment')  # Используем комментарий как контактную информацию
     
-    # Создаем уведомление для заказчика
+    # Создаем уведомление для владельца вакансии
     notification = Notification(
         user_id=application.vacancy.user_id,
-        message=f'Фрилансер {application.freelancer.username} принял ваше предложение по вакансии "{application.vacancy.title}"',
+        message=f'Фрилансер {application.freelancer.username} принял предложение по вакансии "{application.vacancy.title}"',
         link=f'/vacancies/{application.vacancy_id}'
     )
     db.session.add(notification)
@@ -632,7 +647,7 @@ def reject_application(application_id):
     notification = Notification(
         user_id=application.freelancer_id,
         message=f'Your application for vacancy "{vacancy.title}" was rejected.',
-        link=f'/api/vacancies/{vacancy.id}'
+        link=f'/vacancies/{vacancy.id}'
     )
     db.session.add(notification)
     

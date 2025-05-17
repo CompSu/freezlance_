@@ -61,14 +61,11 @@ const Header = () => {
             // Перенаправляем в зависимости от типа уведомления
             if (notification.type === 'new_application') {
                 navigate(`/applications/${notification.application_id}/accept`);
-            } else if (notification.type === 'application_accepted') {
+            } else if (notification.type === 'application_accepted' || 
+                       notification.type === 'application_rejected' ||
+                       notification.type === 'vacancy_approved' ||
+                       notification.type === 'vacancy_rejected') {
                 navigate(`/vacancies/${notification.vacancy_id}`);
-            } else if (notification.type === 'application_rejected') {
-                navigate(`/vacancies/${notification.vacancy_id}`);
-            } else if (notification.type === 'vacancy_closed') {
-                navigate(`/vacancies/${notification.vacancy_id}`);
-            } else if (notification.type === 'new_message') {
-                navigate(`/chat/${notification.chat_id}`);
             } else if (notification.link) {
                 navigate(notification.link);
             }
