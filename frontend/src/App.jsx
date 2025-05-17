@@ -68,7 +68,11 @@ function App() {
         } />
         <Route path="/category/:name" element={<CategoryPage />} />
         <Route path="/categories/:categoryId/subcategories/:subcategoryId" element={<CategoryPage />} />
-        <Route path="/applications/:applicationId/accept" element={<AcceptOffer />} />
+        <Route path="/applications/:applicationId/accept" element={
+          <ProtectedRoute>
+            <AcceptOffer />
+          </ProtectedRoute>
+        } />
       </Routes>
     </div>
   )

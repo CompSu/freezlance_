@@ -39,9 +39,41 @@ const Header = () => {
     const loadNotifications = async () => {
         try {
             const response = await api.get('/notifications');
-            setNotifications(response.data.notifications);
+            setNotifications(response.data.notifications || []);
         } catch (error) {
             console.error('Ошибка при загрузке уведомлений:', error);
+        }
+    };
+
+    const handleNotificationClick = async (notification) => {
+        try {
+            // Отмечаем уведомление как прочитанное
+            await api.put(`/notifications/${notification.id}/read`);
+            
+            // Обновляем список уведомлений
+            setNotifications(notifications.map(n => 
+                n.id === notification.id ? { ...n, is_read: true } : n
+            ));
+
+            // Закрываем выпадающий список
+            setShowNotifications(false);
+
+            // Перенаправляем в зависимости от типа уведомления
+            if (notification.type === 'new_application') {
+                navigate(`/applications/${notification.application_id}/accept`);
+            } else if (notification.type === 'application_accepted') {
+                navigate(`/vacancies/${notification.vacancy_id}`);
+            } else if (notification.type === 'application_rejected') {
+                navigate(`/vacancies/${notification.vacancy_id}`);
+            } else if (notification.type === 'vacancy_closed') {
+                navigate(`/vacancies/${notification.vacancy_id}`);
+            } else if (notification.type === 'new_message') {
+                navigate(`/chat/${notification.chat_id}`);
+            } else if (notification.link) {
+                navigate(notification.link);
+            }
+        } catch (error) {
+            console.error('Ошибка при обработке уведомления:', error);
         }
     };
 
@@ -108,6 +140,9 @@ const Header = () => {
                             onClick={() => setShowNotifications(!showNotifications)}
                         >
                             <img src="/уведомления.svg" alt="Уведомления" />
+                            {notifications.some(n => !n.is_read) && (
+                                <span className="notification-badge"></span>
+                            )}
                         </button>
                         {showNotifications && (
                             <div className="notification-dropdown">
@@ -115,15 +150,26 @@ const Header = () => {
                                     <h3>Уведомления</h3>
                                 </div>
                                 <div className="notifications-list">
-                                    {notifications.map(notification => (
-                                        <div 
-                                            key={notification.id} 
-                                            className={`notification-item ${notification.is_read ? 'read' : ''}`}
-                                            onClick={() => navigate(notification.link)}
-                                        >
-                                            {notification.message}
+                                    {notifications.length > 0 ? (
+                                        notifications.map(notification => (
+                                            <div 
+                                                key={notification.id} 
+                                                className={`notification-item ${notification.is_read ? 'read' : ''}`}
+                                                onClick={() => handleNotificationClick(notification)}
+                                            >
+                                                <div className="notification-content">
+                                                    <p>{notification.message}</p>
+                                                    <span className="notification-date">
+                                                        {new Date(notification.created_at).toLocaleDateString()}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <div className="no-notifications">
+                                            Нет новых уведомлений
                                         </div>
-                                    ))}
+                                    )}
                                 </div>
                             </div>
                         )}
