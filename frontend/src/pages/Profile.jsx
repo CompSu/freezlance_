@@ -201,7 +201,7 @@ const Profile = () => {
   };
 
   const handleOpenTask = (id) => {
-    navigate(`/task/${id}`);
+    navigate(`/vacancies/${id}`);
   };
 
   const handleAvatarChange = async (e) => {
