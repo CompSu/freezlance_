@@ -381,7 +381,6 @@ border-color:#000000;
 
 .rating-buttons {
     position: relative;
-    top: 20px;
     display: flex;
     gap: 12px;
 }
@@ -460,16 +459,75 @@ border-color:#000000;
 
 .vacancies-section {
     margin-top: 20px;
-    padding: 15px;
+    padding: 20px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 
-.portfolio-section {
+.vacancies-section .portfolio-scroll-container {
+    margin: 20px 0;
+    padding: 10px 0;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.vacancies-section .portfolio-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.vacancies-section .portfolio-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.vacancies-section .portfolio-scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.pending-vacancies {
     margin-top: 20px;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pending-vacancies h6 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.vacancy-item {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.square_portfolio_buttons3 {
+    display: inline-block;
+    margin-top: 20px;
+    position: relative;
+    left: 50%;
+}
+
+/* Square portfolio buttons3 */
+.vacancies-section a .square_portfolio_buttons3{
+    top:0px;
+   }
+   
+   /* Square portfolio buttons3 */
+   #root div .square .square_inform .square_inform_content .vacancies-section a .square_portfolio_buttons3{
+    left:40% !important;
+   }
+   
+
+.portfolio-section {
+    display: none;
 }
 
 .reviews-section {
@@ -499,24 +557,51 @@ border-color:#000000;
 }
 
 .skills-section {
-    margin-top: 20px;
+    margin: 20px 0;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .skill-item {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 8px 15px;
-    margin-bottom: 8px;
-    border-radius: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
 }
 
-.vacancy-item {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 15px;
-    margin-bottom: 8px;
-    border-radius: 4px;
+.skill-info {
+    flex: 1;
+}
+
+.skill-details {
+    display: flex;
+    gap: 10px;
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.add-skill-form {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.add-skill-form .form-group {
+    margin-bottom: 10px;
+}
+
+.add-skill-form .btn {
+    margin-top: 10px;
 }
 
 .review-card {

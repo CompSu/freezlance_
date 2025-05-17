@@ -397,6 +397,7 @@ header {
 }
 
 .notification-item {
+  font-size:20px;
   padding: 10px;
   border-bottom: 1px solid #E4F5FF;
   cursor: pointer;
@@ -507,3 +508,87 @@ header {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Стили для сообщений об ошибках */
+.error-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1100;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+}
+
+#root > div > .profile-container{
+  margin-top:100px;
+  color: white;
+ }
+
+ .IN-profile-container {
+  width:100%;
+  height:100%;
+  position:relative;
+  top:100px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff9d;
+  border-radius: 8px;
+}
+
+/* Proile container */
+#root div .IN-proile-container{
+  position:fixed;
+  top:199px;
+  height:855px;
+ }
+ 
+ /* Image */
+ #root .IN-proile-container img{
+  margin-top:0px;
+  bottom:201px;
+  z-index:0;
+  position:relative;
+ }
+ 
+/* Element */
+#root .element{
+  position:relative;
+  bottom:0px;
+  left:55px;
+  top:0px;
+  right:0px;
+  max-height: 100;
+ }
+ 
+ /* Image */
+ #root .IN-profile-container img{
+  position:absolute;
+  bottom:0px;
+  left:-200px;
+  top:0px;
+  margin-top:0px;
+ }
+ 
+ /* Home text */
+ #root .HomeText{
+  max-width:40%;
+  font-size:24px;
+  position:relative;
+  top:250px;
+ }
+ 
+ /* Home text */
+ #root div .square .IN-profile-container .HomeText{
+  left:50% !important;
+ }
+ 
+ #root .element{
+  position:absolute;
+ }
+ 

@@ -27,7 +27,8 @@ const Profile = () => {
     const [newSkill, setNewSkill] = useState({
         name: '',
         level: 1,
-        category: ''
+        category: '',
+        years_of_experience: 0
     });
     const navigate = useNavigate();
     const [reviews, setReviews] = useState({ positive: [], negative: [] });
@@ -83,7 +84,6 @@ const Profile = () => {
             const response = await api.get(`/users/${profile.username}/reviews`);
             const allReviews = response.data.reviews;
             
-            // Разделяем отзывы на положительные (4-5) и отрицательные (1-3)
             const positive = allReviews.filter(review => review.rating >= 4);
             const negative = allReviews.filter(review => review.rating < 4);
             
@@ -129,7 +129,7 @@ const Profile = () => {
                 ...prev,
                 skills: [...prev.skills, response.data.skill]
             }));
-            setNewSkill({ name: '', level: 1, category: '' });
+            setNewSkill({ name: '', level: 1, category: '', years_of_experience: 0 });
         } catch (err) {
             setError(err.response?.data?.error || 'Ошибка при добавлении навыка');
         }
@@ -370,7 +370,17 @@ const Profile = () => {
                                 {profile.skills?.length > 0 ? (
                                     profile.skills.map(skill => (
                                         <div key={skill.id} className="skill-item">
-                                            <span>{skill.name} - Уровень: {skill.level}</span>
+                                            <div className="skill-info">
+                                                <strong>{skill.name}</strong>
+                                                <div className="skill-details">
+                                                    <span>Уровень: {skill.level}/5</span>
+                                                    {skill.category && <span>• Категория: {skill.category}</span>}
+                                                    {skill.years_of_experience > 0 && 
+                                                        <span>• Опыт: {skill.years_of_experience} {skill.years_of_experience === 1 ? 'год' : 
+                                                            skill.years_of_experience < 5 ? 'года' : 'лет'}</span>
+                                                    }
+                                                </div>
+                                            </div>
                                             {editMode && (
                                                 <Button 
                                                     variant="danger" 
@@ -387,7 +397,7 @@ const Profile = () => {
                                 )}
                                 {editMode && (
                                     <Form onSubmit={handleAddSkill} className="add-skill-form">
-                                        <Form.Group>
+                                        <Form.Group className="mb-2">
                                             <Form.Control
                                                 type="text"
                                                 name="name"
@@ -397,7 +407,8 @@ const Profile = () => {
                                                 className="profile-input"
                                             />
                                         </Form.Group>
-                                        <Form.Group>
+                                        <Form.Group className="mb-2">
+                                            <Form.Label>Уровень владения (1-5)</Form.Label>
                                             <Form.Control
                                                 type="number"
                                                 name="level"
@@ -408,13 +419,24 @@ const Profile = () => {
                                                 className="profile-input"
                                             />
                                         </Form.Group>
-                                        <Form.Group>
+                                        <Form.Group className="mb-2">
                                             <Form.Control
                                                 type="text"
                                                 name="category"
                                                 value={newSkill.category}
                                                 onChange={handleSkillInputChange}
-                                                placeholder="Категория"
+                                                placeholder="Категория навыка"
+                                                className="profile-input"
+                                            />
+                                        </Form.Group>
+                                        <Form.Group className="mb-2">
+                                            <Form.Label>Опыт (в годах)</Form.Label>
+                                            <Form.Control
+                                                type="number"
+                                                name="years_of_experience"
+                                                value={newSkill.years_of_experience}
+                                                onChange={handleSkillInputChange}
+                                                min="0"
                                                 className="profile-input"
                                             />
                                         </Form.Group>
@@ -428,59 +450,41 @@ const Profile = () => {
 
                         {/* Вакансии */}
                         <div className="vacancies-section">
-                            <h3 className="section-title">Мои вакансии</h3>
-                            <div className="active-vacancies">
-                                <h6>Активные вакансии</h6>
-                                {profile.approved_vacancies?.length > 0 ? (
-                                    profile.approved_vacancies.map(vacancy => (
-                                        <div key={vacancy.id} className="vacancy-item">
-                                            {vacancy.title}
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p>Нет активных вакансий</p>
-                                )}
+                            <h3 className="section-title">Мои работы и вакансии</h3>
+                            <div className="portfolio-scroll-container">
+                                {profile.approved_vacancies?.map((vacancy) => (
+                                    <div
+                                        className="project-card"
+                                        key={vacancy.id}
+                                        onClick={() => handleOpenTask(vacancy.id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <img
+                                            src={getImageByCategory(vacancy.subcategory?.category?.name || 'default')}
+                                            alt={vacancy.title}
+                                            className="project-image"
+                                        />
+                                        <div className="project-title">{vacancy.title}</div>
+                                    </div>
+                                ))}
                             </div>
-                            <div className="pending-vacancies">
-                                <h6>На модерации</h6>
-                                {profile.pending_vacancies?.length > 0 ? (
-                                    profile.pending_vacancies.map(vacancy => (
+                            <Link to="/create-task">
+                                <button className="square_portfolio_buttons3">
+                                    <span>Добавить новую работу</span>
+                                </button>
+                            </Link>
+                            
+                            {profile.pending_vacancies?.length > 0 && (
+                                <div className="pending-vacancies mt-3">
+                                    <h6>На модерации</h6>
+                                    {profile.pending_vacancies.map(vacancy => (
                                         <div key={vacancy.id} className="vacancy-item">
                                             {vacancy.title} (На модерации)
                                         </div>
-                                    ))
-                                ) : (
-                                    <p>Нет вакансий на модерации</p>
-                                )}
-                            </div>
-          </div>
-
-                        {/* Портфолио */}
-                        <div className="portfolio-section">
-                            <h3 className="section-title">Портфолио</h3>
-                            <div className="portfolio-scroll-container">
-                                {portfolioItems.map((item) => (
-              <div
-                className="project-card"
-                                        key={item.id}
-                                        onClick={() => handleOpenTask(item.id)}
-                style={{ cursor: "pointer" }}
-              >
-                <img
-                                            src={getImageByCategory(item.category)}
-                                            alt={item.title}
-                  className="project-image"
-                />
-                                        <div className="project-title">{item.title}</div>
-              </div>
-            ))}
-          </div>
-          <Link to="/create-task">
-            <button className="square_portfolio_buttons3">
-                                    <span>Добавить новую работу</span>
-            </button>
-          </Link>
-        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
 
                         {/* Отзывы */}
                         <div className="reviews-section">

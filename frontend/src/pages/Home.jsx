@@ -13,11 +13,12 @@ export default function Home() {
     <>
       <Header />
       <div className="square">
+      <div className="IN-profile-container">
         <img src="/холодильник-cropped (1).svg" style={{right: 200}} alt="Холодильник" />
         <div className="element">
           <span>СВЕЖЕЕ РЕШЕНИЕ ДЛЯ ВАШЕГО БИЗНЕСА</span>
         </div>
-        <div className="content">
+        <div className="HomeText">
           <span>
             Холодильник пуст?
             Мы поможем вам наполнить его свежими решениями, у которых не истечёт срок годности!
@@ -26,6 +27,7 @@ export default function Home() {
             Свежий взгляд на каждый проект и ледяной профессионализм в работе.
           </span>
         </div>
+      </div>
       </div>
     </>
   );

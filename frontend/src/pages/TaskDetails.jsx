@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/header";
 import "../assets/TaskDetails.css";
 import api from '../api/axios';
@@ -82,7 +82,9 @@ const TaskDetails = () => {
           <div className="portfolio_user">
             <div className="user-main">
               <img src="/avatar.jpg" className="user-avatar" alt="Аватар" />
-              <span className="username">{task.author.username}</span>
+              <Link to={`/users/${task.author.username}`} className="username-link">
+                {task.author.username}
+              </Link>
               <div className="user-rating">{task.author.rating_avg}★</div>
             </div>
             <div className="portfolio_user_text">

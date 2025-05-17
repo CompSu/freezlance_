@@ -8,6 +8,7 @@ import TaskModeration from './pages/TaskModeration';
 import TaskDetails from "./pages/TaskDetails";
 import CategoryPage from "./pages/CategoryPage";
 import AcceptOffer from './pages/AcceptOffer';
+import UserProfile from './pages/UserProfile';
 
 import './App.css'
 
@@ -48,7 +49,7 @@ function App() {
             <Profile />
           </ProtectedRoute>
         } />
-        <Route path="/users/:username" element={<Profile />} />
+        <Route path="/users/:username" element={<UserProfile />} />
         <Route path="/moderator" element={
           <ProtectedRoute>
             <ModeratorProfile />

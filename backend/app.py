@@ -47,11 +47,22 @@ class User(db.Model):
     is_moderator = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
-    
     authored_vacancies = db.relationship('Vacancy', back_populates='author', lazy=True)
     skills = db.relationship('UserSkill', backref='user', lazy=True, cascade="all, delete-orphan")
     portfolio_items = db.relationship('PortfolioItem', backref='user', lazy=True, cascade="all, delete-orphan")
     freelancer_applications = db.relationship('Application', back_populates='freelancer', lazy=True)
+
+    @property
+    def active_vacancies(self):
+        return [v for v in self.authored_vacancies if v.status == 'approved' and v.is_active]
+
+    @property
+    def pending_vacancies(self):
+        return [v for v in self.authored_vacancies if v.status == 'pending']
+
+    @property
+    def rejected_vacancies(self):
+        return [v for v in self.authored_vacancies if v.status == 'rejected']
 
     def to_dict(self, include_private=False):
         data = {
@@ -64,7 +75,8 @@ class User(db.Model):
             'rating_count': self.rating_count,
             'created_at': self.created_at.isoformat() if self.created_at else None,
             'birth_date': self.birth_date.isoformat() if self.birth_date else None,
-            'avatar_url': self.avatar_url
+            'avatar_url': self.avatar_url,
+            'active_vacancies_count': len(self.active_vacancies)
         }
         if include_private:
             data.update({
@@ -83,13 +95,17 @@ class UserSkill(db.Model):
     years_of_experience = db.Column(db.Integer)
 
     def to_dict(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'level': self.level,
-            'category': self.category,
-            'years_of_experience': self.years_of_experience
-        }
+        try:
+            return {
+                'id': self.id,
+                'name': self.name,
+                'level': self.level,
+                'category': self.category,
+                'years_of_experience': self.years_of_experience
+            }
+        except Exception as e:
+            print(f"Error serializing skill {self.name}: {str(e)}")
+            return None
 
 class PortfolioItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -171,21 +187,44 @@ class Vacancy(db.Model):
     author = db.relationship('User', back_populates='authored_vacancies')
 
     def to_dict(self, include_applications=False):
-        data = {
-            'id': self.id,
-            'title': self.title,
-            'description': self.description,
-            'salary': self.salary,
-            'status': self.status,
-            'rejection_reason': self.rejection_reason,
-            'created_at': self.created_at.isoformat() if self.created_at else None,
-            'is_active': self.is_active,
-            'author': self.author.to_dict(),
-            'subcategory': self.subcategory.to_dict()
-        }
-        if include_applications:
-            data['applications'] = [app.to_dict() for app in self.vacancy_applications]
-        return data
+        try:
+            data = {
+                'id': self.id,
+                'title': self.title,
+                'description': self.description,
+                'salary': self.salary,
+                'status': self.status,
+                'rejection_reason': self.rejection_reason,
+                'created_at': self.created_at.isoformat() if self.created_at else None,
+                'is_active': self.is_active
+            }
+            
+            # Безопасное получение связанных данных
+            try:
+                if self.author:
+                    data['author'] = self.author.to_dict()
+            except Exception as e:
+                print(f"Error serializing vacancy author: {str(e)}")
+                data['author'] = None
+
+            try:
+                if self.subcategory:
+                    data['subcategory'] = self.subcategory.to_dict()
+            except Exception as e:
+                print(f"Error serializing vacancy subcategory: {str(e)}")
+                data['subcategory'] = None
+
+            if include_applications:
+                try:
+                    data['applications'] = [app.to_dict() for app in self.vacancy_applications]
+                except Exception as e:
+                    print(f"Error serializing vacancy applications: {str(e)}")
+                    data['applications'] = []
+
+            return data
+        except Exception as e:
+            print(f"Error serializing vacancy {self.title}: {str(e)}")
+            return None
 
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -618,6 +657,36 @@ def view_notifications():
         'notifications': [notification.to_dict() for notification in notifications]
     })
 
+@app.route('/api/notifications', methods=['POST'])
+def create_notification():
+    if 'user_id' not in session:
+        return jsonify({'error': 'Authentication required'}), 401
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({'error': 'No data provided'}), 400
+        
+    target_user_id = data.get('user_id')
+    message = data.get('message')
+    link = data.get('link')
+    
+    if not all([target_user_id, message]):
+        return jsonify({'error': 'User ID and message are required'}), 400
+    
+    notification = Notification(
+        user_id=target_user_id,
+        message=message,
+        link=link
+    )
+    
+    db.session.add(notification)
+    db.session.commit()
+    
+    return jsonify({
+        'message': 'Notification created successfully',
+        'notification': notification.to_dict()
+    }), 201
+
 # Регистрация
 @app.route('/api/register', methods=['POST'])
 def register():
@@ -729,21 +798,77 @@ def user_profile(username):
     if 'user_id' not in session:
         return jsonify({'error': 'Authentication required'}), 401
     
+    current_user_id = session['user_id']
+    print(f"Current user ID: {current_user_id}")
+    
     user = User.query.filter_by(username=username).first_or_404()
+    print(f"Requested user: {user.username} (ID: {user.id})")
     
-    approved_vacancies = Vacancy.query.filter_by(
-        user_id=user.id, 
-        status='approved'
-    ).order_by(Vacancy.created_at.desc()).all()
+    # Проверяем все вакансии пользователя
+    all_vacancies = Vacancy.query.filter_by(user_id=user.id).all()
+    print(f"All user vacancies: {len(all_vacancies)}")
+    for v in all_vacancies:
+        print(f"Vacancy: {v.title}, Status: {v.status}, Active: {v.is_active}")
     
-    is_owner = session['user_id'] == user.id
+    # Проверяем все навыки пользователя
+    all_skills = UserSkill.query.filter_by(user_id=user.id).all()
+    print(f"All user skills: {len(all_skills)}")
+    for s in all_skills:
+        print(f"Skill: {s.name}, Level: {s.level}, Category: {s.category}")
+    
+    # Получаем вакансии с полной загрузкой связанных данных
+    user_vacancies = Vacancy.query.filter_by(
+        user_id=user.id
+    ).options(
+        db.joinedload(Vacancy.subcategory).joinedload(Subcategory.category),
+        db.joinedload(Vacancy.author)
+    ).all()
+    
+    # Разделяем вакансии по статусам
+    approved_vacancies = [v for v in user_vacancies if v.status == 'approved' and v.is_active]
+    pending_vacancies = [v for v in user_vacancies if v.status == 'pending']
+    rejected_vacancies = [v for v in user_vacancies if v.status == 'rejected']
+    
+    print(f"Processed vacancies - Approved: {len(approved_vacancies)}, Pending: {len(pending_vacancies)}, Rejected: {len(rejected_vacancies)}")
+    
+    # Получаем навыки и портфолио
+    skills = UserSkill.query.filter_by(user_id=user.id).all()
+    portfolio_items = PortfolioItem.query.filter_by(user_id=user.id).all()
+    
+    is_owner = current_user_id == user.id
     is_moderator = session.get('is_moderator', False)
     
+    print(f"Access check - Is owner: {is_owner}, Is moderator: {is_moderator}")
+    
+    # Подготавливаем данные для ответа
     response_data = user.to_dict(include_private=is_owner)
-    response_data.update({
-        'vacancies': [v.to_dict() for v in approved_vacancies],
+    
+    # Всегда включаем публичные данные
+    public_data = {
+        'approved_vacancies': [v.to_dict(include_applications=False) for v in approved_vacancies],
+        'skills': [skill.to_dict() for skill in skills],
+        'portfolio_items': [item.to_dict() for item in portfolio_items],
         'is_owner': is_owner,
-        'is_moderator': is_moderator
+        'is_moderator': is_moderator,
+        'total_approved_vacancies': len(approved_vacancies),
+        'total_skills': len(skills)
+    }
+    response_data.update(public_data)
+    
+    # Добавляем приватные данные только для владельца
+    if is_owner or is_moderator:
+        private_data = {
+            'pending_vacancies': [v.to_dict(include_applications=False) for v in pending_vacancies],
+            'rejected_vacancies': [v.to_dict(include_applications=False) for v in rejected_vacancies]
+        }
+        response_data.update(private_data)
+    
+    print("Final response data counts:", {
+        'approved_vacancies': len(response_data.get('approved_vacancies', [])),
+        'pending_vacancies': len(response_data.get('pending_vacancies', [])),
+        'rejected_vacancies': len(response_data.get('rejected_vacancies', [])),
+        'skills': len(response_data.get('skills', [])),
+        'portfolio_items': len(response_data.get('portfolio_items', []))
     })
     
     return jsonify(response_data)
@@ -769,12 +894,25 @@ def manage_skills():
         if not name:
             return jsonify({'error': 'Skill name is required'}), 400
             
+        level = data.get('level')
+        if not isinstance(level, int) or not 1 <= level <= 5:
+            return jsonify({'error': 'Skill level must be between 1 and 5'}), 400
+            
+        years_of_experience = data.get('years_of_experience')
+        if years_of_experience is not None:
+            try:
+                years_of_experience = int(years_of_experience)
+                if years_of_experience < 0:
+                    return jsonify({'error': 'Years of experience cannot be negative'}), 400
+            except ValueError:
+                return jsonify({'error': 'Invalid years of experience value'}), 400
+            
         new_skill = UserSkill(
             user_id=user.id,
             name=name,
-            level=data.get('level'),
+            level=level,
             category=data.get('category'),
-            years_of_experience=data.get('years_of_experience')
+            years_of_experience=years_of_experience
         )
         db.session.add(new_skill)
         db.session.commit()
@@ -1011,9 +1149,12 @@ def moderator_vacancy(vacancy_id):
 
 @app.route('/api/categories/<string:name>/vacancies')
 def category_vacancies(name):
+    print(f"Searching vacancies for category: {name}")  # Добавляем лог
+    
     # Находим все подкатегории для данной категории
     category = Category.query.filter_by(name=name).first_or_404()
     subcategories = category.subcategories
+    print(f"Found subcategories: {[sub.name for sub in subcategories]}")  # Добавляем лог
     
     # Получаем все активные вакансии для всех подкатегорий
     vacancies = []
@@ -1023,16 +1164,19 @@ def category_vacancies(name):
             Vacancy.status == 'approved',
             Vacancy.is_active == True
         ).all()
+        print(f"Found {len(subcategory_vacancies)} vacancies for subcategory {subcategory.name}")  # Добавляем лог
         vacancies.extend(subcategory_vacancies)
     
     # Сортируем по дате создания
     vacancies.sort(key=lambda x: x.created_at, reverse=True)
     
-    return jsonify({
+    response_data = {
         'category': category.to_dict(),
         'vacancies': [vacancy.to_dict() for vacancy in vacancies],
         'vacancies_count': len(vacancies)
-    })
+    }
+    print(f"Total vacancies found: {len(vacancies)}")  # Добавляем лог
+    return jsonify(response_data)
 
 @app.route('/api/profile/avatar', methods=['POST'])
 def upload_avatar():
@@ -1076,6 +1220,43 @@ def upload_avatar():
 @app.route('/static/avatars/<path:filename>')
 def serve_avatar(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+@app.route('/api/debug/user/<username>', methods=['GET'])
+def debug_user_data(username):
+    if 'user_id' not in session or not session.get('is_moderator'):
+        return jsonify({'error': 'Access denied'}), 403
+        
+    user = User.query.filter_by(username=username).first_or_404()
+    
+    # Собираем все данные пользователя
+    debug_data = {
+        'user_info': {
+            'id': user.id,
+            'username': user.username,
+            'is_moderator': user.is_moderator,
+            'created_at': user.created_at.isoformat() if user.created_at else None
+        },
+        'vacancies': [{
+            'id': v.id,
+            'title': v.title,
+            'status': v.status,
+            'is_active': v.is_active,
+            'created_at': v.created_at.isoformat() if v.created_at else None
+        } for v in user.authored_vacancies],
+        'skills': [{
+            'id': s.id,
+            'name': s.name,
+            'level': s.level,
+            'category': s.category
+        } for s in user.skills],
+        'portfolio': [{
+            'id': p.id,
+            'title': p.title,
+            'category': p.category
+        } for p in user.portfolio_items]
+    }
+    
+    return jsonify(debug_data)
 
 if __name__ == '__main__':
     with app.app_context():
